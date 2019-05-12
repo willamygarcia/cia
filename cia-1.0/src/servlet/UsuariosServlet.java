@@ -27,6 +27,7 @@ public class UsuariosServlet extends HttpServlet {
 
 		UsuariosBean usuariosBean = new UsuariosBean();
 		LoginDao loginDao = new LoginDao();
+		
 		if(request.getParameter("codigoConsulta").equals("")) {
 			usuariosBean.setCodigoUsuarios(0);
 		}else {
@@ -41,15 +42,13 @@ public class UsuariosServlet extends HttpServlet {
 		}else {
 			usuariosBean.setNivelUsuarios((Integer.parseInt(request.getParameter("nivelConsulta"))));
 		}
-		
 		request.setAttribute("checagem", "checked");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroUsuarios.jsp");
 		request.setAttribute("consultaTotal", loginDao.consultaTotal(usuariosBean));
 		dispatcher.forward(request, response);
 
-				
-		
 	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

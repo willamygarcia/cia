@@ -4,9 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" href="../ico/principal.ico" type="image/x-icon">
-<link rel="stylesheet" href="../bootstrap/css/bootstrap.css" type="text/css">
-<link rel="stylesheet" href="../css/estilo-principal.css" type="text/css">
+<c:set var="context" value="${pageContext.request.contextPath}" />
+<link rel="shortcut icon" href="${context}/ico/principal.ico" type="image/x-icon">
+<link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="${context}/css/estilo-principal.css" type="text/css">
 <script type="text/javascript">
 	
 	function validarSenha(form){ 
@@ -33,33 +34,25 @@
 <body>
 	<header id="cabecalho">
 		<figure id="imagem-topo">
-			<a href="/cia-1.0/pages/principal.jsp"><img alt="Imagem Topo" src="../img/topo.png"></a>
+			<a href="/cia-1.0/pages/principal.jsp"><img alt="Imagem Topo" src="${context}/img/topo.png"></a>
 		</figure>
 		<div id="box-titulo">
 			<div class="titulo-topo">CIA 1.0</div>
 			<div class="subtitulo-topo">Coleta de Informações para Análise</div>
 		</div>
-		<nav id="menu-drop">/cia-1.0/pages/
+		
+		<nav id="menu-drop">
 			<ul class="menu">
 				<li><a href="#">Cadastros</a>
 						<ul>
-							<li><a class="link-item" href="cadastroUsuarios.jsp">Usuários</a></li>
-							<li><a class="link-item" href="cadastroCidadao.jsp">Cidadão</a></li>
+							<li><a class="link-item" href="/cia-1.0/pages/cadastroUsuarios.jsp">Usuários</a></li>
+							<li><a class="link-item" href="/cia-1.0/pages/cadastroCidadao.jsp">Cidadão</a></li>
 							<li><a class="link-item" href="/cia-1.0/pages/cadastroOcorrencia.jsp">Ocorrência</a></li>
-							<li><a class="link-item" href="#">Viatura</a></li>
+							<li><a class="link-item" href="/cia-1.0/pages/cadastroViaturas.jsp">Viatura</a></li>
 							<li><a class="link-item" href="#">Facções</a></li>
 						</ul>
 				</li>
-				<li><a href="#">Consultas</a>
-					<ul>
-						<li><a class="link-item" href="cadastroUsuarios.jsp">Usuários</a></li>
-						<li><a class="link-item" href="cadastroCidadao.jsp">Cidadão</a></li>
-						<li><a class="link-item" href="/cia-1.0/pages/cadastroOcorrencia.jsp">Ocorrência</a></li>
-						<li><a class="link-item" href="#">Viatura</a></li>
-						<li><a class="link-item" href="#">Facções</a></li>
-					</ul>
-				
-				</li>
+				<li><a href="#">Consultas</a></li>
 				<li><a href="#">Consultas</a></li>
 				<li><a href="#">Controle</a></li>
 				<li><a href="#">Relatorios</a></li>
