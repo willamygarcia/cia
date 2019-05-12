@@ -251,15 +251,20 @@ public class CidadaoServlet extends HttpServlet {
 				Part fotoDiverso01Part = request.getPart(fotoDiverso01);
 				Part fotoDiverso02Part = request.getPart(fotoDiverso02);
 				
-				String foto1 = new Base64().encodeBase64String(converterStreamToByte(fotoFrentePart.getInputStream()));
+				new Base64();
+				String foto1 = Base64.encodeBase64String(converterStreamToByte(fotoFrentePart.getInputStream()));
 				foto1 = "data:" + fotoFrentePart.getContentType() + ";base64," + foto1;
-				String foto2 = new Base64().encodeBase64String(converterStreamToByte(fotoLadoPart.getInputStream()));
+				new Base64();
+				String foto2 = Base64.encodeBase64String(converterStreamToByte(fotoLadoPart.getInputStream()));
 				foto2 =  "data:" + fotoLadoPart.getContentType() + ";base64," + foto2;
-				String foto3 = new Base64().encodeBase64String(converterStreamToByte(fotoCostaPart.getInputStream()));
+				new Base64();
+				String foto3 = Base64.encodeBase64String(converterStreamToByte(fotoCostaPart.getInputStream()));
 				foto3 =  "data:" + fotoCostaPart.getContentType() + ";base64," + foto3;
-				String foto4 = new Base64().encodeBase64String(converterStreamToByte(fotoDiverso01Part.getInputStream()));
+				new Base64();
+				String foto4 = Base64.encodeBase64String(converterStreamToByte(fotoDiverso01Part.getInputStream()));
 				foto4 =  "data:" + fotoDiverso01Part.getContentType() + ";base64," + foto4;
-				String foto5 = new Base64().encodeBase64String(converterStreamToByte(fotoDiverso02Part.getInputStream()));
+				new Base64();
+				String foto5 = Base64.encodeBase64String(converterStreamToByte(fotoDiverso02Part.getInputStream()));
 				foto5 =  "data:" + fotoDiverso02Part.getContentType() + ";base64," + foto5;
 				
 				lista.add(foto1);

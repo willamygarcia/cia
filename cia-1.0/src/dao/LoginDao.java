@@ -21,7 +21,7 @@ public class LoginDao {
 	}
 // METODO DE VERIFICAÇÃO DE LOGIN
 	public boolean logar(String usuario, String senha) {
-		String sql = "SELECT * FROM tblusuarios WHERE nome_usuarios = ? and senha_usuarios = ?";
+		String sql = "SELECT * FROM tblusuarios WHERE matricula_usuarios = ? and senha_usuarios = ?";
 
 		try {
 			PreparedStatement pst = connection.prepareStatement(sql);
@@ -44,7 +44,7 @@ public class LoginDao {
 	}
 // CADASTRAR USUARIO NO BANCO DE DADOS
 	public void cadastrarUsuario(String matricula,String nome, String senha, int nivel) {
-		String sql = "INSERT INTO tblusuarios (nome_usuarios,nome_completo_usuarios,senha_usuarios,nivel_usuarios) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO tblusuarios (matricula_usuarios,nome_completo_usuarios,senha_usuarios,nivel_usuarios) VALUES(?,?,?,?)";
 		
 		try {
 			PreparedStatement pst = connection.prepareStatement(sql);
@@ -72,22 +72,22 @@ public class LoginDao {
 		List<UsuariosBean> lista = new ArrayList<UsuariosBean>();
 		PreparedStatement pst;
 		
-		String sql = "SELECT codigo_usuarios, nome_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +  usuarios.getCodigoUsuarios()+
-				 "%' AND nome_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
+		String sql = "SELECT codigo_usuarios, matricula_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +  usuarios.getCodigoUsuarios()+
+				 "%' AND matricula_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
 				 "%' AND nivel_usuarios LIKE '%" + usuarios.getNivelUsuarios() +
 				 "%'";
 		
-		String sql2 = "SELECT codigo_usuarios, nome_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +  
-				 "%' AND nome_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
+		String sql2 = "SELECT codigo_usuarios, matricula_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +  
+				 "%' AND matricula_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
 				 "%' AND nivel_usuarios LIKE '%" + usuarios.getNivelUsuarios() +
 				 "%'";
 		
-		String sql3 = "SELECT codigo_usuarios, nome_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +  usuarios.getCodigoUsuarios() +
-				 "%' AND nome_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
+		String sql3 = "SELECT codigo_usuarios, matricula_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +  usuarios.getCodigoUsuarios() +
+				 "%' AND matricula_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
 				 "%' AND nivel_usuarios LIKE '%" + "%'";
 		
-		String sql4 = "SELECT codigo_usuarios, nome_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +
-				 "%' AND nome_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
+		String sql4 = "SELECT codigo_usuarios, matricula_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +
+				 "%' AND matricula_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
 				 "%' AND nivel_usuarios LIKE '%" + "%'";
 		try {
 			if(usuarios.getCodigoUsuarios() == 0 && usuarios.getNivelUsuarios() != 0) {
@@ -106,7 +106,7 @@ public class LoginDao {
 			while (rs.next()) {
 				UsuariosBean usuariosBean = new UsuariosBean();
 				usuariosBean.setCodigoUsuarios(rs.getInt("codigo_usuarios"));
-				usuariosBean.setNomeUsuarios(rs.getString("nome_usuarios"));
+				usuariosBean.setNomeUsuarios(rs.getString("matricula_usuarios"));
 				usuariosBean.setNomeCompletoUsuarios(rs.getString("nome_completo_usuarios"));
 				usuariosBean.setNivelUsuarios(rs.getInt("nivel_usuarios"));
 				
@@ -152,7 +152,7 @@ public class LoginDao {
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
 				usuariosBean.setCodigoUsuarios(rs.getInt("codigo_usuarios"));
-				usuariosBean.setNomeUsuarios(rs.getString("nome_usuarios"));
+				usuariosBean.setNomeUsuarios(rs.getString("matricula_usuarios"));
 				usuariosBean.setNomeCompletoUsuarios(rs.getString("nome_completo_usuarios"));
 				usuariosBean.setSenha(rs.getString("senha_usuarios"));
 				usuariosBean.setNivelUsuarios(rs.getInt("nivel_usuarios"));
@@ -170,7 +170,7 @@ public class LoginDao {
 //	ATUALIZAR USUARIOS	
 	public void atualizarUsuarios(UsuariosBean usuariosBean) {
 		
-		String sql = "UPDATE tblusuarios SET nome_usuarios = ?, nome_completo_usuarios = ?, senha_usuarios = ?, nivel_usuarios = ? WHERE codigo_usuarios ="+usuariosBean.getCodigoUsuarios();
+		String sql = "UPDATE tblusuarios SET matricula_usuarios = ?, nome_completo_usuarios = ?, senha_usuarios = ?, nivel_usuarios = ? WHERE codigo_usuarios ="+usuariosBean.getCodigoUsuarios();
 		
 		try {
 			PreparedStatement pst = connection.prepareStatement(sql);
@@ -196,7 +196,7 @@ public class LoginDao {
 	
 	public boolean validaNome(String nome) {
 		
-		String sql ="SELECT COUNT(1) AS qtd FROM tblusuarios WHERE nome_usuarios = ?";
+		String sql ="SELECT COUNT(1) AS qtd FROM tblusuarios WHERE matricula_usuarios = ?";
 		try {
 			PreparedStatement pst = connection.prepareStatement(sql);
 			pst.setString(1, nome);

@@ -87,6 +87,7 @@ form {
 	width: 55%;
 	height: 100%;
 	float: right;
+	border: 1px solid #000;
 }
 .menu{
 	margin-top:5.4%;

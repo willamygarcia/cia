@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<c:set var="context" value="${pageContext.request.contextPath}" />
+		<c:set var="context" value="${pageContext.request.contextPath}"/>
 		<meta charset="ISO-8859-1">
 		<link rel="shortcut icon" href="${context}/ico/principal.ico" type="image/x-icon">
 		<link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.css" type="text/css">
@@ -19,8 +19,7 @@ ${negado}
 		</div>
 		<div id="titulo-login">
 			<p>
-				<span class="bpm22">22º BPM</span><br> Coleta de Informações
-				para Análise<br> CIA 1.0
+				<span class="bpm22">22º BPM</span><br> Coleta de Informações para Análise<br> CIA 1.0
 			</p>
 		</div>
 		<br>
