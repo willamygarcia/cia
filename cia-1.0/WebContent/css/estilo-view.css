@@ -1,0 +1,91 @@
+@charset "ISO-8859-1";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#conteiner-view{
+	margin: 0 auto;
+	width: 90%;
+	background-color: #fff;
+	
+}
+#cabecalho-view{
+	float : left;
+	width: 100%;
+	height: 200px;
+	border-bottom: 1px solid #000;
+	margin-top: 2%;
+
+}
+#cabecalho-view img{
+	float : left;
+	width: 10%;
+	height: 100%;
+	margin-left: 2%;
+	
+}
+
+#cabecalho-view h3{
+	float : left;
+	width: 18%;
+	height:100%;
+	margin-left: 18%;
+	padding-top: 5%;
+	
+}
+#cabecalho-view h4{
+	float : right;
+	height:100%;
+	margin-right: 5%;
+	padding-top: 5%;
+}
+#foto-ficha{
+	float : left;
+	width:20%;
+	height: 350px;
+	border: 2px solid #000;
+	border-radius: 15px;
+	margin-top:2%;
+}
+#foto-ficha img{
+	width: 100%;
+	height: 100%;
+}
+#dados-pessoais-view{
+	float : left;
+	width:78%;
+	height:350px;
+	margin-top:2%;
+	margin-left: 2%;
+
+}
+.legenda{
+	font-weight: bold;
+}
+fieldset{
+	padding:1%;
+	display:block;
+	height:100%;
+ 	border: 3px groove;
+}
+#dados-juridicos-view{
+	float : left;
+	width:100%;
+	margin-top:2%;
+}
+#foto-ficha-view{
+	float : left;
+	width:100%;
+	
+}
+#foto-ficha-view img{
+	float : left;
+	margin-right:1px;
+	width:293px;
+	height: 350px;
+	border: 2px solid #c0c0c0;
+	border-radius: 15px;
+	
+}
