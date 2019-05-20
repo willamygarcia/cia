@@ -5,6 +5,7 @@
 	<head>
 		
 		<c:set var="context" value="${pageContext.request.contextPath}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="ISO-8859-1">
 		<link rel="shortcut icon" href="${context}/ico/principal.ico" type="image/x-icon">
 		<link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.css" type="text/css">
@@ -20,9 +21,9 @@
 			<div class="titulo-topo">CIA 1.0</div>
 			<div class="subtitulo-topo">Coleta de Informações para Análise</div>
 		</div>
-		
 		<nav id="menu-drop">
 			<ul class="menu">
+				<li class="li-menu-btn-close"><button class="menu-btn-close"><img src="${context}/img/menu-btn-close.png"></button></li>
 				<li><a href="#">Cadastros</a>
 						<ul>
 							<li><a class="link-item" href="/cia-1.0/pages/cadastroUsuarios.jsp">Usuários</a></li>
@@ -33,14 +34,14 @@
 						</ul>
 				</li>
 				<li><a href="#">Consultas</a></li>
-				<li><a href="#">Consultas</a></li>
+				<li><a href="#">Configurações</a></li>
 				<li><a href="#">Controle</a></li>
 				<li><a href="#">Relatorios</a></li>
 				<li><a href="login.jsp">Sair</a></li>
 			
 			</ul>
 		</nav>
-		
+		<button class="img-menu" ><img src="${context}/img/menu-mobile.png"></button>
 	</header>
 	<aside id="box-left">
 		<nav id="menu-nav-left">
@@ -67,8 +68,6 @@
 				<img alt="Policia Militar do Ceara" src="${context}/img/logoPM.png">
 				<figcaption id="legenda-imagem-principal">22ºBPM</figcaption>	
 			</figure>
-			
-		
 		</div>
 	</div>
 	
@@ -83,6 +82,16 @@
 		</nav>
 	</footer>
 
+<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(".img-menu").click(function(){
+		$("#menu-drop").show();
+		
+	});
+	$(".menu-btn-close").click(function(){
+		$("#menu-drop").hide();
+	});
 
+</script>
 </body>
 </html>

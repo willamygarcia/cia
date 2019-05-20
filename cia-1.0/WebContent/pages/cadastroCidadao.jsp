@@ -5,13 +5,14 @@
 <html>
 	<head>
 		<c:set var="context" value="${pageContext.request.contextPath}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${context}/ico/principal.ico" type="image/x-icon">
 		<link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.css" type="text/css">
 		<link rel="stylesheet" href="${context}/css/estilo-principal.css" type="text/css">
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-1.10.1.min.js"></script>
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-3.3.1.js"></script>
-			<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery.maskedinput.min.js"></script>
+		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery.maskedinput.min.js"></script>
 		<title>CIA 1.0 - Cadastro de Cidadão</title>
 	</head>
 <body>
@@ -25,6 +26,7 @@
 		</div>
 		<nav id="menu-drop">
 			<ul class="menu">
+				<li class="li-menu-btn-close"><button class="menu-btn-close"><img src="${context}/img/menu-btn-close.png"></button></li>
 				<li><a href="#">Cadastros</a>
 						<ul>
 							<li><a class="link-item" href="cadastroUsuarios.jsp">Usuários</a></li>
@@ -42,7 +44,7 @@
 			
 			</ul>
 		</nav>
-		
+		<button class="img-menu" ><img src="${context}/img/menu-mobile.png"></button>
 	</header>
 	<aside id="box-left">
 		<nav id="menu-nav-left">
@@ -302,7 +304,7 @@
 								</div>
 								<div id="box-cadastroTatu">
 								<fieldset>
-											<legend>Resultados da Consulta:</legend>
+											<legend>Descrever Tatuagens:</legend>
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label for="rosto" >Rosto</label>
@@ -424,7 +426,7 @@
 							</div>
 						</li>
 			
-						
+						<div  class="aba-consulta">
 					<li>
 						<input type="radio" id="tab7" class="rd_tab" name="tabs" ${checado}>
 						<label for="tab7" class="tab_label">Consulta</label>
@@ -516,6 +518,7 @@
 							</section>
 						</div>
 					</li>
+					</div>
 				</ul>
 			</form>	
 		</nav>
@@ -694,6 +697,16 @@
 			  
 			}
 		document.getElementById("fotoDiversas02").addEventListener("change", diversoFoto02);
+		
+		
+		$(".img-menu").click(function(){
+			$("#menu-drop").show();
+		});
+
+		$(".menu-btn-close").click(function(){
+			$("#menu-drop").hide();
+		});
+
 </script>
 <script type="text/javascript">
 	jQuery.noConflict();

@@ -3,33 +3,502 @@
 *{
 	margin: 0;
 	padding: 0;
+	border: none;
+	box-sizing: border-box;
 }
-
-html, body {
+img{
 	width: 100%;
 	height: 100%;
-	background: #696969;
 }
+/* SMALL SCREEM - SMARTFONES*/
+@media screen and (min-width: 320px) {
+	body{
+		background-color: #F5FFFA;
+	}
+	#conteiner-login{
+		position:absolute;
+		float:left;
+		padding: 5% 0 0 0;
+		width: 100%;
+		height: 100%;
+		background: url("../img/fundo-login.jpg") no-repeat center top fixed;
+		background-size: cover;
+	}
+	#box-login {
+		position: absolute;
+		margin: 5% 0 0 5%;
+		padding: 5px 5px 5px 5px;
+		width: 90%;
+		height: 90%;
+		border: 1px solid #000000;
+		background-color: rgba(0,0,0,0.9);
+		border-radius: 10px;
+	}
+	
+	#box-login-imagem {
+		float: left;
+		width: 50%;
+		height: 30%;
+	
+	}
+	
+	#titulo-login {
+		float: left;
+		width: 50%;
+		text-align: center;
+		font-family: sans-serif;
+		font-size: 15px;
+		color:#fff;
+		font-style: oblique;
+		
+	}
+	
+	.bpm22 {
+		font-size: 30px;
+		font-weight: bold;
+	}
+	
+.frm-login {
+	float: left;
+	color: #fff;
+	margin-top: 2%;
+	width: 100%;
+	height: 200px;
 
+	
+}	#cabecalho {
+		float:left;
+		background-color: #556B2F;
+		width: 100%;
+		height: 100px;
+	}
+	#imagem-topo{
+		float: left;
+		width: 80px;
+		height: 80px;	
+		margin-left: 10px;
+		margin-top: 10px; 
+	}
+	
+	#box-titulo{
+		float:left;
+		margin-left:15px;
+		margin-top: 30px;
+		width: 120px;
+		height: 100px;
+	}
+	.titulo-topo {
+		font-family: sans-serif;
+		font-weight:bold;
+		font-size: 2em;
+	}
+	
+	.subtitulo-topo {
+		font-weight:bold;
+		font-family: sans-serif;
+		font-size: 60%;
+		display: none;
+	}
+	.img-menu{
+		margin: 25px 10px 10px 10px;
+		float:right;
+		width: 50px;
+		height: 50px;
+		border-radius: 10px;
+		display: block;
+	}
+	.menu-mobile{
+		position: absolute;
+		float: left;
+		width: 100%;
+		height: 100%;
+	}
+	.menu-btn-close{
+		width: 30px;
+		height: 30px;
+		border-radius: 20px;
+		cursor: pointer;
+	}
+	#menu-drop{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,1);
+		float: left;
+		display: none;
+		z-index: 1;
+	}
+	.menu{
+		width: 100%;
+		height: 100%;;
+		float: left;
+		list-style: none;
+	}
+	.menu li{
+		text-align: center;
+		width: 100%;
+		height: 10%;
+		background-color: #393939;
+		border-bottom: 1px solid #000;
+
+	}
+	.menu li a{
+		text-decoration: none;
+		color: #D3D3D3;
+		width: 100%;
+		height: 100%;		
+	}
+	.menu li ul{
+		position:absolute;
+		left:0%;
+		display: none;
+	}
+	.menu li:hover{
+		background-color: #D3D3D3;
+		cursor: pointer;
+	}
+	.menu li:hover a{
+			color: #000;
+	}
+	.menu li:hover .link-item{
+			color: #D3D3D3;
+	}
+	.menu li ul li:hover .link-item{
+			color: #000;
+			display: block;
+	}
+	.menu li:hover ul, .menu li.over ul{
+		display: block;
+		z-index: 1;
+		   
+	}
+	.menu li ul li{
+		display:block; 
+		width:200px;
+		height:35px;
+		border-radius: 0;
+	}
+		
+	
+	#box-left {
+		float: left;
+		width: 12%;
+		height: 85%;
+		background: #333;
+		border: none;
+		display: none;
+	}
+	
+	#menu-nav-left {
+	
+		background: #333;
+		list-style: none;
+		padding: 0;
+		width: 100%;
+		border-top: none;
+		border-bottom: none;
+	}
+	
+	#menu-nav-left li {
+		font: 90% "Lucida Sans Unicode", "Bitstream Vera Sans",
+			"Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica,
+			sans-serif;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	#menu-nav-left a {
+		background: #333;
+		border-bottom: 1px solid #393939;
+		color: #ccc;
+		display: block;
+		margin: 0;
+		padding: 8px 12px;
+		text-decoration: none;
+		font-weight: normal;
+	}
+	
+	#menu-nav-left:hover {
+		color: #fff;
+	}
+	
+	#menu-nav-left a:hover {
+		background: #ccc;
+		text-decoration: none;
+		color: #000;
+	}
+	
+	#menu-left {
+		background: #333;
+		list-style: none;
+		margin-top: 10px;
+		padding: 0;
+	
+		width: 100%;
+		border-top: none;
+	}
+	#menu-nav-left li img{
+		width: 100%;
+	}
+	#menu-left li {
+		font: 90% "Lucida Sans Unicode", "Bitstream Vera Sans",
+			"Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica,
+			sans-serif;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	#menu-left a {
+		background: #333;
+		border-bottom: 1px solid #393939;
+		color: #ccc;
+		display: block;
+		margin: 0;
+		padding: 8px 12px;
+		text-decoration: none;
+		font-weight: normal;
+	}
+	
+	#menu-left:hover {
+		color: #fff;
+	}
+	
+	#menu-left a:hover {
+		background: #ccc;
+		text-decoration: none;
+		color: #000;
+	}
+	
+	#conteiner {
+		float:left;
+		width: 100%;
+		height: 100%;
+		border: none;
+		background-color: #F5FFFA;
+	}
+	#tela-principal{
+		margin: 0 auto;
+		margin-top: 50px;
+		width: 80%;
+		height: 50%;
+	}
+	#imagem-tela-princial img{
+			position: relative;
+			width: 100%;
+			height: 50%;
+			opacity: 0.3;
+		
+	}
+	#legenda-imagem-principal{
+		text-align:center;
+		width: 100%;
+		font-family: sans-serif;
+		font-weight: bold;
+		font-size: 40px;
+	}
+	
+	
+	
+	.titulo-cadastro{
+		margin-top: 14px;
+		font-weight:bold;
+	}
+	.nav_tabs {
+		margin-left: 1%;
+		width: 98%;
+		position: relative;
+		height: 30%;
+		float: left;
+	}
+	
+	.nav_tabs ul {
+		list-style: none;
+	}
+	
+	.nav_tabs ul li {
+		float: left;
+	}
+	
+	.tab_label {
+		display: block;
+		width: 98%;
+		height: 50px;
+		padding: 1% 0 0 0;
+		background-color: #B0E0E6;
+		font-size: 25px;
+		font-weight:bold;
+		text-align:center;
+		color: #000000;
+		cursor: pointer;
+		border-bottom: none;
+		margin-bottom: 1px;
+	}
+	
+	.nav_tabs .rd_tab {
+		display: none;
+		position: absolute;
+	}
+		
+	.tab-content h2 {
+		padding: 10px;
+		color: #87d3b7;
+	}
+	.aba-consulta{
+		display: none;
+	}
+	#rodape {
+		float: left;
+		background-color: #556B2F;
+		width: 100%;
+	
+	}
+	#rodape nav{
+			text-align: center;
+			font-size: 0.7em;
+			margin: 0 auto;
+			padding: 5px;
+			width: 100%;
+			height: 100%;
+	}
+	#rodape ul {
+		margin-top: 2px;
+		color:#000;
+		list-style: none;
+	}
+	
+	#rodape ul li {
+		color:#000;
+		display:inline;
+		margin: 10px;
+	}
+	#rodape ul li a{
+		color:#000;
+		text-decoration: none;
+		
+	}
+	.tela-consulta{
+		width: 100%;
+		height: 100%;
+		
+	}
+	fieldset { 
+	  position: relative;
+	  display: block;
+	  margin-left: 2px;
+	  margin-right: 2px;
+	  padding-top: 0.35em;
+	  padding-bottom: 0.625em;
+	  padding-left: 0.75em;
+	  padding-right: 0.75em;
+	  height: 100%;
+	  width:100%;
+	  border: 2px groove;
+	}
+	
+	.container-foto{
+		margin: 10px 5px 5px 5px;
+		width: 100%;
+		height: 95%;
+	}
+	.container-foto label{
+		padding-top:15px;
+		cursor:pointer;
+		border-radius:15px;
+		background-color:#556B2F;
+		text-align:center;
+		width: 100%;
+		height:15%;
+		font-family: sans-serif;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.container-foto label:hover{
+		background-color:#6B8E23;
+	}
+	.container-foto input[type="file"]{
+		display: none;
+	}
+	.fotos{
+		box-sizing:border-box;
+		margin: 0 auto;
+		border: 1px solid #000;
+		border-radius: 15px;
+		width: 99%;
+		height: 85%;
+	}
+	
+	.fotos img{
+		border-radius:15px;
+		margin: 1%;
+		width: 98%;
+		height: 70%;
+	}
+	
+	.fotos-cidadao{
+		box-sizing:border-box;
+		width: 100%;
+		height: 90%;
+	}
+	.table-overflow {
+			height: 90%;
+			overflow:auto;
+	}
+	#localTatuagens{
+		display: none;
+		margin-top: 1%;
+		width:100%;
+		height:98%;
+		background-image: url("../img/cadastro-tatuagem-.png");
+		background-repeat: no-repeat;
+		background-size: 85%;
+		 
+		
+	}
+	#box-cadastroTatu{
+		position: relative;
+		float: left;
+		width:100%;
+		height:98%;
+		
+	}
+}
+/* Medio SCREEM - SMARTFONES*/
+
+@media screen and (min-width: 1366px) {
+body{
+	background-color: #F5FFFA;
+}
+#conteiner-login{
+	position:absolute;
+	float:left;
+	padding: 5% 0 0 0;
+	width: 100%;
+	height: 100%;
+	background: url("../img/fundo-login.jpg") no-repeat center top fixed;
+	background-size: cover;
+}
 #box-login {
-	position: absolute;
-	margin: 9% 0 0 30%;
+	position: relative;
+	margin:0 auto;
 	padding: 5px 20px 5px 20px;
-	width: 40%;
-	height: 55%;
-	border: 3px solid #000000;
-	background-color: #FFFFFF;
-	border-radius: 10px;
+	width: 700px;
+	height: 500px;
+	border: 1px solid #000;
+	background-color: rgba(0,0,0,0.9);
+	border-radius: 5px;
 }
 
 #box-login-imagem {
 	float: left;
-	width: 40%;
-	height: 45%;
-	padding-left: 20px;
+	width: 250px;
+	height: 220px;
+	padding:10px 0 0 10px;
 }
 
 #titulo-login {
+	color: #fff;
 	float: right;
 	width: 60%;
 	height: 45%;
@@ -44,12 +513,12 @@ html, body {
 	font-size: 50px;
 	font-weight: bold;
 }
-
-form {
+.frm-login {
+	float: left;
+	color: #fff;
 	margin-top: 2%;
 	width: 100%;
-	height: 100%;
-	float: left;
+	height: 200px;
 }
 
 #cabecalho {
@@ -57,57 +526,75 @@ form {
 	border: none;
 	background-color: #556B2F;
 	width: 100%;
-	height: 10%;
+	height: 100px;
 }
-
+#imagem-topo{
+	float: left;
+	width: 80px;
+	height: 80px;
+	margin: 10px 10px 0 50px;;
+}
 #box-titulo{
 	float:left;
 	height: 100%;
-	width: 20%;
-	margin-left:2%;
-
+	width: 300px;
+	margin: 0 0 0 20px;
+	padding: 0;
 }
 .titulo-topo {
-
+	margin:0;
 	height:60%;
 	font-family: sans-serif;
 	font-weight:bold;
-	font-size: 300%;
-	
+	font-size: 2.5em;
 }
 
 .subtitulo-topo {
-
 	height: 30%;
 	font-weight:bold;
 	font-family: sans-serif;
-	font-size: 100%;
+	font-size: 1em;
+	display: block;
+}
+.img-menu{
+	display: none;
 }
 #menu-drop{
-	width: 55%;
-	height: 500px;
+	position: relative;
+	width: 800px;
+	height: 100%;
 	float: right;
-	border: 1px solid #000;
-	
+	display:block;
+	background-color: transparent;
 }
 .menu{
-	margin-top:5%;
+	margin: 60px 0 0 0;
 	width: 100%;
-	height: 8%;
+	height: 40px;
 	float: left;
 	list-style: none;
-	
+}
+.li-menu-btn-close{
+	display: none;
 }
 .menu li{
 	position: relative;
-	padding-left: 3%;
+	float: left;
+	padding:0 auto;
 	padding-top: 0.7%;
 	border-right: 1px solid #696969;
-	width: 15%;
+	border-bottom: 1px solid #696969;
+	width: 130px;
+	min-width: 100px;
 	height: 100%;
-	float: left;
 	background-color: #393939;
 	border-radius:5px;
+	
+}
+.menu li a{
+
+	text-decoration: none;
+	color: #D3D3D3;
 	
 }
 .menu li:hover{
@@ -125,12 +612,7 @@ form {
 		display: block;
 }
 
-.menu li a{
 
-	text-decoration: none;
-	color: #D3D3D3;
-	
-}
 .menu li ul{
 	position:absolute;
 	left:0%;
@@ -148,40 +630,15 @@ form {
 	height:35px;
 	border-radius: 0;
 }
-	
-#busca{
-	border:1px solid #000;
-	margin-top:1%;
-	margin-left:5%;
-	float: left;
-	
-}
-#imagem-topo{
-	float: left;
-	height: 100%;
-	width: 5%;	
-	border: none;
-	margin-left: 5%;
-	
-}
-
-#imagem-topo img {
-	border: none;
-	width: 100%;
-	height: 100%;
-	margin-top: 0.2%;
-	margin-left: 4%;
-	
-}
-
 
 
 #box-left {
 	float: left;
 	width: 12%;
-	height: 85%;
+	min-width:200px;
+	height: 70vh; 
 	background: #333;
-	border: none;
+	display: block;
 }
 
 #menu-nav-left {
@@ -190,6 +647,7 @@ form {
 	list-style: none;
 	padding: 0;
 	width: 100%;
+	height: 100%;
 	border-top: none;
 	border-bottom: none;
 }
@@ -265,21 +723,25 @@ form {
 	text-decoration: none;
 	color: #000;
 }
-
 #conteiner {
-	float:left;
+	position:relative;
+	float:right;
 	margin: 0;
 	padding: 0;
-	width: 88%;
-	height: 85%;
+	width: 85%;
+	height: 70vh;
+	box-sizing:border-box;
 	border: none;
-	background-color: #696969;
+	background-color: #F5FFFA;
+	overflow: auto;
 }
 #tela-principal{
 	position: relative;
-	margin: 10% 0 0 40%;
+	margin: 0 auto;
+	margin-top: 150px;
 	width: 20%;
 	height: 50%;
+	border: 1px solid #fff;
 }
 #imagem-tela-princial img{
 		position: relative;
@@ -348,15 +810,15 @@ form {
 }
 
 .tab-content {
-	margin-top: -5px;
-	border: solid 3px #556B2F;
-	background-color: #ffffff;
-	display: none;
 	position: absolute;
-	height: 650px;
-	width: 100%;
 	left: 0;
 	padding: 0% 2% 2% 2%;
+	width: 100%;
+	height: auto;
+	margin-top: -5px;
+	border: solid 3px #556B2F;
+	background-color: #F5FFFA;
+	display: none;
 }
 
 .rd_tab:checked ~ .tab-content {
@@ -368,29 +830,31 @@ form {
 	padding: 10px;
 	color: #87d3b7;
 }
-
+.aba-consulta{
+		display: block;
+	}
 #rodape {
-	float: left;
+	position: absolute;
+	left:0;
+	bottom:0;
 	background-color: #556B2F;
 	width: 100%;
-	height: 5%;
+	height: 50px;
 }
 #rodape nav{
-
-		margin-left:27%;
-		width: 70%;
-		height: 90%;
+	position:relative;
+	margin: 0 auto;
+	width: 70%;
+	height: 100%;
 }
 #rodape ul {
-	margin-top: 5px;
-	color:#000;
 	list-style: none;
 }
 
 #rodape ul li {
-		color:#000;
+	font-size: 1.3em;
+	color:#000;
 	display:inline;
-	margin: 10px;
 }
 #rodape ul li a{
 	color:#000;
@@ -410,8 +874,8 @@ fieldset {
   padding-bottom: 0.625em;
   padding-left: 0.75em;
   padding-right: 0.75em;
-  height: 100%;
-  border: 2px groove;
+  height: 90%;
+  border: 1px groove;
 }
 .lado-esquerdo{
 	float:left;
@@ -422,23 +886,24 @@ fieldset {
 .lado-direito{
 	float:right;
 	width: 20%;
-	height: 99%;
+	height: 100%;
 }
+
 .container-foto{
 	
 	float:left;
 	margin: 10px 5px 5px 5px;
-	width: 19.2%;
-	height: 95%;
+	width: 200px;
+	height: 100%;
 }
 .container-foto label{
-	padding-top:15px;
+	padding-top:10px;
 	cursor:pointer;
-	border-radius:15px;
+	border-radius:10px;
 	background-color:#556B2F;
 	text-align:center;
 	width: 100%;
-	height:10%;
+	height:50px;
 	font-family: sans-serif;
 	font-size: 16px;
 	font-weight: bold;
@@ -450,25 +915,28 @@ fieldset {
 	display: none;
 }
 .fotos{
+	float:left;
 	box-sizing:border-box;
 	margin: 0 auto;
 	border: 1px solid #000;
-	border-radius: 15px;
+	border-radius: 10px;
 	width: 99%;
-	height: 85%;
+	height: 250px;
 }
 
 .fotos img{
 	border-radius:15px;
 	margin: 1%;
 	width: 98%;
-	height: 70%;
+	height: 98%;
 }
 
 .fotos-cidadao{
+	position:relative;
+	float:left;
 	box-sizing:border-box;
 	width: 100%;
-	height: 90%;
+	height: 100%;
 }
 .table-overflow {
 		height: 90%;
@@ -477,20 +945,41 @@ fieldset {
 #localTatuagens{
 	float:left;
 	margin-top: 1%;
-	width:30%;
-	height:98%;
-	background-image: url("../img/cadastro-tatuagem-.png");
-	background-repeat: no-repeat;
-	background-size: 85%;
-	 
-	
+	display: block;
+	width:200px;
+	height: 500px;
+	background: url("../img/cadastro-tatuagem-.png") center center/100% no-repeat;
 }
 #box-cadastroTatu{
 	margin-left: 1%;
 	margin-top: 1%;
 	float:left;
-	width:60%;
-	height:98%;
+	width:80%;
+	height:100%;
 	
 }
-
+}
+@media screen and (min-width: 1920px) {
+	.menu li{
+	position: relative;
+	float: left;
+	padding:0 auto;
+	padding-top: 0.7%;
+	border-right: 1px solid #696969;
+	border-bottom: 1px solid #696969;
+	width: 150px;
+	min-width: 100px;
+	height: 100%;
+	background-color: #393939;
+	border-radius:5px;
+	
+	}
+	#menu-drop{
+	position: relative;
+	width: 1000px;
+	height: 100%;
+	float: right;
+	display:block;
+	background-color: transparent;
+	}
+}

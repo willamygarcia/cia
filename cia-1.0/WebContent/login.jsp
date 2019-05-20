@@ -1,9 +1,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 	<head>
 		<c:set var="context" value="${pageContext.request.contextPath}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="ISO-8859-1">
 		<link rel="shortcut icon" href="${context}/ico/principal.ico" type="image/x-icon">
 		<link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.css" type="text/css">
@@ -12,9 +13,10 @@
 	</head>
 <body>
 ${negado}
+	<div id="conteiner-login">
 	<div id="box-login">
 		<div id="box-login-imagem">
-			<img alt="Imagem Login" src="${context}/img/login2.png" width="250" height="250">
+			<img alt="Imagem Login" src="${context}/img/login2.png">
 
 		</div>
 		<div id="titulo-login">
@@ -23,7 +25,7 @@ ${negado}
 			</p>
 		</div>
 		<br>
-		<form action="Login" method="post">
+		<form class="frm-login" action="Login" method="post">
 			<div class="form-group">
 				<label for="usuario">Usuario</label> <input type="text"
 					class="form-control" id="usuario" aria-describedby="usuarioHelp" placeholder="Informe seu Usuario" name="usuario" autofocus="autofocus"> 
@@ -37,6 +39,7 @@ ${negado}
 			<button type="submit" class="btn btn-primary">Entrar</button>
 			<small><a href="#">Esqueceu sua senha?</a></small>
 		</form>
+	</div>
 	</div>
 </body>
 </html>
