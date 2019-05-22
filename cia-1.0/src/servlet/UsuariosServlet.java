@@ -24,29 +24,56 @@ public class UsuariosServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		UsuariosBean usuariosBean = new UsuariosBean();
-		LoginDao loginDao = new LoginDao();
 		
-		if(request.getParameter("codigoConsulta").equals("")) {
-			usuariosBean.setCodigoUsuarios(0);
-		}else {
-			usuariosBean.setCodigoUsuarios(Integer.parseInt(request.getParameter("codigoConsulta")));
+		String acao = request.getParameter("acao");
+		String acaoConsulta = request.getParameter("acaoConsulta");
+		
+		if(acaoConsulta.equals("")) {
+			UsuariosBean usuariosBean = new UsuariosBean();
+			LoginDao loginDao = new LoginDao();
+			
+			if(request.getParameter("codigoConsulta").equals("")) {
+				usuariosBean.setCodigoUsuarios(0);
+			}else {
+				usuariosBean.setCodigoUsuarios(Integer.parseInt(request.getParameter("codigoConsulta")));
+			}
+			
+			usuariosBean.setNomeUsuarios(request.getParameter("mtUsuarioConsulta"));
+			
+			
+			if(request.getParameter("nivelConsulta").equals("")) {
+				usuariosBean.setNivelUsuarios(0);
+			}else {
+				usuariosBean.setNivelUsuarios((Integer.parseInt(request.getParameter("nivelConsulta"))));
+			}
+			request.setAttribute("checagem", "checked");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroUsuarios.jsp");
+			request.setAttribute("consultaTotal", loginDao.consultaTotal(usuariosBean));
+			dispatcher.forward(request, response);
+		
+		}else if(acao.equals("editar")) {
+			
+			int codigoUsuarios = Integer.parseInt(request.getParameter("codigoUsuarios"));
+			UsuariosBean usuariosBean = new UsuariosBean();
+			LoginDao loginDao = new LoginDao();
+			
+			usuariosBean.setCodigoUsuarios(codigoUsuarios);
+			usuariosBean = loginDao.consultaUsuarioCodigo(codigoUsuarios);
+			request.setAttribute("usuarioPorCodigo",usuariosBean);
+			request.setAttribute("valor", "Editar");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroUsuarios.jsp");
+			
+			dispatcher.forward(request, response);
+		}else if(acao.equals("del")) {
+			
+			int codigoUsuarios = Integer.parseInt(request.getParameter("codigoUsuarios"));
+			LoginDao loginDao = new LoginDao();
+			loginDao.removerUsuarios(codigoUsuarios);
+			request.setAttribute("checagem", "checked");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroUsuarios.jsp");
+			dispatcher.forward(request, response);
+			
 		}
-		
-		usuariosBean.setNomeUsuarios(request.getParameter("mtUsuarioConsulta"));
-		
-		
-		if(request.getParameter("nivelConsulta").equals("")) {
-			usuariosBean.setNivelUsuarios(0);
-		}else {
-			usuariosBean.setNivelUsuarios((Integer.parseInt(request.getParameter("nivelConsulta"))));
-		}
-		request.setAttribute("checagem", "checked");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroUsuarios.jsp");
-		request.setAttribute("consultaTotal", loginDao.consultaTotal(usuariosBean));
-		dispatcher.forward(request, response);
-
 	}
 	
 

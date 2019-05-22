@@ -1,9 +1,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 	<head>
-		
 		<c:set var="context" value="${pageContext.request.contextPath}" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="ISO-8859-1">
@@ -34,10 +33,10 @@
 						</ul>
 				</li>
 				<li><a href="#">Consultas</a></li>
-				<li><a href="#">Configurações</a></li>
-				<li><a href="#">Controle</a></li>
 				<li><a href="#">Relatorios</a></li>
-				<li><a href="login.jsp">Sair</a></li>
+				<li><a href="#">Controle</a></li>
+				<li><a href="#">Configurações</a></li>
+				<li><a href="/cia-1.0/login.jsp">Sair</a></li>
 			
 			</ul>
 		</nav>

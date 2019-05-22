@@ -2,35 +2,17 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
-<head>
-<c:set var="context" value="${pageContext.request.contextPath}" />
-<link rel="shortcut icon" href="${context}/ico/principal.ico" type="image/x-icon">
-<link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.css" type="text/css">
-<link rel="stylesheet" href="${context}/css/estilo-principal.css" type="text/css">
-<script type="text/javascript">
-	
-	function validarSenha(form){ 
-	    senha = document.formUsuario.senha.value
-	    senhaRepetida = document.formUsuario.confirmacaoSenha.value
-	    if (senha != senhaRepetida){
-	    	document.formUsuario.confirmacaoSenha.style.border='solid 1px #FF6347';
-	    	alert("Confirmação de Senha incoreta!!!");
-	        document.formUsuario.confirmacaoSenha.value=("");  
-	        document.formUsuario.confirmacaoSenha.focus();
-	  
-	        return false;
-	    }
-	}
-		
-	function validaCorRetorna(){
-		document.formUsuario.confirmacaoSenha.style.border='solid 1px #DCDCDC';	
-	}
-	
-    
-</script>
-<title>CIA 1.0</title>
-</head>
+<html lang="pt-br">
+	<head>
+		<c:set var="context" value="${pageContext.request.contextPath}" />
+		<meta charset="uutf-8">
+		<meta name=viewport content="width=device-width, initial-scale=1.0" >
+		<link rel="shortcut icon" href="${context}/ico/principal.ico" type="image/x-icon">
+		<link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.css" type="text/css">
+		<link rel="stylesheet" href="${context}/css/estilo-principal.css" type="text/css">
+
+		<title>CIA 1.0</title>
+	</head>
 <body>
 	<header id="cabecalho">
 		<figure id="imagem-topo">
@@ -40,9 +22,9 @@
 			<div class="titulo-topo">CIA 1.0</div>
 			<div class="subtitulo-topo">Coleta de Informações para Análise</div>
 		</div>
-		
 		<nav id="menu-drop">
 			<ul class="menu">
+				<li class="li-menu-btn-close"><button class="menu-btn-close"><img src="${context}/img/menu-btn-close.png"></button></li>
 				<li><a href="#">Cadastros</a>
 						<ul>
 							<li><a class="link-item" href="/cia-1.0/pages/cadastroUsuarios.jsp">Usuários</a></li>
@@ -53,19 +35,18 @@
 						</ul>
 				</li>
 				<li><a href="#">Consultas</a></li>
-				<li><a href="#">Consultas</a></li>
-				<li><a href="#">Controle</a></li>
 				<li><a href="#">Relatorios</a></li>
-				<li><a href="login.jsp">Sair</a></li>
+				<li><a href="#">Controle</a></li>
+				<li><a href="#">Configurações</a></li>
+				<li><a href="/cia-1.0/login.jsp">Sair</a></li>
 			
 			</ul>
 		</nav>
-		
+		<button class="img-menu" ><img src="${context}/img/menu-mobile.png"></button>
 	</header>
 	<aside id="box-left">
 		<nav id="menu-nav-left">
 			<ul>
-	
 				<li class="active"><a href="cadastroCidadao.jsp">Cadastro do Cidadão</a></li>
 				<li><a href="cadastroUsuarios.jsp">Cadastro de Usuarios</a></li>
 				<li><a href="/cia-1.0/pages/cadastroOcorrencia.jsp">Cadastro de Ocorência</a></li>
@@ -82,7 +63,6 @@
 		</nav>
 	</aside>
 	<div id="conteiner">
-
 		<nav class="nav_tabs">
 			<h3 class="titulo-cadastro">Cadastro de Usuários</h3>
 			<ul>
@@ -162,8 +142,8 @@
 													<td><c:out value="${lista.nomeCompletoUsuarios}"></c:out></td>
 													<td><c:out value="${lista.nivelUsuarios}"></c:out></td>
 													<td>
-														<a href="UsuariosDel_Edit_Servlet?acao=editar&codigoUsuarios=${lista.codigoUsuarios}" class="btn btn-secondary btn-sm">Editar</a>
-														<a href="UsuariosDel_Edit_Servlet?acao=del&codigoUsuarios=${lista.codigoUsuarios}" class="btn btn-danger btn-sm">Excluir</a>
+														<a href="CadastrarUsuario?acao=editar&acaoConsulta=editar&codigoUsuarios=${lista.codigoUsuarios}" class="btn btn-secondary btn-sm">Editar</a>
+														<a href="CadastrarUsuario?acao=del&acaoConsulta&codigoUsuarios=${lista.codigoUsuarios}" class="btn btn-danger btn-sm">Excluir</a>
 														<a href="#" class="btn btn-info btn-sm">Visualizar</a>
 													</td>
 												</tr>
@@ -184,6 +164,7 @@
 											<div class="form-group col-md-12">
 												<label for="codigo">Codigo</label> 
 												<input type="number" class="form-control" id="codigo" aria-describedby="codigoHelp" placeholder="Codigo" name="codigoConsulta">
+												<input type="text" name="acaoConsulta" hidden="hidden">
 											</div>
 										</div>
 										<div class="form-row">
@@ -199,6 +180,7 @@
 										</div>
 
 										<button type="submit" class="btn btn-primary">Consultar</button>
+										<!-- <a href="CadastrarUsuario" class="btn btn-secondary btn-sm">Consultar</a>-->
 										<button type="reset" class="btn btn-secondary">Limpar</button>
 									</fieldset>
 								</form>
@@ -224,5 +206,35 @@
 			</ul>
 		</nav>
 	</footer>
+	
+<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+			
+			function validarSenha(form){ 
+			    senha = document.formUsuario.senha.value
+			    senhaRepetida = document.formUsuario.confirmacaoSenha.value
+			    if (senha != senhaRepetida){
+			    	document.formUsuario.confirmacaoSenha.style.border='solid 1px #FF6347';
+			    	alert("Confirmação de Senha incoreta!!!");
+			        document.formUsuario.confirmacaoSenha.value=("");  
+			        document.formUsuario.confirmacaoSenha.focus();
+			  
+			        return false;
+			    }
+			}
+				
+			function validaCorRetorna(){
+				document.formUsuario.confirmacaoSenha.style.border='solid 1px #DCDCDC';	
+			}
+			
+			$(".img-menu").click(function(){
+				$("#menu-drop").show();
+				
+			});
+			$(".menu-btn-close").click(function(){
+				$("#menu-drop").hide();
+			});
+			
+</script>
 </body>
 </html>

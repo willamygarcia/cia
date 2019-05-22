@@ -396,6 +396,17 @@ img{
 	  width:100%;
 	  border: 2px groove;
 	}
+	.lado-esquerdo{
+	float:left;
+	width: 100%;
+	height: 100%;
+
+}
+.lado-direito{
+	float:left;
+	width: 100%;
+	height: 100%;
+}
 	
 	.container-foto{
 		margin: 10px 5px 5px 5px;
