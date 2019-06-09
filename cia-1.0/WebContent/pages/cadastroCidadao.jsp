@@ -1,6 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -426,9 +425,8 @@
 							
 							</div>
 						</li>
-			
-						<div  class="aba-consulta">
 					<li>
+					 <div  class="aba-consulta">
 						<input type="radio" id="tab7" class="rd_tab" name="tabs" ${checado}>
 						<label for="tab7" class="tab_label">Consulta</label>
 						<div class="tab-content">
@@ -518,8 +516,9 @@
 
 							</section>
 						</div>
+					  </div>
 					</li>
-					</div>
+				
 				</ul>
 			</form>	
 		</nav>

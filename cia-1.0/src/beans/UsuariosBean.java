@@ -5,6 +5,7 @@ public class UsuariosBean {
 	private int codigoUsuarios;
 	private String nomeUsuarios;
 	private String nomeCompletoUsuarios;
+	private String emailUsuario;
 	private String senha;
 	private String confirmaSenha;
 	private int nivelUsuarios;
@@ -23,7 +24,12 @@ public class UsuariosBean {
 	public void setNomeUsuarios(String nomeUsuarios) {
 		this.nomeUsuarios = nomeUsuarios;
 	}
-	
+	public String getEmailUsuario() {
+		return emailUsuario;
+	}
+	public void setEmailUsuario(String emailUsuario) {
+		this.emailUsuario = emailUsuario;
+	}
 	public String getSenha() {
 		return senha;
 	}

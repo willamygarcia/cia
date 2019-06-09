@@ -87,7 +87,11 @@
 								</div>
 								<div class="form-group col-md-5">
 									<label for="nomeUsuario">Nome Usuário</label>
-									<input type="text" class="form-control" id="nomeUsuario" aria-describedby="nomeUsuarioHelp" placeholder="NomeCompleto" required="required" name="nomeUsuario" value="${usuarioPorCodigo.nomeCompletoUsuarios}">
+									<input type="text" class="form-control" id="nomeUsuario" aria-describedby="nomeUsuarioHelp" placeholder="Nome Completo" required="required" name="nomeUsuario" value="${usuarioPorCodigo.nomeCompletoUsuarios}">
+								</div>
+								<div class="form-group col-md-4">
+									<label for="emailUsuario">E-mail</label>
+									<input type="email" class="form-control" id="emailUsuario" aria-describedby="emailUsuarioHelp" placeholder="EX: email@dominio.com.br" required="required" name="emailUsuario" value="${usuarioPorCodigo.emailUsuario}">
 								</div>
 								
 							</div>

@@ -89,12 +89,13 @@ public class UsuariosServlet extends HttpServlet {
 			
 			usuariosBean.setNomeUsuarios(request.getParameter("mtUsuario"));
 			usuariosBean.setNomeCompletoUsuarios(request.getParameter("nomeUsuario"));
+			usuariosBean.setEmailUsuario(request.getParameter("emailUsuario"));
 			usuariosBean.setSenha(request.getParameter("senha"));
 			usuariosBean.setConfirmaSenha(request.getParameter("confirmaSenha"));
 			usuariosBean.setNivelUsuarios(Integer.parseInt(request.getParameter("nivel")));
 			
 			if(loginDao.validaNome(usuariosBean.getNomeUsuarios())) {
-				loginDao.cadastrarUsuario(usuariosBean.getNomeUsuarios(), usuariosBean.getNomeCompletoUsuarios(), usuariosBean.getSenha(), usuariosBean.getNivelUsuarios());
+				loginDao.cadastrarUsuario(usuariosBean.getNomeUsuarios(), usuariosBean.getNomeCompletoUsuarios(), usuariosBean.getEmailUsuario(), usuariosBean.getSenha(), usuariosBean.getNivelUsuarios());
 				request.setAttribute("alerta", "<script type=\"text/javascript\">alert(\"Usuário Cadastrado com Sucesso!!!\");</script>");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroUsuarios.jsp");
 				dispatcher.forward(request, response);
@@ -109,6 +110,7 @@ public class UsuariosServlet extends HttpServlet {
 			usuariosBean.setCodigoUsuarios(Integer.parseInt(request.getParameter("codigo")));
 			usuariosBean.setNomeUsuarios(request.getParameter("mtUsuario"));
 			usuariosBean.setNomeCompletoUsuarios(request.getParameter("nomeUsuario"));
+			usuariosBean.setEmailUsuario(request.getParameter("emailUsuario"));
 			usuariosBean.setSenha(request.getParameter("senha"));
 			usuariosBean.setConfirmaSenha(request.getParameter("confirmaSenha"));
 			usuariosBean.setNivelUsuarios(Integer.parseInt(request.getParameter("nivel")));

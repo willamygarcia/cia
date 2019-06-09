@@ -16,7 +16,6 @@
 <body>
 	<div id="conteiner-view">
 		<header id="cabecalho-view">
-
 			<img alt="logo-cia" src="${context}/img/topo.png">
 			<img alt="logo-cia" src="${context}/img/logoPM.png">
 			<h3 class="titulo-view">FICHA DO CIDADÃO</h3>

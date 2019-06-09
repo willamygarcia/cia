@@ -43,15 +43,16 @@ public class LoginDao {
 
 	}
 // CADASTRAR USUARIO NO BANCO DE DADOS
-	public void cadastrarUsuario(String matricula,String nome, String senha, int nivel) {
-		String sql = "INSERT INTO tblusuarios (matricula_usuarios,nome_completo_usuarios,senha_usuarios,nivel_usuarios) VALUES(?,?,?,?)";
+	public void cadastrarUsuario(String matricula,String nome, String email, String senha, int nivel) {
+		String sql = "INSERT INTO tblusuarios (matricula_usuarios,nome_completo_usuarios,email_usuarios,senha_usuarios,nivel_usuarios) VALUES(?,?,?,?,?)";
 		
 		try {
 			PreparedStatement pst = connection.prepareStatement(sql);
 			pst.setString(1, matricula);
 			pst.setString(2, nome);
-			pst.setString(3, senha);
-			pst.setInt(4, nivel);
+			pst.setString(3, email);
+			pst.setString(4, senha);
+			pst.setInt(5, nivel);
 			pst.execute();
 		} catch (Exception e) {
 			try {
@@ -153,6 +154,7 @@ public class LoginDao {
 			while(rs.next()) {
 				usuariosBean.setCodigoUsuarios(rs.getInt("codigo_usuarios"));
 				usuariosBean.setNomeUsuarios(rs.getString("matricula_usuarios"));
+				usuariosBean.setEmailUsuario(rs.getString("email_usuarios"));
 				usuariosBean.setNomeCompletoUsuarios(rs.getString("nome_completo_usuarios"));
 				usuariosBean.setSenha(rs.getString("senha_usuarios"));
 				usuariosBean.setNivelUsuarios(rs.getInt("nivel_usuarios"));
@@ -170,14 +172,15 @@ public class LoginDao {
 //	ATUALIZAR USUARIOS	
 	public void atualizarUsuarios(UsuariosBean usuariosBean) {
 		
-		String sql = "UPDATE tblusuarios SET matricula_usuarios = ?, nome_completo_usuarios = ?, senha_usuarios = ?, nivel_usuarios = ? WHERE codigo_usuarios ="+usuariosBean.getCodigoUsuarios();
+		String sql = "UPDATE tblusuarios SET matricula_usuarios = ?, nome_completo_usuarios = ?, email_usuarios, senha_usuarios = ?, nivel_usuarios = ? WHERE codigo_usuarios ="+usuariosBean.getCodigoUsuarios();
 		
 		try {
 			PreparedStatement pst = connection.prepareStatement(sql);
 			pst.setString(1, usuariosBean.getNomeUsuarios());
 			pst.setString(2, usuariosBean.getNomeCompletoUsuarios());
-			pst.setString(3, usuariosBean.getSenha());
-			pst.setInt(4, usuariosBean.getNivelUsuarios());
+			pst.setString(3, usuariosBean.getEmailUsuario());
+			pst.setString(4, usuariosBean.getSenha());
+			pst.setInt(5, usuariosBean.getNivelUsuarios());
 			pst.executeUpdate();
 			connection.commit();
 			

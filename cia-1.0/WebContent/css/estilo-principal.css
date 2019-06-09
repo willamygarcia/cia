@@ -58,15 +58,14 @@ img{
 		font-weight: bold;
 	}
 	
-.frm-login {
-	float: left;
-	color: #fff;
-	margin-top: 2%;
-	width: 100%;
-	height: 200px;
-
-	
-}	#cabecalho {
+	.frm-login {
+		float: left;
+		color: #fff;
+		margin-top: 2%;
+		width: 100%;
+		height: 200px;
+	}
+	#cabecalho {
 		float:left;
 		background-color: #556B2F;
 		width: 100%;
@@ -401,12 +400,12 @@ img{
 	width: 100%;
 	height: 100%;
 
-}
-.lado-direito{
-	float:left;
-	width: 100%;
-	height: 100%;
-}
+	}
+	.lado-direito{
+		float:left;
+		width: 100%;
+		height: 100%;
+	}
 	
 	.container-foto{
 		margin: 10px 5px 5px 5px;
