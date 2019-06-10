@@ -471,503 +471,515 @@ img{
 		float: left;
 		width:100%;
 		height:98%;
+	}
+	#modal-content{
 		
+		width: 100px;
+		height: 100px;
+		background: #000;
+	
 	}
 }
 /* Medio SCREEM - SMARTFONES*/
 
 @media screen and (min-width: 1366px) {
-body{
-	background-color: #F5FFFA;
-}
-#conteiner-login{
-	position:absolute;
-	float:left;
-	padding: 5% 0 0 0;
-	width: 100%;
-	height: 100%;
-	background: url("../img/fundo-login.jpg") no-repeat center top fixed;
-	background-size: cover;
-}
-#box-login {
-	position: relative;
-	margin:0 auto;
-	padding: 5px 20px 5px 20px;
-	width: 700px;
-	height: 500px;
-	border: 1px solid #000;
-	background-color: rgba(0,0,0,0.9);
-	border-radius: 5px;
-}
-
-#box-login-imagem {
-	float: left;
-	width: 250px;
-	height: 220px;
-	padding:10px 0 0 10px;
-}
-
-#titulo-login {
-	color: #fff;
-	float: right;
-	width: 60%;
-	height: 45%;
-	padding-top: 50px;
-	text-align: center;
-	font-family: sans-serif;
-	font-size: 20px;
-	font-style: oblique;
-}
-
-.bpm22 {
-	font-size: 50px;
-	font-weight: bold;
-}
-.frm-login {
-	float: left;
-	color: #fff;
-	margin-top: 2%;
-	width: 100%;
-	height: 200px;
-}
-
-#cabecalho {
-	float:left;
-	border: none;
-	background-color: #556B2F;
-	width: 100%;
-	height: 100px;
-}
-#imagem-topo{
-	float: left;
-	width: 80px;
-	height: 80px;
-	margin: 10px 10px 0 50px;;
-}
-#box-titulo{
-	float:left;
-	height: 100%;
-	width: 300px;
-	margin: 0 0 0 20px;
-	padding: 0;
-}
-.titulo-topo {
-	margin:0;
-	height:60%;
-	font-family: sans-serif;
-	font-weight:bold;
-	font-size: 2.5em;
-}
-
-.subtitulo-topo {
-	height: 30%;
-	font-weight:bold;
-	font-family: sans-serif;
-	font-size: 1em;
-	display: block;
-}
-.img-menu{
-	display: none;
-}
-#menu-drop{
-	position: relative;
-	width: 800px;
-	height: 100%;
-	float: right;
-	display:block;
-	background-color: transparent;
-}
-.menu{
-	margin: 60px 0 0 0;
-	width: 100%;
-	height: 40px;
-	float: left;
-	list-style: none;
-}
-.li-menu-btn-close{
-	display: none;
-}
-.menu li{
-	position: relative;
-	float: left;
-	padding:0 auto;
-	padding-top: 0.7%;
-	border-right: 1px solid #696969;
-	border-bottom: 1px solid #696969;
-	width: 130px;
-	min-width: 100px;
-	height: 100%;
-	background-color: #393939;
-	border-radius:5px;
-	
-}
-.menu li a{
-
-	text-decoration: none;
-	color: #D3D3D3;
-	
-}
-.menu li:hover{
-	background-color: #D3D3D3;
-	cursor: pointer;
-}
-.menu li:hover a{
-		color: #000;
-}
-.menu li:hover .link-item{
-		color: #D3D3D3;
-}
-.menu li ul li:hover .link-item{
-		color: #000;
-		display: block;
-}
-
-
-.menu li ul{
-	position:absolute;
-	left:0%;
-	display: none;
-	   
-}
-.menu li:hover ul, .menu li.over ul{
-	display: block;
-	z-index: 1;
-	   
-}
-.menu li ul li{
-	display:block; 
-	width:200px;
-	height:35px;
-	border-radius: 0;
-}
-
-
-#box-left {
-	float: left;
-	width: 12%;
-	min-width:200px;
-	height: 70vh; 
-	background: #333;
-	display: block;
-}
-
-#menu-nav-left {
-
-	background: #333;
-	list-style: none;
-	padding: 0;
-	width: 100%;
-	height: 100%;
-	border-top: none;
-	border-bottom: none;
-}
-
-#menu-nav-left li {
-	font: 90% "Lucida Sans Unicode", "Bitstream Vera Sans",
-		"Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica,
-		sans-serif;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-#menu-nav-left a {
-	background: #333;
-	border-bottom: 1px solid #393939;
-	color: #ccc;
-	display: block;
-	margin: 0;
-	padding: 8px 12px;
-	text-decoration: none;
-	font-weight: normal;
-}
-
-#menu-nav-left:hover {
-	color: #fff;
-}
-
-#menu-nav-left a:hover {
-	background: #ccc;
-	text-decoration: none;
-	color: #000;
-}
-
-#menu-left {
-	background: #333;
-	list-style: none;
-	margin-top: 10px;
-	padding: 0;
-
-	width: 100%;
-	border-top: none;
-}
-#menu-nav-left li img{
-	width: 100%;
-}
-#menu-left li {
-	font: 90% "Lucida Sans Unicode", "Bitstream Vera Sans",
-		"Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica,
-		sans-serif;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-#menu-left a {
-	background: #333;
-	border-bottom: 1px solid #393939;
-	color: #ccc;
-	display: block;
-	margin: 0;
-	padding: 8px 12px;
-	text-decoration: none;
-	font-weight: normal;
-}
-
-#menu-left:hover {
-	color: #fff;
-}
-
-#menu-left a:hover {
-	background: #ccc;
-	text-decoration: none;
-	color: #000;
-}
-#conteiner {
-	position:relative;
-	float:right;
-	margin: 0;
-	padding: 0;
-	width: 85%;
-	height: 70vh;
-	box-sizing:border-box;
-	border: none;
-	background-color: #F5FFFA;
-	overflow: auto;
-}
-#tela-principal{
-	position: relative;
-	margin: 0 auto;
-	margin-top: 150px;
-	width: 20%;
-	height: 50%;
-	border: 1px solid #fff;
-}
-#imagem-tela-princial img{
-		position: relative;
+	body{
+		background-color: #F5FFFA;
+	}
+	#conteiner-login{
+		position:absolute;
+		float:left;
+		padding: 5% 0 0 0;
 		width: 100%;
-		height: 50%;
-		opacity: 0.3;
+		height: 100%;
+		background: url("../img/fundo-login.jpg") no-repeat center top fixed;
+		background-size: cover;
+	}
+	#box-login {
+		position: relative;
+		margin:0 auto;
+		padding: 5px 20px 5px 20px;
+		width: 700px;
+		height: 500px;
+		border: 1px solid #000;
+		background-color: rgba(0,0,0,0.9);
+		border-radius: 5px;
+	}
 	
-}
-#legenda-imagem-principal{
-	text-align:center;
-	width: 100%;
-	font-family: sans-serif;
-	font-weight: bold;
-	font-size: 40px;
-}
-
-
-
-.titulo-cadastro{
-	margin-top: 14px;
-	font-weight:bold;
-}
-.nav_tabs {
-	margin-left: 1%;
-	width: 98%;
-	position: relative;
-	height: 30%;
-	float: left;
-}
-
-.nav_tabs ul {
-	list-style: none;
-}
-
-.nav_tabs ul li {
-	float: left;
-}
-
-.tab_label {
-	display: block;
-	width: 150px;
-	height: 50px;
-	padding: 4%;
-	background-color: #ffffff;
-	font-size: 16px;
-	color: #000000;
-	cursor: pointer;
-	text-align: center;
-	border: 1px solid #556B2F;
-	border-bottom: none;
-	border-radius: 5px;
-	margin-bottom: 1px;
-}
-
-.nav_tabs .rd_tab {
-	display: none;
-	position: absolute;
-}
-
-.nav_tabs .rd_tab:checked ~ label {
-	background-color: #556B2F;
-	color: #000000;
-	font-weight: bold;
-	border: 1px solid #556B2F;
-	border-bottom: none;
-}
-
-.tab-content {
-	position: absolute;
-	left: 0;
-	padding: 0% 2% 2% 2%;
-	width: 100%;
-	height: auto;
-	margin-top: -5px;
-	border: solid 3px #556B2F;
-	background-color: #F5FFFA;
-	display: none;
-}
-
-.rd_tab:checked ~ .tab-content {
-	margin-top: -5px;
-	display: block;
-}
-
-.tab-content h2 {
-	padding: 10px;
-	color: #87d3b7;
-}
-.aba-consulta{
+	#box-login-imagem {
+		float: left;
+		width: 250px;
+		height: 220px;
+		padding:10px 0 0 10px;
+	}
+	
+	#titulo-login {
+		color: #fff;
+		float: right;
+		width: 60%;
+		height: 45%;
+		padding-top: 50px;
+		text-align: center;
+		font-family: sans-serif;
+		font-size: 20px;
+		font-style: oblique;
+	}
+	
+	.bpm22 {
+		font-size: 50px;
+		font-weight: bold;
+	}
+	.frm-login {
+		float: left;
+		color: #fff;
+		margin-top: 2%;
+		width: 100%;
+		height: 200px;
+	}
+	
+	#cabecalho {
+		float:left;
+		border: none;
+		background-color: #556B2F;
+		width: 100%;
+		height: 100px;
+	}
+	#imagem-topo{
+		float: left;
+		width: 80px;
+		height: 80px;
+		margin: 10px 10px 0 50px;;
+	}
+	#box-titulo{
+		float:left;
+		height: 100%;
+		width: 300px;
+		margin: 0 0 0 20px;
+		padding: 0;
+	}
+	.titulo-topo {
+		margin:0;
+		height:60%;
+		font-family: sans-serif;
+		font-weight:bold;
+		font-size: 2.5em;
+	}
+	
+	.subtitulo-topo {
+		height: 30%;
+		font-weight:bold;
+		font-family: sans-serif;
+		font-size: 1em;
 		display: block;
 	}
-#rodape {
-	position: absolute;
-	left:0;
-	bottom:0;
-	background-color: #556B2F;
-	width: 100%;
-	height: 50px;
-}
-#rodape nav{
-	position:relative;
-	margin: 0 auto;
-	width: 70%;
-	height: 100%;
-}
-#rodape ul {
-	list-style: none;
-}
-
-#rodape ul li {
-	font-size: 1.3em;
-	color:#000;
-	display:inline;
-}
-#rodape ul li a{
-	color:#000;
-	text-decoration: none;
+	.img-menu{
+		display: none;
+	}
+	#menu-drop{
+		position: relative;
+		width: 800px;
+		height: 100%;
+		float: right;
+		display:block;
+		background-color: transparent;
+	}
+	.menu{
+		margin: 60px 0 0 0;
+		width: 100%;
+		height: 40px;
+		float: left;
+		list-style: none;
+	}
+	.li-menu-btn-close{
+		display: none;
+	}
+	.menu li{
+		position: relative;
+		float: left;
+		padding:0 auto;
+		padding-top: 0.7%;
+		border-right: 1px solid #696969;
+		border-bottom: 1px solid #696969;
+		width: 130px;
+		min-width: 100px;
+		height: 100%;
+		background-color: #393939;
+		border-radius:5px;
+		
+	}
+	.menu li a{
 	
-}
-.tela-consulta{
-	width: 100%;
-	height: 100%;
+		text-decoration: none;
+		color: #D3D3D3;
+		
+	}
+	.menu li:hover{
+		background-color: #D3D3D3;
+		cursor: pointer;
+	}
+	.menu li:hover a{
+			color: #000;
+	}
+	.menu li:hover .link-item{
+			color: #D3D3D3;
+	}
+	.menu li ul li:hover .link-item{
+			color: #000;
+			display: block;
+	}
 	
-}
-fieldset { 
-  display: block;
-  margin-left: 2px;
-  margin-right: 2px;
-  padding-top: 0.35em;
-  padding-bottom: 0.625em;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-  height: 90%;
-  border: 1px groove;
-}
-.lado-esquerdo{
-	float:left;
-	width: 80%;
-	height: 100%;
-
-}
-.lado-direito{
-	float:right;
-	width: 20%;
-	height: 100%;
-}
-
-.container-foto{
 	
-	float:left;
-	margin: 10px 5px 5px 5px;
-	width: 200px;
-	height: 100%;
-}
-.container-foto label{
-	padding-top:10px;
-	cursor:pointer;
-	border-radius:10px;
-	background-color:#556B2F;
-	text-align:center;
-	width: 100%;
-	height:50px;
-	font-family: sans-serif;
-	font-size: 16px;
-	font-weight: bold;
-}
-.container-foto label:hover{
-	background-color:#6B8E23;
-}
-.container-foto input[type="file"]{
-	display: none;
-}
-.fotos{
-	float:left;
-	box-sizing:border-box;
-	margin: 0 auto;
-	border: 1px solid #000;
-	border-radius: 10px;
-	width: 99%;
-	height: 250px;
-}
-
-.fotos img{
-	border-radius:15px;
-	margin: 1%;
-	width: 98%;
-	height: 98%;
-}
-
-.fotos-cidadao{
-	position:relative;
-	float:left;
-	box-sizing:border-box;
-	width: 100%;
-	height: 100%;
-}
-.table-overflow {
-		height: 90%;
-		overflow:auto;
-}
-#localTatuagens{
-	float:left;
-	margin-top: 1%;
-	display: block;
-	width:200px;
-	height: 500px;
-	background: url("../img/cadastro-tatuagem-.png") center center/100% no-repeat;
-}
-#box-cadastroTatu{
-	margin-left: 1%;
-	margin-top: 1%;
-	float:left;
-	width:80%;
-	height:100%;
+	.menu li ul{
+		position:absolute;
+		left:0%;
+		display: none;
+		   
+	}
+	.menu li:hover ul, .menu li.over ul{
+		display: block;
+		z-index: 1;
+		   
+	}
+	.menu li ul li{
+		display:block; 
+		width:200px;
+		height:35px;
+		border-radius: 0;
+	}
 	
-}
+	
+	#box-left {
+		float: left;
+		width: 12%;
+		min-width:200px;
+		height: 70vh; 
+		background: #333;
+		display: block;
+	}
+	
+	#menu-nav-left {
+	
+		background: #333;
+		list-style: none;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		border-top: none;
+		border-bottom: none;
+	}
+	
+	#menu-nav-left li {
+		font: 90% "Lucida Sans Unicode", "Bitstream Vera Sans",
+			"Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica,
+			sans-serif;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	#menu-nav-left a {
+		background: #333;
+		border-bottom: 1px solid #393939;
+		color: #ccc;
+		display: block;
+		margin: 0;
+		padding: 8px 12px;
+		text-decoration: none;
+		font-weight: normal;
+	}
+	
+	#menu-nav-left:hover {
+		color: #fff;
+	}
+	
+	#menu-nav-left a:hover {
+		background: #ccc;
+		text-decoration: none;
+		color: #000;
+	}
+	
+	#menu-left {
+		background: #333;
+		list-style: none;
+		margin-top: 10px;
+		padding: 0;
+	
+		width: 100%;
+		border-top: none;
+	}
+	#menu-nav-left li img{
+		width: 100%;
+	}
+	#menu-left li {
+		font: 90% "Lucida Sans Unicode", "Bitstream Vera Sans",
+			"Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica,
+			sans-serif;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	#menu-left a {
+		background: #333;
+		border-bottom: 1px solid #393939;
+		color: #ccc;
+		display: block;
+		margin: 0;
+		padding: 8px 12px;
+		text-decoration: none;
+		font-weight: normal;
+	}
+	
+	#menu-left:hover {
+		color: #fff;
+	}
+	
+	#menu-left a:hover {
+		background: #ccc;
+		text-decoration: none;
+		color: #000;
+	}
+	#conteiner {
+		position:relative;
+		float:right;
+		margin: 0;
+		padding: 0;
+		width: 85%;
+		height: 70vh;
+		box-sizing:border-box;
+		border: none;
+		background-color: #F5FFFA;
+		overflow: auto;
+	}
+	#tela-principal{
+		position: relative;
+		margin: 0 auto;
+		margin-top: 150px;
+		width: 20%;
+		height: 50%;
+		border: 1px solid #fff;
+	}
+	#imagem-tela-princial img{
+			position: relative;
+			width: 100%;
+			height: 50%;
+			opacity: 0.3;
+		
+	}
+	#legenda-imagem-principal{
+		text-align:center;
+		width: 100%;
+		font-family: sans-serif;
+		font-weight: bold;
+		font-size: 40px;
+	}
+	
+	
+	
+	.titulo-cadastro{
+		margin-top: 14px;
+		font-weight:bold;
+	}
+	.nav_tabs {
+		margin-left: 1%;
+		width: 98%;
+		position: relative;
+		height: 30%;
+		float: left;
+	}
+	
+	.nav_tabs ul {
+		list-style: none;
+	}
+	
+	.nav_tabs ul li {
+		float: left;
+	}
+	
+	.tab_label {
+		display: block;
+		width: 150px;
+		height: 50px;
+		padding: 4%;
+		background-color: #ffffff;
+		font-size: 16px;
+		color: #000000;
+		cursor: pointer;
+		text-align: center;
+		border: 1px solid #556B2F;
+		border-bottom: none;
+		border-radius: 5px;
+		margin-bottom: 1px;
+	}
+	
+	.nav_tabs .rd_tab {
+		display: none;
+		position: absolute;
+	}
+	
+	.nav_tabs .rd_tab:checked ~ label {
+		background-color: #556B2F;
+		color: #000000;
+		font-weight: bold;
+		border: 1px solid #556B2F;
+		border-bottom: none;
+	}
+	
+	.tab-content {
+		position: absolute;
+		left: 0;
+		padding: 0% 2% 2% 2%;
+		width: 100%;
+		height: auto;
+		margin-top: -5px;
+		border: solid 3px #556B2F;
+		background-color: #F5FFFA;
+		display: none;
+	}
+	
+	.rd_tab:checked ~ .tab-content {
+		margin-top: -5px;
+		display: block;
+	}
+	
+	.tab-content h2 {
+		padding: 10px;
+		color: #87d3b7;
+	}
+	.aba-consulta{
+			display: block;
+		}
+	#rodape {
+		position: absolute;
+		left:0;
+		bottom:0;
+		background-color: #556B2F;
+		width: 100%;
+		height: 50px;
+	}
+	#rodape nav{
+		position:relative;
+		margin: 0 auto;
+		width: 70%;
+		height: 100%;
+	}
+	#rodape ul {
+		list-style: none;
+	}
+	
+	#rodape ul li {
+		font-size: 1.3em;
+		color:#000;
+		display:inline;
+	}
+	#rodape ul li a{
+		color:#000;
+		text-decoration: none;
+		
+	}
+	.tela-consulta{
+		width: 100%;
+		height: 100%;
+		
+	}
+	fieldset { 
+	  display: block;
+	  margin-left: 2px;
+	  margin-right: 2px;
+	  padding-top: 0.35em;
+	  padding-bottom: 0.625em;
+	  padding-left: 0.75em;
+	  padding-right: 0.75em;
+	  height: 90%;
+	  border: 1px groove;
+	}
+	.lado-esquerdo{
+		float:left;
+		width: 80%;
+		height: 100%;
+	
+	}
+	.lado-direito{
+		float:right;
+		width: 20%;
+		height: 100%;
+	}
+	
+	.container-foto{
+		
+		float:left;
+		margin: 10px 5px 5px 5px;
+		width: 200px;
+		height: 100%;
+	}
+	.container-foto label{
+		padding-top:10px;
+		cursor:pointer;
+		border-radius:10px;
+		background-color:#556B2F;
+		text-align:center;
+		width: 100%;
+		height:50px;
+		font-family: sans-serif;
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.container-foto label:hover{
+		background-color:#6B8E23;
+	}
+	.container-foto input[type="file"]{
+		display: none;
+	}
+	.fotos{
+		float:left;
+		box-sizing:border-box;
+		margin: 0 auto;
+		border: 1px solid #000;
+		border-radius: 10px;
+		width: 99%;
+		height: 250px;
+	}
+	
+	.fotos img{
+		border-radius:15px;
+		margin: 1%;
+		width: 98%;
+		height: 98%;
+	}
+	
+	.fotos-cidadao{
+		position:relative;
+		float:left;
+		box-sizing:border-box;
+		width: 100%;
+		height: 100%;
+	}
+	.table-overflow {
+			height: 90%;
+			overflow:auto;
+	}
+	#localTatuagens{
+		float:left;
+		margin-top: 1%;
+		display: block;
+		width:200px;
+		height: 500px;
+		background: url("../img/cadastro-tatuagem-.png") center center/100% no-repeat;
+	}
+	#box-cadastroTatu{
+		margin-left: 1%;
+		margin-top: 1%;
+		float:left;
+		width:80%;
+		height:100%;
+		
+	}
+	#modal-content{
+		
+		width: 100vw;
+		height: 100vh;
+		background: #000;
+	}
 }
 @media screen and (min-width: 1920px) {
 	.menu li{
@@ -991,5 +1003,57 @@ fieldset {
 	float: right;
 	display:block;
 	background-color: transparent;
+	}
+	#modal-content{
+	display:none;
+	position: absolute;
+	padding-top: 100px;
+	top:0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,0.7);
+	z-index: 1;
+	}
+	#modal-tela{
+		margin: 0 auto;
+		width: 800px;
+		height: 500px;
+		border-radius: 10px;
+		background: #fff;
+	}
+	#modal-title{
+		border-top-left-radius:10px;
+		border-top-right-radius: 10px;
+		background:#556B2F;
+		width: 100%;
+		height: 50px;
+		font-family: Helvetica, sans-serif;
+		font-size: 20px;
+		font-weight: bold;
+	
+	}
+	.titulo-modal{
+		margin: 10px 0 0 20px;;
+		width: 300px;
+	}
+	.btn-close-modal{
+		cursor: pointer;	
+		background:#800000;
+		width: 60px;
+		height:100%;
+		border-radius:5px;
+		float: right;
+	}
+	.btn-close-modal:hover{
+		background:#A52A2A;
+	}
+	#model-body{
+		padding: 10px 20px 10px 20px;
+		width: 100%;
+		height: 100%;
+	}
+	#modal-btns{
+		float: right;
 	}
 }

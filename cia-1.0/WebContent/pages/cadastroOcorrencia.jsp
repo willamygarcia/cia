@@ -1,10 +1,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 	<head>
 		<c:set var="context" value="${pageContext.request.contextPath}" />
-		<meta name=viewport content="width=device-width, initial-scale=1.0" >
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 		<meta charset="utf-8">
 		<link rel="shortcut icon" href="${context}/ico/principal.ico" type="image/x-icon">
 		<link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.css" type="text/css">
@@ -12,7 +12,9 @@
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-1.10.1.min.js"></script>
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-3.3.1.js"></script>
-			<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery.maskedinput.min.js"></script>
+		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery.maskedinput.min.js"></script>
+	
+		
 		<title>CIA 1.0 - Cadastro de Ocorrência</title>
 	</head>
 <body>
@@ -77,7 +79,7 @@
 									<div class="form-row">
 										<div class="form-group col-md-2">
 											<label for="codigo">Codigo</label>
-											<input type="text" class="form-control" id="codigo" name="codigo" aria-describedby="codigoHelp" placeholder="Automatico" readonly="readonly" value="${cidadao.codigo}">
+											<input type="text" class="form-control" id="codigo" name="codigo" aria-describedby="codigoHelp" placeholder="Automatico" readonly="readonly" value="${ocorrencia.codigo}">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="mikeOcorrencia">Mike da Ocorrência</label>
@@ -171,7 +173,7 @@
 										</div>
 										<div class="form-group col-md-2">
 											<label for="add">Clique para Adicionar os Militares</label><br>
-											<button type="button" id="addMilitares" class="btn btn-dark" onclick="addMilitares()">Adicionar</button>
+											<button type="button" id="addMilitares" class="btn btn-dark" onclick="showModal()">Adicionar</button>
 										</div>
 									</div>
 									<div class="form-group col-md-12">
@@ -316,7 +318,7 @@
 									</div>
 									<div class="form-group col-md-2">
 										<label for="adicionarProcesso">Clique para Adicionar os Artigos</label><br>
-										<button type="button" id="adicionarProcesso" class="btn btn-dark" onclick="adicionarProcesso()">Adicionar</button>
+										<button type="button" class="btn btn-dark" onclick="showModal()" >Ola Mundoi</button>
 									</div>
 								</div>
 								<div class="form-row">
@@ -594,7 +596,7 @@
 
 											<button type="button" id="btnConsultar" name="btnConsultar" class="btn btn-primary btn-sm" onclick="acaoBotaoCidadao('consultar')">Consultar</button>
 											<button type="button" id="btnLimpar" name="btnLimpar" class="btn btn-secondary btn-sm" onclick="acaoBotaoCidadao('limpar')">Limpar</button>
-										
+																					
 										</fieldset>
 								
 								</article>
@@ -621,9 +623,79 @@
 		</nav>
 	</footer>
 	
+<!-- TELA MODAL -->	
+<!-- Modal -->
+<div id="modal-content">
+	<div id="modal-tela">
+		<div id="modal-title">
+			<label class="titulo-modal">Cadastro de Envolvidos</label>
+			<button type="button" onclick="hiddenModal()" class="btn-close-modal">X</button> 
+		</div>
+		<div id="model-body">
+			<div class="form-row">
+				<div class="form-group col-md-2">
+					<label for="codigoEnvOcorrencia">Codigo:</label>
+					<input type="text" class="form-control" id="codigoEnvOcorrencia" name="codigoEnvOcorrencia" readonly="readonly">
+				</div>
+			</div>
+			<div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="graduacaoPostoGuanicaoEnvOcorrencia">Graduação/Posto:</label> 
+						<select class="form-control"	id="graduacaoPostoGuanicaoEnvOcorrencia" name="graduacaoPostoGuanicaoEnvOcorrencia" >
+
+							<option>Selecionar</option>
+							<option>Soldado</option>
+							<option>Cabo</option>
+							<option>3º Sargento</option>
+							<option>2º Sargento</option>
+							<option>1º Sargento</option>
+							<option>Sub-Tenente</option>
+							<option>2º Tenente</option>
+							<option>1º Tenente</option>
+							<option>Capitão</option>
+							<option>Major</option>
+							<option>Tenente-Coronel</option>
+							<option>Coronel</option>
+
+						</select>
+					</div>
+					<div class="form-group col-md-2">
+						<label for="numeralEnvOcorrencia">Numeral:</label>
+						<input type="text" class="form-control" id="numeralEnvOcorrencia" name="numeralEnvOcorrencia">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="matriculaEnvOcorrencia">Matricula:</label>
+						<input type="text" class="form-control" id="matriculaEnvOcorrencia" name="matriculaEnvOcorrencia">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="nomeEnvOcorrencia">Nome:</label>
+						<input type="text" class="form-control" id="nomeEnvOcorrencia" name="nomeEnvOcorrencia">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label for="informacoesEnvOcorrencia">Informações Adicionais:</label>
+						<textarea class="form-control" id="informacoesEnvOcorrencia" name="informacoesEnvOcorrencia" cols="60" rows="5"></textarea>
+					</div>
+				</div>
+				<div id="modal-btns">
+					<button type="button" id="btnSalvarEnvOcorrencia" name="btnSalvarEnvOcorrencia" class="btn btn-success">Salvar</button>
+					<button type="button" id="btnSairEnvOcorrencia" name="btnSairEnvOcorrencia" class="btn btn-danger" onclick="hiddenModal()">Fechar</button>
+				</div>
+		</div>
+		
+	</div>
+</div>
+
 </body>
  <!-- Adicionando Javascript -->
 <script type="text/javascript">
+	function showModal() {
+		document.getElementById("modal-content").style.display = "block";
+	}
+	function hiddenModal() {
+		document.getElementById("modal-content").style.display = "none";
+	}
 	function limpa_formulário_cep() {
 		document.getElementById('rua').value = ("");
 		document.getElementById('bairro').value = ("");
@@ -787,5 +859,6 @@
 		$("#telefone").mask("99-99999-9999");
 		$("#cpf").mask("999.999.999-99");
 	});
+	
 </script>
 </html>

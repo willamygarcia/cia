@@ -7,11 +7,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="utf-8">
 		<link rel="shortcut icon" href="${context}/ico/principal.ico" type="image/x-icon">
-		<link rel="stylesheet" href="${context}/bootstrap/css/bootstrap.css" type="text/css">
-		<link rel="stylesheet" href="${context}/css/estilo-principal.css" type="text/css">
-		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-1.10.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="${context}/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="${context}/css/estilo-principal.css">
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-3.3.1.js"></script>
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery.maskedinput.min.js"></script>
 		<title>CIA 1.0 - Cadastro de Cidadão</title>
 	</head>
