@@ -17,7 +17,7 @@
 		
 		<title>CIA 1.0 - Cadastro de Ocorrência</title>
 	</head>
-<body>
+<body onload="carregaFormulario()">
 	<header id="cabecalho">
 		<figure id="imagem-topo">
 			<a href="/cia-1.0/pages/principal.jsp"><img alt="Imagem Topo" src="${context}/img/topo.png"></a>
@@ -78,38 +78,36 @@
 									<br>
 									<div class="form-row">
 										<div class="form-group col-md-2">
-											<label for="codigo">Codigo</label>
-											<input type="text" class="form-control" id="codigo" name="codigo" aria-describedby="codigoHelp" placeholder="Automatico" readonly="readonly" value="${ocorrencia.codigo}">
+											<label for="codigoOcorrencia">Codigo</label>
+											<input type="text" class="form-control" id="codigoOcorrencia" name="codigoOcorrencia" placeholder="Automatico" readonly="readonly" value="${ocorrencia.codigo}">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="mikeOcorrencia">Mike da Ocorrência</label>
-											<input type="text" class="form-control" id="mikeOcorrencia" name="mikeOcorrencia" aria-describedby="mikeOcorrenciaHelp" placeholder="Mike" value="${cidadao.codigo}">
+											<input type="text" class="form-control" id="mikeOcorrencia" name="mikeOcorrencia" placeholder="Mike" value="${ocorrencia.codigo}">
 										</div>
 										<div class="form-group col-md-2">
-											<label for="inquerito">Inquerio</label>
-											<input type="text" class="form-control" id="inquerito" name="inquerito" aria-describedby="inqueritoHelp" placeholder="Inquerito" value="${cidadao.codigo}">
+											<label for="inqueritoOcorrencia">Inquerio</label>
+											<input type="text" class="form-control" id="inqueritoOcorrencia" name="inqueritoOcorrencia" placeholder="Inquerito" value="${ocorrencia.codigo}">
 										</div>
 										<div class="form-group col-md-2">
-											<label for="bo">Boletem de Ocorrência</label>
-											<input type="text" class="form-control" id="bo" name="bo" aria-describedby="boHelp" placeholder="Boletim de Ocorrência" value="${cidadao.codigo}">
+											<label for="boOcorrencia">Boletem de Ocorrência</label>
+											<input type="text" class="form-control" id="boOcorrencia" name="boOcorrencia" placeholder="Boletim de Ocorrência" value="${ocorrencia.codigo}">
 										</div>
 										<div class="form-group col-md-4">
-											<label for="outros">Outros</label>
-											<input type="text" class="form-control" id="outros" name="outros" aria-describedby="outrosHelp" placeholder="Outros" value="${cidadao.codigo}">
+											<label for="outrosOcorrencia">Outros</label>
+											<input type="text" class="form-control" id="outrosOcorrencia" name="outrosOcorrencia" placeholder="Outros" value="${ocorrencia.codigo}">
 										</div>
-										
 									</div>	
-										
 									<div class="form-row">	
 										<h4>Noticiante</h4>
 									</div>
 									<hr>	
 									<div class="form-row">	
 										<div class="form-group col-md-2">
-											<label for="graduacaoPosto">Graduação/Posto</label>
-											<select id="graduacaoPosto" name="graduacaoPosto" class="form-control" aria-describedby="graduacaoPostoHelp" >
+											<label for="graduacaoPostoOcorrencia">Graduação/Posto</label>
+											<select id="graduacaoPostoOcorrencia" name="graduacaoPostoOcorrencia" class="form-control">
 																						
-												<option>Selecionar</option>
+												<option value="">Selecionar</option>
 												<option>Soldado</option>
 												<option>Cabo</option>
 												<option>3º Sargento</option>
@@ -126,12 +124,20 @@
 											</select>
 										</div>
 										<div class="form-group col-md-1">
-											<label for="numeral">Numeral</label>
-											<input type="text" class="form-control" id="numeral" name="numeral" aria-describedby="numeralHelp" placeholder="Numeral" value="${cidadao.alcunha}">
+											<label for="numeralOcorrencia">Numeral</label>
+											<input type="text" class="form-control" id="numeralOcorrencia" name="numeralOcorrencia" placeholder="Numeral" value="${ocorrencia.alcunha}">
 										</div>
 										<div class="form-group col-md-2">
-											<label for="nomeGuerra">Nome de Guerra</label>
-											<input type="text" class="form-control" id="nomeGuerra" name="nomeGuerra" aria-describedby="nomeGuerraHelp" placeholder="Nome de Guerra" value="${cidadao.nascimento}" >
+											<label for="matriculaOcorrencia">Matricula</label>
+											<input type="text" class="form-control" id="matriculaOcorrencia" name="matriculaOcorrencia" value="${ocrrencia.nascimento}">
+										</div>
+										<div class="form-group col-md-4">
+											<label for="nomeGuerraOcorrencia">Nome de Guerra</label>
+											<input type="text" class="form-control" id="nomeGuerraOcorrencia" name="nomeGuerraOcorrencia" placeholder="Nome de Guerra" value="${ocorrencia.nascimento}" >
+										</div>
+										<div class="form-group col-md-2">
+											<label for="iniciarCadastro"> Clique para Iniciar o Cadastro</label>
+											<button type="button" class="btn btn-dark" id="iniciarCadastro" name="iniciarCadastro" onclick="iniciarOcorrencia()">Iniciar Cadastro</button>
 										</div>
 									</div>
 										<div class="form-row">	
@@ -140,47 +146,49 @@
 									<hr>	
 									<div class="form-row">	
 										<div class="form-group col-md-2">
-											<label for="graduacaoPostoGuanicao">Graduação/Posto</label>
-											<select id="graduacaoPostoGuanicao" name="graduacaoPostoGuanicao" class="form-control" aria-describedby="graduacaoPostoGuanicaoHelp" >
-																						
-												<option>Selecionar</option>
-												<option>Soldado</option>
-												<option>Cabo</option>
-												<option>3º Sargento</option>
-												<option>2º Sargento</option>
-												<option>1º Sargento</option>
-												<option>Sub-Tenente</option>
-												<option>2º Tenente</option>
-												<option>1º Tenente</option>
-												<option>Capitão</option>
-												<option>Major</option>
-												<option>Tenente-Coronel</option>
-												<option>Coronel</option>
-											
-											</select>
-										</div>
-										<div class="form-group col-md-1">
-											<label for="numeralGuanicao">Numeral</label>
-											<input type="text" class="form-control" id="numeralGuanicao" name="numeralGuanicao" aria-describedby="numeralGuanicaoHelp" placeholder="Numeral" value="${cidadao.alcunha}">
-										</div>
-										<div class="form-group col-md-2">
-											<label for="nomeGuerraGuanicao">Nome de Guerra</label>
-											<input type="text" class="form-control" id="nomeGuerraGuanicao" name="nomeGuerraGuanicao" aria-describedby="nomeGuerraGuanicaoHelp" placeholder="Nome de Guerra" value="${cidadao.nascimento}" >
-										</div>
-										<div class="form-group col-md-2">
-											<label for="viatruraGuanicao">Viatura</label>
-											<input type="text" class="form-control" id="viatruraGuanicao" name="viatruraGuanicao" aria-describedby="viatruraGuanicaoHelp" placeholder="Informe a Viatura" value="${cidadao.nascimento}" >
-										</div>
-										<div class="form-group col-md-2">
 											<label for="add">Clique para Adicionar os Militares</label><br>
 											<button type="button" id="addMilitares" class="btn btn-dark" onclick="showModal()">Adicionar</button>
 										</div>
 									</div>
-									<div class="form-group col-md-12">
-										<fieldset>
-											<legend>Todos os Militares Envolvidos</legend>
-											<textarea class="form-control" cols=60 id="militares" name="militares" rows="5" name="militares" maxlength="500" wrap="hard" placeholder="Militares Envolvidos na Ocorrência">${cidadao.historicoJuridico}</textarea>
-										</fieldset>
+									<div class="form-row">
+										<div class="form-group col-md-12">
+											<fieldset>
+												<legend>Todos os Militares Envolvidos</legend>
+													<div class="table-overflow">
+													<table class="table table-striped">
+														<thead>
+															<tr>
+																<td scope="col"><strong>Codigo</strong></td>
+																<td scope="col"><strong>Graduação/Posto</strong></td>
+																<td scope="col"><strong>Numeral</strong></td>
+																<td scope="col"><strong>Patricula</strong></td>
+																<td scope="col"><strong>Nome</strong></td>
+																<td scope="col"><strong>Informações</strong></td>
+																<td scope="col"><strong>Ação</strong></td>
+															</tr>
+														</thead>
+														<tbody>
+															<c:forEach items="${consultaTotal}" var="lista">
+																<tr>
+																	<td scope="row"><c:out value="${lista.codigo}"></c:out></td>
+																	<td><c:out value="${lista.nome}"></c:out></td>
+																	<td><c:out value="${lista.mae}"></c:out></td>
+																	<td><c:out value="${lista.nascimento}"></c:out></td>
+																	<td><c:out value="${lista.bairro}"></c:out></td>
+																	<td><c:out value="${lista.bairro}"></c:out></td>
+																	<td><a href="Cidadao?acao=editar&codigo=${lista.codigo}" class="btn btn-secondary btn-sm">Editar</a>
+																		<a href="Cidadao?acao=excluir&codigo=${lista.codigo}" class="btn btn-danger btn-sm">Excluir</a>
+																		<a href="Cidadao?acao=visualizar&codigo=${lista.codigo}"  target="_blank" class="btn btn-info btn-sm">Visualizar</a>
+																	</td>
+			
+																</tr>
+			
+															</c:forEach>
+														</tbody>
+													</table>
+												</div>
+											</fieldset>
+										</div>
 									</div>
 								</div>
 						</li>
@@ -507,6 +515,7 @@
 									</fieldset>
 	
 								</div>
+								<input type="submit" value="Enviar"/>
 								<button type="button" id="btnSalvar" name="btnSalvar" class="btn btn-primary btn-lg" onclick="acaoBotaoCidadao('${acaoBtnSalvar}')">Salvar</button>
 							
 							</div>
@@ -641,9 +650,9 @@
 			<div class="form-row">
 					<div class="form-group col-md-3">
 						<label for="graduacaoPostoGuanicaoEnvOcorrencia">Graduação/Posto:</label> 
-						<select class="form-control"	id="graduacaoPostoGuanicaoEnvOcorrencia" name="graduacaoPostoGuanicaoEnvOcorrencia" >
+						<select class="form-control" id="graduacaoPostoGuanicaoEnvOcorrencia" name="graduacaoPostoGuanicaoEnvOcorrencia">
 
-							<option>Selecionar</option>
+							<option value="">Selecionar</option>
 							<option>Soldado</option>
 							<option>Cabo</option>
 							<option>3º Sargento</option>
@@ -661,25 +670,25 @@
 					</div>
 					<div class="form-group col-md-2">
 						<label for="numeralEnvOcorrencia">Numeral:</label>
-						<input type="text" class="form-control" id="numeralEnvOcorrencia" name="numeralEnvOcorrencia">
+						<input type="text" class="form-control" id="numeralEnvOcorrencia" name="numeralEnvOcorrencia" placeholder="Ex.:30419">
 					</div>
 					<div class="form-group col-md-3">
 						<label for="matriculaEnvOcorrencia">Matricula:</label>
-						<input type="text" class="form-control" id="matriculaEnvOcorrencia" name="matriculaEnvOcorrencia">
+						<input type="text" class="form-control" id="matriculaEnvOcorrencia" name="matriculaEnvOcorrencia" placeholder="Ex.:30836812">
 					</div>
 					<div class="form-group col-md-4">
 						<label for="nomeEnvOcorrencia">Nome:</label>
-						<input type="text" class="form-control" id="nomeEnvOcorrencia" name="nomeEnvOcorrencia">
+						<input type="text" class="form-control" id="nomeEnvOcorrencia" name="nomeEnvOcorrencia" placeholder="Ex.: Willamy S. Garcia">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-12">
 						<label for="informacoesEnvOcorrencia">Informações Adicionais:</label>
-						<textarea class="form-control" id="informacoesEnvOcorrencia" name="informacoesEnvOcorrencia" cols="60" rows="5"></textarea>
+						<textarea class="form-control" id="informacoesEnvOcorrencia" name="informacoesEnvOcorrencia" cols="60" rows="5" placeholder="Opcional ou Adicione informações para deixar mais claro a indentificação do Envolvido"></textarea>
 					</div>
 				</div>
 				<div id="modal-btns">
-					<button type="button" id="btnSalvarEnvOcorrencia" name="btnSalvarEnvOcorrencia" class="btn btn-success">Salvar</button>
+					<button type="button" id="btnSalvarEnvOcorrencia" name="btnSalvarEnvOcorrencia" class="btn btn-success" onclick="salvarMilitarEnvolvido()">Salvar</button>
 					<button type="button" id="btnSairEnvOcorrencia" name="btnSairEnvOcorrencia" class="btn btn-danger" onclick="hiddenModal()">Fechar</button>
 				</div>
 		</div>
@@ -690,11 +699,79 @@
 </body>
  <!-- Adicionando Javascript -->
 <script type="text/javascript">
+	function carregaFormulario() {
+		document.getElementById('iniciarCadastro').disabled= false;
+		document.getElementById('addMilitares').disabled=true;
+	}
+	function iniciarOcorrencia(){
+		var acao, codigo, mike, inquerito, bo, outros, graduacaoNotic, numeralNotic, matriculaNotic, nomeGuerraNotic;
+		acao = "";
+		codigo = document.getElementById('codigoOcorrencia').value;
+		mike = document.getElementById('mikeOcorrencia').value;
+		inquerito = document.getElementById('inqueritoOcorrencia').value;
+		bo = document.getElementById('boOcorrencia').value;
+		outros = document.getElementById('outrosOcorrencia').value;
+		graduacaoNotic = document.getElementById('graduacaoPostoOcorrencia').value;
+		numeralNotic = document.getElementById('numeralOcorrencia').value;
+		matriculaNotic = document.getElementById('matriculaOcorrencia').value;
+		nomeGuerraNotic = document.getElementById('nomeGuerraOcorrencia').value;
+		$.ajax({
+			method: "POST",
+			url: "Ocorrencia",
+			data: {
+				acao: acao,
+				codigoOcorrencia: codigo,
+				mikeOcorrencia: mike,
+				inqueritoOcorrencia: inquerito,
+				boOcorrencia: bo,
+				outrosOcorrencia: outros,
+				graduacaoPostoOcorrencia: graduacaoNotic,
+				numeralOcorrencia: numeralNotic,
+				matriculaOcorrencia: matriculaNotic,
+				nomeGuerraOcorrencia: nomeGuerraNotic
+			},
+			success: function(codigo){
+				$('#codigoOcorrencia').val(codigo);
+			}
+		})
+		
+		document.getElementById('iniciarCadastro').disabled=true;
+		document.getElementById('addMilitares').disabled=false;
+	}
+	function salvarMilitarEnvolvido(){
+		var codigoOcorrencia, graduacao, numeral, matricula, nome, informacoes;
+		codigoOcorrencia = document.getElementById('codigoOcorrencia').value;
+		graduacao = document.getElementById('graduacaoPostoGuanicaoEnvOcorrencia').value;
+		numeral = document.getElementById('numeralEnvOcorrencia').value;
+		matricula = document.getElementById('matriculaEnvOcorrencia').value;
+		nome = document.getElementById('nomeEnvOcorrencia').value;
+		informacoes = document.getElementById('informacoesEnvOcorrencia').value;
+		alert(informacoes);
+		$.ajax({
+			method: "POST",
+			url: "EnvolvidosOcorrencia",
+			data: {
+				codigoOcorrencia: codigoOcorrencia,
+				graduacao: graduacao,
+				numeral: numeral,
+				matricula: matricula,
+				nome: nome,
+				informacoes: informacoes
+			}
+		})
+	}
+	
 	function showModal() {
 		document.getElementById("modal-content").style.display = "block";
 	}
 	function hiddenModal() {
 		document.getElementById("modal-content").style.display = "none";
+		document.getElementById("codigoEnvOcorrencia").value="";
+		document.getElementById("graduacaoPostoGuanicaoEnvOcorrencia").value="";
+		document.getElementById("numeralEnvOcorrencia").value="";
+		document.getElementById("matriculaEnvOcorrencia").value="";
+		document.getElementById("nomeEnvOcorrencia").value="";
+		document.getElementById('informacoesEnvOcorrencia').value="";
 	}
 	function limpa_formulário_cep() {
 		document.getElementById('rua').value = ("");

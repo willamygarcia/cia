@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class SingleConnection {
+	
 	private static String banco = "jdbc:mysql://localhost:3306/cia?autoReconnect=true";
 	private static String user = "root";
 	private static String pass = "Wget";
