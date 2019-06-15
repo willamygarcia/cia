@@ -43,7 +43,7 @@ public class OcorrenciaServlet extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 			System.out.println(ocorrenciaDao.utimoCodigo());
 			response.getWriter().write(ocorrenciaDao.utimoCodigo());
-			//ocorrenciaDao.iniciarOcorrencia(ocorrenciaBean);
+			ocorrenciaDao.iniciarOcorrencia(ocorrenciaBean);
 		}
 	}
 

@@ -688,7 +688,7 @@
 					</div>
 				</div>
 				<div id="modal-btns">
-					<button type="button" id="btnSalvarEnvOcorrencia" name="btnSalvarEnvOcorrencia" class="btn btn-success" onclick="salvarMilitarEnvolvido()">Salvar</button>
+					<button type="button" id="btnSalvarEnvOcorrencia" name="btnSalvarEnvOcorrencia" class="btn btn-success" onclick="salvarMilitarEnvolvido('salvar')">Salvar</button>
 					<button type="button" id="btnSairEnvOcorrencia" name="btnSairEnvOcorrencia" class="btn btn-danger" onclick="hiddenModal()">Fechar</button>
 				</div>
 		</div>
@@ -738,7 +738,7 @@
 		document.getElementById('iniciarCadastro').disabled=true;
 		document.getElementById('addMilitares').disabled=false;
 	}
-	function salvarMilitarEnvolvido(){
+	function salvarMilitarEnvolvido(acao){
 		var codigoOcorrencia, graduacao, numeral, matricula, nome, informacoes;
 		codigoOcorrencia = document.getElementById('codigoOcorrencia').value;
 		graduacao = document.getElementById('graduacaoPostoGuanicaoEnvOcorrencia').value;
@@ -746,7 +746,7 @@
 		matricula = document.getElementById('matriculaEnvOcorrencia').value;
 		nome = document.getElementById('nomeEnvOcorrencia').value;
 		informacoes = document.getElementById('informacoesEnvOcorrencia').value;
-		alert(informacoes);
+		
 		$.ajax({
 			method: "POST",
 			url: "EnvolvidosOcorrencia",
@@ -756,9 +756,11 @@
 				numeral: numeral,
 				matricula: matricula,
 				nome: nome,
-				informacoes: informacoes
+				informacoes: informacoes,
+				acao:acao
 			}
 		})
+		hiddenModal(); //OCULTANDO A TELA DE MODAL.
 	}
 	
 	function showModal() {
