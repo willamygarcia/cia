@@ -63,7 +63,7 @@ public class OcorrenciaDao {
 	}
 	
 	public String utimoCodigo() {
-		String sql ="SELECT AUTO_INCREMENT AS codigo FROM information_schema.tables WHERE table_name = '" + "tblocorrencia" + "' AND table_schema = '" + "cia" + "'";
+		String sql ="SELECT (MAX(codigoOcorrencia)+1) AS codigo FROM tblocorrencia";
 		String rsCodigo = null;
 		try {
 			PreparedStatement pst = conect.prepareStatement(sql);

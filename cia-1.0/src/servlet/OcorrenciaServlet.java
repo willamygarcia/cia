@@ -41,7 +41,6 @@ public class OcorrenciaServlet extends HttpServlet {
 			ocorrenciaBean.setNomeGuerraOcorrencia(request.getParameter("nomeGuerraOcorrencia"));
 			response.setContentType("text/plain");
 			response.setCharacterEncoding("UTF-8");
-			System.out.println(ocorrenciaDao.utimoCodigo());
 			response.getWriter().write(ocorrenciaDao.utimoCodigo());
 			ocorrenciaDao.iniciarOcorrencia(ocorrenciaBean);
 		}

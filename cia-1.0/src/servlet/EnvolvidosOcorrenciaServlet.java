@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +34,42 @@ public class EnvolvidosOcorrenciaServlet extends HttpServlet {
 			envolvidoOcorrenciaBean.setNomeGuerraEnvolvidoOcorrencia(request.getParameter("nome"));
 			envolvidoOcorrenciaBean.setInformacoesEnvolvidoOcorrencia(request.getParameter("informacoes"));
 			envolvidoOcorrenciaDao.cadastrarEnvolvidoOcorrencia(envolvidoOcorrenciaBean);
+			
+			try {
+				List<EnvolvidoOcorrenciaBean> envolvidos = envolvidoOcorrenciaDao.consultaEnvolvidosTotal(envolvidoOcorrenciaBean);
+				if(!envolvidos.isEmpty()) {
+					String data ="";
+					int totalLista = envolvidos.size();
+					int index = 1;
+					for (EnvolvidoOcorrenciaBean envolvido2 : envolvidos) {
+						data += "{"+
+									"\"codigoEnvolvido\":\""+envolvido2.getCodigoEnvolvidoOcorrencia()+"\","+
+									"\"codigoOcorrencia\":\""+envolvido2.getCodigoOcorrenia()+"\","+
+									"\"graduacaoEnvolvido\":\""+envolvido2.getGraduacaoEnvolvidoOcorrencia()+"\","+
+									"\"numeralEnvolvido\":\""+envolvido2.getNumeralEnvolvidoOcorrencia()+"\","+
+									"\"matriculaEnvolvido\":\""+envolvido2.getMatriculaEnvolvidoOcorrencia()+"\","+
+									"\"nomeGuerraEnvolvido\":\""+envolvido2.getNomeGuerraEnvolvidoOcorrencia()+"\","+
+									"\"informacaoEnvolvido\":\""+envolvido2.getInformacoesEnvolvidoOcorrencia()+"\""+
+								"}";
+						if(index < totalLista) {
+							data += ",";
+						}
+						index++;
+					}	
+				
+					String dados =  "["+	
+									data +
+						
+									"]";
+						
+					
+				response.setStatus(200);
+				response.getWriter().write(dados);;
+				}
+				
+			} catch (Exception e) {
+			
+			}
 		}
 	}
 

@@ -155,35 +155,20 @@
 											<fieldset>
 												<legend>Todos os Militares Envolvidos</legend>
 													<div class="table-overflow">
-													<table class="table table-striped">
+													<table class="table table-striped" id="tabela-militares-envolvidos">
 														<thead>
 															<tr>
-																<td scope="col"><strong>Codigo</strong></td>
+																<td scope="col"><strong>Codigo Envolvido</strong></td>
+																<td scope="col"><strong>Codigo Ocorrencia</strong></td>
 																<td scope="col"><strong>Graduação/Posto</strong></td>
 																<td scope="col"><strong>Numeral</strong></td>
-																<td scope="col"><strong>Patricula</strong></td>
+																<td scope="col"><strong>Matricula</strong></td>
 																<td scope="col"><strong>Nome</strong></td>
 																<td scope="col"><strong>Informações</strong></td>
 																<td scope="col"><strong>Ação</strong></td>
 															</tr>
 														</thead>
 														<tbody>
-															<c:forEach items="${consultaTotal}" var="lista">
-																<tr>
-																	<td scope="row"><c:out value="${lista.codigo}"></c:out></td>
-																	<td><c:out value="${lista.nome}"></c:out></td>
-																	<td><c:out value="${lista.mae}"></c:out></td>
-																	<td><c:out value="${lista.nascimento}"></c:out></td>
-																	<td><c:out value="${lista.bairro}"></c:out></td>
-																	<td><c:out value="${lista.bairro}"></c:out></td>
-																	<td><a href="Cidadao?acao=editar&codigo=${lista.codigo}" class="btn btn-secondary btn-sm">Editar</a>
-																		<a href="Cidadao?acao=excluir&codigo=${lista.codigo}" class="btn btn-danger btn-sm">Excluir</a>
-																		<a href="Cidadao?acao=visualizar&codigo=${lista.codigo}"  target="_blank" class="btn btn-info btn-sm">Visualizar</a>
-																	</td>
-			
-																</tr>
-			
-															</c:forEach>
 														</tbody>
 													</table>
 												</div>
@@ -200,19 +185,19 @@
 								<div class="form-row">
 									<div class="form-group col-md-2">
 										<label for="dataHoraOcorrencia">Data/Hora da Ocorrêcia</label>
-										<input type="datetime-local" class="form-control" id="dataHoraOcorrencia" name="dataHoraOcorrencia" aria-describedby="dataHoraOcorrenciaHelp"  value="${cidadao.dataUtimaInfracao}">
+										<input type="datetime-local" class="form-control" id="dataHoraOcorrencia" name="dataHoraOcorrencia" value="${cidadao.dataUtimaInfracao}">
 									</div>
 									<div class="form-group col-md-2">
 										<label for="dataHoraInicioComunicacao">Data/Hora Inicio da Comunicação</label>
-										<input type="datetime-local" class="form-control" id="dataHoraInicioComunicacao" name="dataHoraInicioComunicacao" aria-describedby="dataHoraInicioComunicacaoHelp"  value="${cidadao.dataUtimaInfracao}">
+										<input type="datetime-local" class="form-control" id="dataHoraInicioComunicacao" name="dataHoraInicioComunicacao" value="${cidadao.dataUtimaInfracao}">
 									</div>
 									<div class="form-group col-md-2">
-										<label for="dataHoraComunicacao">Data/Hora Fim da Comunicação</label>
-										<input type="datetime-local" class="form-control" id="dataHoraComunicacao" name="dataHoraComunicacao" aria-describedby="dataHoraComunicacaoHelp"  value="${cidadao.dataUtimaInfracao}">
+										<label for="dataHoraFimComunicacao">Data/Hora Fim da Comunicação</label>
+										<input type="datetime-local" class="form-control" id="dataHoraFimComunicacao" name="dataHoraFimComunicacao" value="${cidadao.dataUtimaInfracao}">
 									</div>
 									<div class="form-group col-md-2">
-										<label for="delegacia">Delegacia</label>
-										<select id="delegacia" name="delegacia" class="form-control" aria-describedby="delegaciaHelp" >
+										<label for="delegaciaOcorrencia">Delegacia</label>
+										<select id="delegaciaOcorrencia" name="delegaciaOcorrencia" class="form-control">
 											
 											${opcao1}${cidadao.delegacia}${opcao2}
 											<option>Selecionar Delegacia</option>
@@ -268,34 +253,34 @@
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="enderecoO">Endereço da Ocorrência</label>
-										<input type="text" class="form-control" id="enderecoO" name="enderecoO" aria-describedby="enderecoOHelp" placeholder="Endereço da Ocorrência" value="${cidadao.endOcorrencia}">
+										<label for="enderecoOcorrencia">Endereço da Ocorrência</label>
+										<input type="text" class="form-control" id="enderecoOcorrencia" name="enderecoOcorrencia" placeholder="Endereço da Ocorrência" value="${cidadao.endOcorrencia}">
 									</div>
 									<div class="form-group col-md-2">
 										<label for="bairroOcorrencia">Bairro</label>
-										<input type="text"	class="form-control" id="bairroOcorrencia" name="bairroOcorrencia" aria-describedby="bairroOcorrenciaHelp" placeholder="Bairro da Ocorrencia" value="${cidadao.bairroOcorrencia}">
+										<input type="text"	class="form-control" id="bairroOcorrencia" name="bairroOcorrencia" placeholder="Bairro da Ocorrencia" value="${cidadao.bairroOcorrencia}">
 									</div>
 									<div class="form-group col-md-2">
-										<label for="municipioOcorriencia ">Cidade</label>
-										<input type="text" class="form-control" id="cidadeOcorriencia" name="cidadeOcorriencia" aria-describedby="cidadeOcorrienciaHelp" placeholder="Cidade da Ocorrencia" value="${cidadao.cidadeOcorrencia}">
+										<label for="cidadeOcorriencia ">Cidade</label>
+										<input type="text" class="form-control" id="cidadeOcorriencia" name="cidadeOcorriencia" placeholder="Cidade da Ocorrencia" value="${cidadao.cidadeOcorrencia}">
 									</div>
 									<div class="form-group col-md-2">
-										<label for="usuario">Ponto de Referencia</label>
-										<input type="text" class="form-control" id="referenciaOcorrecia" name="referenciaOcorrecia" aria-describedby="usuarioHelp" placeholder="Informe um Ponto de Referencia" value="${cidadao.referenciaOcorrencia}">
+										<label for="referenciaOcorrecia">Ponto de Referencia</label>
+										<input type="text" class="form-control" id="referenciaOcorrecia" name="referenciaOcorrecia" placeholder="Informe um Ponto de Referencia" value="${cidadao.referenciaOcorrencia}">
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-4">
-										<label for="delegado">Delegado</label>
-										<input type="text" class="form-control" id="delegado" name="delegado" maxlength="10" aria-describedby="delegadoHelp" placeholder="Informe Nome do(a) Delegado(a)">
+										<label for="delegadoOcorrencia">Delegado</label>
+										<input type="text" class="form-control" id="delegadoOcorrencia" name="delegadoOcorrencia" maxlength="10" placeholder="Informe Nome do(a) Delegado(a)">
 									</div>
 									<div class="form-group col-md-4">
-										<label for="escrivao">Escrivão</label>
-										<input type="text" class="form-control" id="escrivao" name="escrivao" maxlength="10" aria-describedby="escrivaoHelp" placeholder="Informe Nome do(a) Escrivã(o)">
+										<label for="escrivaoOcorrencia">Escrivão</label>
+										<input type="text" class="form-control" id="escrivaoOcorrencia" name="escrivaoOcorrencia" maxlength="10" placeholder="Informe Nome do(a) Escrivã(o)">
 									</div>
 									<div class="form-group col-md-4">
 										<label for="autoridadeMilitar">Autoridade Militar</label>
-										<input type="text" class="form-control" id="autoridadeMilitar" name="autoridadeMilitar" maxlength="10" aria-describedby="autoridadeMilitarHelp" placeholder="Informe a Autoridade Militar">
+										<input type="text" class="form-control" id="autoridadeMilitar" name="autoridadeMilitar" maxlength="10" placeholder="Informe a Autoridade Militar">
 									</div>
 								
 								</div>
@@ -644,7 +629,7 @@
 			<div class="form-row">
 				<div class="form-group col-md-2">
 					<label for="codigoEnvOcorrencia">Codigo:</label>
-					<input type="text" class="form-control" id="codigoEnvOcorrencia" name="codigoEnvOcorrencia" readonly="readonly">
+					<input type="text" class="form-control" id="codigoEnvOcorrencia" name="codigoEnvOcorrencia" placeholder="Automatico" readonly="readonly">
 				</div>
 			</div>
 			<div class="form-row">
@@ -749,6 +734,7 @@
 		
 		$.ajax({
 			method: "POST",
+			dataType: 'json',
 			url: "EnvolvidosOcorrencia",
 			data: {
 				codigoOcorrencia: codigoOcorrencia,
@@ -758,6 +744,21 @@
 				nome: nome,
 				informacoes: informacoes,
 				acao:acao
+			},
+			success: function(data){
+				$('#tabela-militares-envolvidos tbody > tr').remove();
+				for(var i in data){
+					$('#tabela-militares-envolvidos').append('<tr><td>'+data[i].codigoEnvolvido+'</td>'+
+								   '<td>'+data[i].codigoOcorrencia+'</td>'+
+								   '<td>'+data[i].graduacaoEnvolvido+'</td>'+
+							       '<td>'+data[i].numeralEnvolvido+'</td>'+
+								   '<td>'+data[i].matriculaEnvolvido+'</td>'+
+								   '<td>'+data[i].nomeGuerraEnvolvido+'</td>'+
+						    	   '<td>'+data[i].informacaoEnvolvido+'</td>'+
+								   '<td><a href="EnvolvidosOcorrencia?acao=editar&codigo='+data[i].codigoEnvolvido+'" class="btn btn-info btn-sm">Editar</a>'+
+										'<a href="EnvolvidosOcorrencia?acao=remover&codigo='+data[i].codigoEnvolvido+'" class="btn btn btn-danger btn-sm">Remover</a>'+
+									'</td></tr>');
+				}
 			}
 		})
 		hiddenModal(); //OCULTANDO A TELA DE MODAL.

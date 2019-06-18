@@ -2,6 +2,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -34,6 +37,37 @@ public class EnvolvioOcorrenciaDao {
 			System.out.println("Erro ao cadastrar envolvidos  na Ocorrencia! :" + e);
 			JOptionPane.showMessageDialog(null, "Erro ao cadastrar envolvidos na Ocorrencia! Tente novamente ou fale com o Administrador.");
 		}
+	}
+	
+	public List<EnvolvidoOcorrenciaBean> consultaEnvolvidosTotal(EnvolvidoOcorrenciaBean envolvido){
+		List<EnvolvidoOcorrenciaBean> lista = new ArrayList<EnvolvidoOcorrenciaBean>();
+		String sql ="SELECT * FROM tblenvolvidoocorrencia WHERE codigoOcorrencia = ?";
+		try {
+			PreparedStatement pst = connection.prepareStatement(sql);
+			pst.setInt(1, envolvido.getCodigoOcorrenia());
+			ResultSet rs = pst.executeQuery();
+		
+			while(rs.next()) {
+				EnvolvidoOcorrenciaBean envolvidoOcorrenciaBean = new EnvolvidoOcorrenciaBean();
+				envolvidoOcorrenciaBean.setCodigoEnvolvidoOcorrencia(rs.getInt("codigoEnvolvidoOcorrencia"));
+				envolvidoOcorrenciaBean.setCodigoOcorrenia(rs.getInt("codigoOcorrencia"));
+				envolvidoOcorrenciaBean.setGraduacaoEnvolvidoOcorrencia(rs.getString("graduacaoEnvolvidoOcorrencia"));
+				envolvidoOcorrenciaBean.setNumeralEnvolvidoOcorrencia(rs.getString("numeralEnvolvidoOcorrencia"));
+				envolvidoOcorrenciaBean.setNomeGuerraEnvolvidoOcorrencia(rs.getString("nomeGuerraEnvolvidoOcorrencia"));
+				envolvidoOcorrenciaBean.setMatriculaEnvolvidoOcorrencia(rs.getString("matriculaEnvolvidoOcorrencia"));
+				envolvidoOcorrenciaBean.setInformacoesEnvolvidoOcorrencia(rs.getString("informacoesEnvolvidoOcorrencia"));
+				
+				lista.add(envolvidoOcorrenciaBean);
+			}
+			
+			return lista;
+		}catch (Exception e) {
+			System.out.println("Erro ao Consultar envolvidos  na Ocorrencia! :" + e);
+			JOptionPane.showMessageDialog(null, "Erro ao Consultar envolvidos na Ocorrencia! Tente novamente ou fale com o Administrador.");
+			return null;
+		}
+		
+		
 	}
 
 }
