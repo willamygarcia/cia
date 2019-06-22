@@ -20,13 +20,60 @@ public class EnvolvidosOcorrenciaServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String acao = request.getParameter("acao");
+		EnvolvidoOcorrenciaBean envolvidoOcorrenciaBean = new EnvolvidoOcorrenciaBean();
+		EnvolvioOcorrenciaDao envolvidoOcorrenciaDao = new EnvolvioOcorrenciaDao();
+		if(acao.equals("remover")) {
+			int codigoEnv = Integer.parseInt(request.getParameter("codigoEnv"));
+			int codigoOco = Integer.parseInt(request.getParameter("codigoOco"));
+			envolvidoOcorrenciaBean.setCodigoEnvolvidoOcorrencia(codigoEnv);
+			envolvidoOcorrenciaBean.setCodigoOcorrenia(codigoOco);
+			envolvidoOcorrenciaDao.removerEnvolvidoOcorrencia(envolvidoOcorrenciaBean);
+			try {
+				List<EnvolvidoOcorrenciaBean> envolvidos = envolvidoOcorrenciaDao.consultaEnvolvidosTotal(envolvidoOcorrenciaBean);
+				if(!envolvidos.isEmpty()) {
+					String data ="";
+					int totalLista = envolvidos.size();
+					int index = 1;
+					for (EnvolvidoOcorrenciaBean envolvido2 : envolvidos) {
+						data += "{"+
+									"\"codigoEnvolvido\":\""+envolvido2.getCodigoEnvolvidoOcorrencia()+"\","+
+									"\"codigoOcorrencia\":\""+envolvido2.getCodigoOcorrenia()+"\","+
+									"\"graduacaoEnvolvido\":\""+envolvido2.getGraduacaoEnvolvidoOcorrencia()+"\","+
+									"\"numeralEnvolvido\":\""+envolvido2.getNumeralEnvolvidoOcorrencia()+"\","+
+									"\"matriculaEnvolvido\":\""+envolvido2.getMatriculaEnvolvidoOcorrencia()+"\","+
+									"\"nomeGuerraEnvolvido\":\""+envolvido2.getNomeGuerraEnvolvidoOcorrencia()+"\","+
+									"\"informacaoEnvolvido\":\""+envolvido2.getInformacoesEnvolvidoOcorrencia()+"\""+
+								"}";
+						if(index < totalLista) {
+							data += ",";
+						}
+						index++;
+					}	
+				
+					String dados =  "["+	
+									data +
+						
+									"]";
+						
+				response.setContentType("text/plain");
+				response.setCharacterEncoding("UTF-8");	
+				response.setStatus(200);
+				response.getWriter().write(dados);;
+				}
+				
+			} catch (Exception e) {
+			
+			}
+			
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acao = request.getParameter("acao");
 		EnvolvidoOcorrenciaBean envolvidoOcorrenciaBean = new EnvolvidoOcorrenciaBean();
 		EnvolvioOcorrenciaDao envolvidoOcorrenciaDao = new EnvolvioOcorrenciaDao();
-		if(acao.equals("salvar")) {
+		if(acao.equals("salvarEnvolvido")) {
 			envolvidoOcorrenciaBean.setCodigoOcorrenia(Integer.parseInt(request.getParameter("codigoOcorrencia")));
 			envolvidoOcorrenciaBean.setGraduacaoEnvolvidoOcorrencia(request.getParameter("graduacao"));
 			envolvidoOcorrenciaBean.setNumeralEnvolvidoOcorrencia(request.getParameter("numeral"));
@@ -62,7 +109,8 @@ public class EnvolvidosOcorrenciaServlet extends HttpServlet {
 						
 									"]";
 						
-					
+				response.setContentType("text/plain");
+				response.setCharacterEncoding("UTF-8");	
 				response.setStatus(200);
 				response.getWriter().write(dados);;
 				}

@@ -140,7 +140,7 @@
 											<button type="button" class="btn btn-dark" id="iniciarCadastro" name="iniciarCadastro" onclick="iniciarOcorrencia()">Iniciar Cadastro</button>
 										</div>
 									</div>
-										<div class="form-row">	
+									<div class="form-row">	
 										<h4>Guarnição</h4>
 									</div>
 									<hr>	
@@ -200,7 +200,7 @@
 										<select id="delegaciaOcorrencia" name="delegaciaOcorrencia" class="form-control">
 											
 											${opcao1}${cidadao.delegacia}${opcao2}
-											<option>Selecionar Delegacia</option>
+											<option value="">Selecionar Delegacia</option>
 											<option>1º Distrito Policial</option>
 											<option>2º Distrito Policial</option>
 											<option>3º Distrito Policial</option>
@@ -242,7 +242,7 @@
 										<label for="tipoOcorrencia">Tipo de Ocorrência</label>
 										<select id="tipoOcorrencia" name="tipoOcorrencia" class="form-control">
 											${opcaoF1}${cidadao.faccao}${opcaoF2}
-											<option>Selecionar</option>
+											<option value="">Selecionar</option>
 											<option>Flagrante</option>
 											<option>Auto de Apresentação</option>
 											<option>TCO</option>
@@ -252,7 +252,7 @@
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="form-group col-md-6">
+									<div class="form-group col-md-4">
 										<label for="enderecoOcorrencia">Endereço da Ocorrência</label>
 										<input type="text" class="form-control" id="enderecoOcorrencia" name="enderecoOcorrencia" placeholder="Endereço da Ocorrência" value="${cidadao.endOcorrencia}">
 									</div>
@@ -261,12 +261,12 @@
 										<input type="text"	class="form-control" id="bairroOcorrencia" name="bairroOcorrencia" placeholder="Bairro da Ocorrencia" value="${cidadao.bairroOcorrencia}">
 									</div>
 									<div class="form-group col-md-2">
-										<label for="cidadeOcorriencia ">Cidade</label>
-										<input type="text" class="form-control" id="cidadeOcorriencia" name="cidadeOcorriencia" placeholder="Cidade da Ocorrencia" value="${cidadao.cidadeOcorrencia}">
+										<label for="cidadeOcorrencia ">Cidade</label>
+										<input type="text" class="form-control" id="cidadeOcorrencia" name="cidadeOcorrencia" placeholder="Cidade da Ocorrencia" value="${cidadao.cidadeOcorrencia}">
 									</div>
-									<div class="form-group col-md-2">
-										<label for="referenciaOcorrecia">Ponto de Referencia</label>
-										<input type="text" class="form-control" id="referenciaOcorrecia" name="referenciaOcorrecia" placeholder="Informe um Ponto de Referencia" value="${cidadao.referenciaOcorrencia}">
+									<div class="form-group col-md-4">
+										<label for="referenciaOcorrencia">Ponto de Referencia</label>
+										<input type="text" class="form-control" id="referenciaOcorrencia" name="referenciaOcorrencia" placeholder="Informe um Ponto de Referencia" value="${cidadao.referenciaOcorrencia}">
 									</div>
 								</div>
 								<div class="form-row">
@@ -288,6 +288,7 @@
 									<div class="form-group col-md-4">
 										<label for="ordenamentoJuridico">Ordenamendo Juridico</label>
 										<select id="ordenamentoJuridico" name="ordenamentoJuridico" class="form-control">
+											<option value="">Selecionar</option>
 											<option>Código Civil Brasileiro</option>
 											<option>Constituição Federal</option>
 											<option>Código de Processo Civil</option>
@@ -302,30 +303,42 @@
 										</select>
 									</div>
 									<div class="form-group col-md-2">
-										<label for="art">Artigo</label>
-										<input type="number" class="form-control" id="artOcorriencia" name="artOcorriencia" aria-describedby="artOcorrienciaHelp" placeholder="Informe o Artigo">
+										<label for="artigoOcorrencia">Artigo</label>
+										<input type="number" class="form-control" id="artigoOcorrencia" name="artigoOcorrencia"placeholder="Informe o Artigo">
 									</div>
 									<div class="form-group col-md-2">
-										<label for="alinea">Paragrafo/Inciso/Alínea</label>
-										<input type="text" class="form-control" id="alineaOcorriencia" name="alineaOcorriencia" maxlength="10" aria-describedby="alineaOcorrienciaHelp" placeholder="Informe a Alínea">
+										<label for="alineaOcorriencia">Paragrafo/Inciso/Alínea</label>
+										<input type="text" class="form-control" id="alineaOcorriencia" name="alineaOcorriencia" maxlength="10"placeholder="Informe a Alínea">
 									</div>
 									<div class="form-group col-md-2">
 										<label for="adicionarProcesso">Clique para Adicionar os Artigos</label><br>
-										<button type="button" class="btn btn-dark" onclick="showModal()" >Ola Mundoi</button>
+										<button type="button" class="btn btn-dark" id="adicionarProcesso" onclick="">Adicionar</button>
 									</div>
 								</div>
 								<div class="form-row">
-								<div class="form-group col-md-12">
-									<fieldset>
-										<legend>Ordenamento Juridico/Artigos/Inciso/Alinea</legend>
-										<label for="artigos"></label> Informe de acordo com o exemplo abaixo: 
-										<br>
-										<textarea class="form-control" cols=60 id="artigos" name="artigos" rows="7" name="artigos" maxlength="500" wrap="hard" placeholder="Codigo Penal Artigo 121 Inciso I">${cidadao.historicoJuridico}</textarea>
-									</fieldset>
+										<div class="form-group col-md-12">
+											<fieldset>
+												<legend>Informações Criminais</legend>
+												<div class="table-overflow">
+													<table class="table table-striped" id="tabela-informacoes-criminais">
+														<thead>
+															<tr>
+																<td scope="col"><strong>Codigo Ordenamento</strong></td>
+																<td scope="col"><strong>Codigo Ocorrencia</strong></td>
+																<td scope="col"><strong>Ordenamento Juridico</strong></td>
+																<td scope="col"><strong>Artigo</strong></td>
+																<td scope="col"><strong>Paragrafo/Incisio/Alínea</strong></td>
+																<td scope="col"><strong>Ação</strong></td>
+															</tr>
+														</thead>
+														<tbody>
+														</tbody>
+													</table>
+												</div>
+											</fieldset>
+										</div>
+									</div>
 								</div>
-								</div>
-	
-							</div>
 						</li>
 						<li>
 							<input type="radio" id="tab3" class="rd_tab" name="tabs">
@@ -436,53 +449,51 @@
 	
 							<div class="tab-content">
 								<figure class="fotos-cidadao">
-	
 									<div class="container-foto">
-										<label for="fotoFrente">Adicionar Fotos Diversas</label> 
-										<input type="file" id="fotoFrente" name="fotoFrente" accept="image/jpeg, image/jpg">
+										<label for="fotoDiversas01">Adicionar Fotos Diversas</label> 
+										<input type="file" id="fotoDiversas01" name="fotoDiversas01" accept="image/jpeg, image/jpg">
 	
 										<div class="fotos">
-											<img alt="fotoFrente" id="fotoDeFrente" src="<c:if test='${cidadao.fotoFrente == null}'> ../img/camera-p.png  </c:if>
+											<img alt="fotoDiversas1" id="fotoDiversas1" src="<c:if test='${cidadao.fotoFrente == null}'> ../img/camera-p.png  </c:if>
 																						 <c:if test='${cidadao.fotoFrente != null}'> ${cidadao.fotoFrente} </c:if>">
 										</div>
 									</div>
 									<div class="container-foto">
-										<label for="fotoLado">Adicionar Fotos Diversas</label>
-										<input type="file" id="fotoLado" name="fotoLado" accept="image/jpeg,image/jpg" value="${cidadao.fotoLado}">
+										<label for="fotoDiversas02">Adicionar Fotos Diversas</label>
+										<input type="file" id="fotoDiversas02" name="fotoDiversas02" accept="image/jpeg,image/jpg" value="${cidadao.fotoLado}">
 	
 										<div class="fotos">
-											<img alt="fotoLado" id="fotoDeLado" name="fotoDeLado" src="<c:if test='${cidadao.fotoLado == null}'> ../img/camera-p.png  </c:if>
+											<img alt="fotoDiversas2" id="fotoDiversas2" name="fotoDiversas2" src="<c:if test='${cidadao.fotoLado == null}'> ../img/camera-p.png  </c:if>
 																						 			   <c:if test='${cidadao.fotoLado != null}'> ${cidadao.fotoLado} </c:if>">
 										</div>
 									</div>
 									<div class="container-foto">
-										<label for="fotoCostas">Adicionar Foto de Costa</label>
-										<input type="file" id="fotoCostas" name="fotoCostas" accept="image/jpeg,image/jpg" value="${cidadao.fotoCostas}">
+										<label for="fotoDiversas03">Adicionar Foto Diversas</label>
+										<input type="file" id="fotoDiversas03" name="fotoDiversas03" accept="image/jpeg,image/jpg" value="${cidadao.fotoCostas}">
 		
 										<div class="fotos">
-											<img alt="fotoCostas" id="fotoDeCostas" name="fotoDeCostas" src="<c:if test='${cidadao.fotoCostas == null}'> ../img/camera-p.png  </c:if>
+											<img alt="fotoDiversas3" id="fotoDiversas3" name="fotoDiversas3" src="<c:if test='${cidadao.fotoCostas == null}'> ../img/camera-p.png  </c:if>
 																						 			  	     <c:if test='${cidadao.fotoCostas != null}'> ${cidadao.fotoCostas} </c:if>">
 										</div>
 									</div>
 									<div class="container-foto">
-										<label for="fotoDiversas01">Adicionar Fotos Diversas</label>
-										<input type="file" id="fotoDiversas01" name="fotoDiversas01" accept="image/jpeg,image/jpg" value="${cidadao.fotoDiversas01}">
+										<label for="fotoDiversas04">Adicionar Fotos Diversas</label>
+										<input type="file" id="fotoDiversas04" name="fotoDiversas04" accept="image/jpeg,image/jpg" value="${cidadao.fotoDiversas01}">
 	
 										<div class="fotos">
-											<img alt="fotoDiversas01" id="fotoDeDiversas01" name="fotoDeDiversas01" src="<c:if test='${cidadao.fotoDiversas01 == null}'> ../img/camera-p.png </c:if>
+											<img alt="fotoDiversas4" id="fotoDiversas4" name="fotoDiversas4" src="<c:if test='${cidadao.fotoDiversas01 == null}'> ../img/camera-p.png </c:if>
 																						 			  	   				 <c:if test='${cidadao.fotoDiversas01 != null}'> ${cidadao.fotoDiversas01} </c:if>">
 										</div>
 									</div>
 									<div class="container-foto">
-										<label for="fotoDiversas02">Adicionar Fotos Diversas</label>
-										<input type="file" id="fotoDiversas02" name="fotoDiversas02" accept="image/jpeg,.jpg" value="${cidadao.fotoDiversas02}">
+										<label for="fotoDiversas05">Adicionar Fotos Diversas</label>
+										<input type="file" id="fotoDiversas05" name="fotoDiversas05" accept="image/jpeg,.jpg" value="${cidadao.fotoDiversas02}">
 	
 										<div class="fotos">
-											<img alt="fotoDiversas02" id="fotoDeDiversas02" name="fotoDeDiversas02" src="<c:if test='${cidadao.fotoDiversas02 == null}'> ../img/camera-p.png </c:if>
+											<img alt="fotoDiversas5" id="fotoDiversas5" name="fotoDiversas5" src="<c:if test='${cidadao.fotoDiversas02 == null}'> ../img/camera-p.png </c:if>
 																						 			  	   				 <c:if test='${cidadao.fotoDiversas02 != null}'> ${cidadao.fotoDiversas02} </c:if>">
 										</div>
 									</div>
-	
 								</figure>
 							</div>
 						</li>
@@ -494,14 +505,14 @@
 								<div class="form-group">
 									<fieldset>
 										<legend>Historico</legend>
-										<label for="historioOcorrencia"></label> Informe com detalhes um breve historico sobre a ocorrência: 
+										<label for="historicoOcorrencia"></label> Informe com detalhes um breve historico sobre a ocorrência: 
 										<br>
-										<textarea class="form-control" cols=60 id="historioOcorrencia" name="historioOcorrencia" rows="15" name="historioOcorrencia" maxlength="500" wrap="hard" placeholder="envolvidos, data, hora, endereço, mike da ocorrência, artigos...">${cidadao.historico}</textarea>
+										<textarea class="form-control" cols=60 id="historicoOcorrencia" name="historicoOcorrencia" rows="15" maxlength="500" wrap="hard" placeholder="envolvidos, data, hora, endereço, mike da ocorrência, artigos...">${cidadao.historico}</textarea>
 									</fieldset>
 	
 								</div>
 								<input type="submit" value="Enviar"/>
-								<button type="button" id="btnSalvar" name="btnSalvar" class="btn btn-primary btn-lg" onclick="acaoBotaoCidadao('${acaoBtnSalvar}')">Salvar</button>
+								<button type="button" id="btnSalvar" name="btnSalvar" class="btn btn-primary btn-lg" onclick="acaoBotaoCidadao('alterar')">Salvar</button>
 							
 							</div>
 						</li>
@@ -684,9 +695,31 @@
 </body>
  <!-- Adicionando Javascript -->
 <script type="text/javascript">
+
+
+//VARIAVEIS GLOBAIS
+
 	function carregaFormulario() {
-		document.getElementById('iniciarCadastro').disabled= false;
-		document.getElementById('addMilitares').disabled=true;
+		var codigo;
+		codigo = document.getElementById('codigoOcorrencia').value;
+		if(codigo == ""){
+			document.getElementById('iniciarCadastro').disabled= false;
+			document.getElementById('addMilitares').disabled=true;
+			
+			document.getElementById('tab2').disabled=true;
+			document.getElementById('tab3').disabled=true;
+			document.getElementById('tab4').disabled=true;
+			document.getElementById('tab5').disabled=true;
+		}else{
+			document.getElementById('iniciarCadastro').disabled=true;
+			document.getElementById('addMilitares').disabled=false;
+			
+			document.getElementById('tab2').disabled=false;
+			document.getElementById('tab3').disabled=false;
+			document.getElementById('tab4').disabled=false;
+			document.getElementById('tab5').disabled=false;
+		}
+		
 	}
 	function iniciarOcorrencia(){
 		var acao, codigo, mike, inquerito, bo, outros, graduacaoNotic, numeralNotic, matriculaNotic, nomeGuerraNotic;
@@ -722,6 +755,12 @@
 		
 		document.getElementById('iniciarCadastro').disabled=true;
 		document.getElementById('addMilitares').disabled=false;
+		
+		document.getElementById('tab2').disabled=false;
+		document.getElementById('tab3').disabled=false;
+		document.getElementById('tab4').disabled=false;
+		document.getElementById('tab5').disabled=false;
+		
 	}
 	function salvarMilitarEnvolvido(acao){
 		var codigoOcorrencia, graduacao, numeral, matricula, nome, informacoes;
@@ -731,7 +770,6 @@
 		matricula = document.getElementById('matriculaEnvOcorrencia').value;
 		nome = document.getElementById('nomeEnvOcorrencia').value;
 		informacoes = document.getElementById('informacoesEnvOcorrencia').value;
-		
 		$.ajax({
 			method: "POST",
 			dataType: 'json',
@@ -743,7 +781,7 @@
 				matricula: matricula,
 				nome: nome,
 				informacoes: informacoes,
-				acao:acao
+				acao:"salvarEnvolvido"
 			},
 			success: function(data){
 				$('#tabela-militares-envolvidos tbody > tr').remove();
@@ -755,18 +793,64 @@
 								   '<td>'+data[i].matriculaEnvolvido+'</td>'+
 								   '<td>'+data[i].nomeGuerraEnvolvido+'</td>'+
 						    	   '<td>'+data[i].informacaoEnvolvido+'</td>'+
-								   '<td><a href="EnvolvidosOcorrencia?acao=editar&codigo='+data[i].codigoEnvolvido+'" class="btn btn-info btn-sm">Editar</a>'+
-										'<a href="EnvolvidosOcorrencia?acao=remover&codigo='+data[i].codigoEnvolvido+'" class="btn btn btn-danger btn-sm">Remover</a>'+
-									'</td></tr>');
+								   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerMilitarEnvolvido('+data[i].codigoEnvolvido+')">Remover</button></td></tr>');
 				}
 			}
 		})
 		hiddenModal(); //OCULTANDO A TELA DE MODAL.
 	}
 	
+	function removerMilitarEnvolvido(codigo){
+		var codigoOcorrencia;
+		codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
+		$.ajax({
+			method: "GET",
+			dataType: 'json',
+			url: "EnvolvidosOcorrencia",
+			data: {
+				codigoEnv: codigo,
+				codigoOco: codigoOcorrencia,
+				acao: "remover",
+			},
+			success: function(data){
+				$('#tabela-militares-envolvidos tbody > tr').remove();
+				for(var i in data){
+					$('#tabela-militares-envolvidos').append('<tr><td>'+data[i].codigoEnvolvido+'</td>'+
+								   '<td>'+data[i].codigoOcorrencia+'</td>'+
+								   '<td>'+data[i].graduacaoEnvolvido+'</td>'+
+							       '<td>'+data[i].numeralEnvolvido+'</td>'+
+								   '<td>'+data[i].matriculaEnvolvido+'</td>'+
+								   '<td>'+data[i].nomeGuerraEnvolvido+'</td>'+
+						    	   '<td>'+data[i].informacaoEnvolvido+'</td>'+
+						    	   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerMilitarEnvolvido('+data[i].codigoEnvolvido+')">Remover</button></td></tr>');
+				}
+			}
+		})
+	}
+	
+	function adcionarArtigo(){
+		var ordenamento, artigo, paragrafo, codigoOcorrencia;
+		ordenamento=document.getElementById('ordenamentoJuridico').value;
+		artigo=document.getElementById('artigoOcorrencia').value;
+		paragrafo=document.getElementById('alineaOcorriencia').value;
+		codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
+		$.ajax({
+			method: "POST",
+			dataType: 'json',
+			url: "",
+			data: {
+				ordenamento: ordenamento,
+				artigo: artigo,
+				paragrafo: paragrafo,
+				codigoOcorrencia: codigoOcorrencia
+			}
+		})
+	}
+
 	function showModal() {
 		document.getElementById("modal-content").style.display = "block";
 	}
+	
 	function hiddenModal() {
 		document.getElementById("modal-content").style.display = "none";
 		document.getElementById("codigoEnvOcorrencia").value="";
@@ -776,6 +860,7 @@
 		document.getElementById("nomeEnvOcorrencia").value="";
 		document.getElementById('informacoesEnvOcorrencia').value="";
 	}
+	
 	function limpa_formulário_cep() {
 		document.getElementById('rua').value = ("");
 		document.getElementById('bairro').value = ("");
@@ -835,26 +920,27 @@
 	}
 	
 	function acaoBotaoCidadao(acao){
-		if(acao == null || acao == ""){
-			document.getElementById('frm-cadCidadao').action = "Cidadao?acao=" + 'salvar';
-			document.getElementById('frm-cadCidadao').submit();
+		var codigo;
+		codigo = document.getElementById('codigoOcorrencia').value;
+		if(codigo == "" || codigo == null){
+			document.getElementById('frm-cadOcorrencia').action = "Ocorrencia?acao=" + 'salvar';
+			document.getElementById('frm-cadOcorrencia').submit();
 		}else{
-			
-			document.getElementById('frm-cadCidadao').action = "Cidadao?acao=" + acao;
-			document.getElementById('frm-cadCidadao').submit();
+			document.getElementById('frm-cadOcorrencia').action = "Ocorrencia?acao=" + acao;
+			document.getElementById('frm-cadOcorrencia').submit();
 		}
 		
 	}
 
 //MOSTRAR IMAGEM AO SELECIONAR NO TYPE="FILE"   ---------------------------------------------------------------------------------------------------------------------------------
-	function frenteFoto() {
+	function fotoDiversas1() {
 		  
 		  if (this.files && this.files[0]) {
 		    
 		    var FR= new FileReader();
 		    
 		    FR.addEventListener("load", function(e) {
-		      document.getElementById("fotoDeFrente").src = e.target.result;
+		      document.getElementById("fotoDiversas1").src = e.target.result;
 		    
 		    }); 
 		    
@@ -863,16 +949,16 @@
 		  
 		}
 
-		document.getElementById("fotoFrente").addEventListener("change", frenteFoto);
+		document.getElementById("fotoDiversas01").addEventListener("change", fotoDiversas1);
 		
-		function ladoFoto() {
+		function fotoDiversas2() {
 			  
 			  if (this.files && this.files[0]) {
 			    
 			    var FR= new FileReader();
 			    
 			    FR.addEventListener("load", function(e) {
-			      document.getElementById("fotoDeLado").src = e.target.result;
+			      document.getElementById("fotoDiversas2").src = e.target.result;
 			    
 			    }); 
 			    
@@ -880,16 +966,16 @@
 			  }
 			  
 			}
-		document.getElementById("fotoLado").addEventListener("change", ladoFoto);
+		document.getElementById("fotoDiversas02").addEventListener("change", fotoDiversas2);
 		
-		function costasFoto() {
+		function fotoDiversas3() {
 			  
 			  if (this.files && this.files[0]) {
 			    
 			    var FR= new FileReader();
 			    
 			    FR.addEventListener("load", function(e) {
-			      document.getElementById("fotoDeCostas").src = e.target.result;
+			      document.getElementById("fotoDiversas3").src = e.target.result;
 			    
 			    }); 
 			    
@@ -897,16 +983,16 @@
 			  }
 			  
 			}
-		document.getElementById("fotoCostas").addEventListener("change", costasFoto);
+		document.getElementById("fotoDiversas03").addEventListener("change", fotoDiversas3);
 		
-		function diversoFoto01() {
+		function fotoDiversas4() {
 			  
 			  if (this.files && this.files[0]) {
 			    
 			    var FR= new FileReader();
 			    
 			    FR.addEventListener("load", function(e) {
-			      document.getElementById("fotoDeDiversas01").src = e.target.result;
+			      document.getElementById("fotoDiversas4").src = e.target.result;
 			    
 			    }); 
 			    
@@ -914,16 +1000,16 @@
 			  }
 			  
 			}
-		document.getElementById("fotoDiversas01").addEventListener("change", diversoFoto01);
+		document.getElementById("fotoDiversas04").addEventListener("change", fotoDiversas4);
 		
-		function diversoFoto02() {
+		function fotoDiversas5() {
 			  
 			  if (this.files && this.files[0]) {
 			    
 			    var FR= new FileReader();
 			    
 			    FR.addEventListener("load", function(e) {
-			      document.getElementById("fotoDeDiversas02").src = e.target.result;
+			      document.getElementById("fotoDiversas5").src = e.target.result;
 			    
 			    }); 
 			    
@@ -931,7 +1017,7 @@
 			  }
 			  
 			}
-		document.getElementById("fotoDiversas02").addEventListener("change", diversoFoto02);
+		document.getElementById("fotoDiversas05").addEventListener("change", fotoDiversas5);
 </script>
 <script type="text/javascript">
 	jQuery.noConflict();
