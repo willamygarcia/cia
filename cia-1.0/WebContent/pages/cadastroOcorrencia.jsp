@@ -312,7 +312,7 @@
 									</div>
 									<div class="form-group col-md-2">
 										<label for="adicionarProcesso">Clique para Adicionar os Artigos</label><br>
-										<button type="button" class="btn btn-dark" id="adicionarProcesso" onclick="">Adicionar</button>
+										<button type="button" class="btn btn-dark" id="adicionarProcesso" onclick="adicionarArtigo()">Adicionar</button>
 									</div>
 								</div>
 								<div class="form-row">
@@ -828,21 +828,59 @@
 		})
 	}
 	
-	function adcionarArtigo(){
+	function adicionarArtigo(){
 		var ordenamento, artigo, paragrafo, codigoOcorrencia;
 		ordenamento=document.getElementById('ordenamentoJuridico').value;
 		artigo=document.getElementById('artigoOcorrencia').value;
 		paragrafo=document.getElementById('alineaOcorriencia').value;
 		codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
+		
 		$.ajax({
 			method: "POST",
 			dataType: 'json',
-			url: "",
+			url: "OrdenamentoOcorrencia",
 			data: {
 				ordenamento: ordenamento,
 				artigo: artigo,
 				paragrafo: paragrafo,
-				codigoOcorrencia: codigoOcorrencia
+				codigoOcorrencia: codigoOcorrencia,
+				acao: "salvar"
+			},
+			success: function(data){
+				$('#tabela-informacoes-criminais tbody > tr').remove();
+				for(var i in data){
+					$('#tabela-informacoes-criminais').append('<tr><td>'+data[i].codigoOrdenamento+'</td>'+
+								   '<td>'+data[i].codigoOcorrencia+'</td>'+
+								   '<td>'+data[i].leiOrdenamento+'</td>'+
+							       '<td>'+data[i].artigoOrdenamento+'</td>'+
+								   '<td>'+data[i].paragrafoOrdenamento+'</td>'+
+						    	   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerOrdenamento('+data[i].codigoOrdenamento+')">Remover</button></td></tr>');
+				}
+			}
+		})
+	}
+	
+	function removerOrdenamento(codigoOrdenamento){
+		var codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
+		$.ajax({
+			method: "GET",
+			dataType: 'json',
+			url: "OrdenamentoOcorrencia",
+			data: {
+				codigoOrd: codigoOrdenamento,
+				codigoOcor: codigoOcorrencia,
+				acao: "remover"
+			},
+			success: function(data){
+				$('#tabela-informacoes-criminais tbody > tr').remove();
+				for(var i in data){
+					$('#tabela-informacoes-criminais').append('<tr><td>'+data[i].codigoOrdenamento+'</td>'+
+								   '<td>'+data[i].codigoOcorrencia+'</td>'+
+								   '<td>'+data[i].leiOrdenamento+'</td>'+
+							       '<td>'+data[i].artigoOrdenamento+'</td>'+
+								   '<td>'+data[i].paragrafoOrdenamento+'</td>'+
+						    	   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerOrdenamento('+data[i].codigoOrdenamento+')">Remover</button></td></tr>');
+				}
 			}
 		})
 	}
