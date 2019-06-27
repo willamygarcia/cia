@@ -13,6 +13,7 @@
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery-3.3.1.js"></script>
 		<script type="text/javascript" src="http://cobaxtecnologia.com.br/cobax_js/jquery.maskedinput.min.js"></script>
+		<script type="text/javascript" src="${context}/javascript/jsAjax.js"></script>
 	
 		
 		<title>CIA 1.0 - Cadastro de Ocorrência</title>
@@ -345,67 +346,32 @@
 							<label for="tab3" class="tab_label">Materiais</label>
 	
 							<div class="tab-content">
-									<h4>Armas</h4>
+									<h4>Armas / Entorpecentes / Veiculos</h4>
 									<div class="form-row">
-										<div class="form-group col-md-2">
-											<label for="tipoArma" >Descrição da Arma</label>
-											<select id="tipoArma" name="tipoArma" class="form-control">
-												<option>Revolver</option>
-												<option>Pistola</option>
-												<option>Espigarda</option>
-												<option>Fuzil</option>
-												<option>Metralhadora</option>
-												<option>Artesanal</option>
-												<option>Faca</option>
-										</select>
+										<div class="form-group col-md-1">
+											<label for="quantidadeArma">QUANTIDADE</label><br>
+											<label id="quantidadeArma" onclick="alert('Teste');" style="cursor: pointer; font-weight: bold;">0</label><br>
 										</div>
 										<div class="form-group col-md-2">
-											<label for="calibre">Calibre</label>
-											<input type="text" class="form-control" id="calibre" name="calibre" aria-describedby="calibreHelp" placeholder="Calibre" value="${cidadao.tatuPescoco}">
+											<label for="adicionarArma">Adicionar Armas</label><br>
+											<button type="button" id="adicionarArma" class="btn btn-dark" onclick="showModalArmas()">Adicionar</button>
+										</div>
+										<div class="form-group col-md-1">
+											<label for="quantidadeEntorpecentes">QUANTIDADE</label><br>
+											<label id="quantidadeEntorpecentes" onclick="alert('Teste');" style="cursor: pointer; font-weight: bold;">0</label><br>
 										</div>
 										<div class="form-group col-md-2">
-											<label for="quantidade">Quantidade em UN</label>
-											<input type="text" class="form-control" id="quantidade" name="quantidade" aria-describedby="quantidadeHelp" placeholder="Quantidade" value="${cidadao.tatuPescoco}">
+											<label for="adicionarEntorpecentes">Adicionar Entorpecentes</label><br>
+											<button type="button" id="adicionarEntorpecentes" class="btn btn-dark" onclick="showModalEntorpecentes()">Adicionar</button>
+										</div>
+										<div class="form-group col-md-1">
+											<label for="quantidadeVeiculos">QUANTIDADE</label><br>
+											<label id="quantidadeVeiculos" onclick="alert('Teste');" style="cursor: pointer; font-weight: bold;">0</label><br>
 										</div>
 										<div class="form-group col-md-2">
-											<label for="fabricante">Fabricante</label>
-											<input type="text" class="form-control" id="fabricante" name="fabricante" aria-describedby="fabricanteHelp" placeholder="Fabricante" value="${cidadao.tatuPescoco}">
+											<label for="adicionarVeiculos">Adicionar Veiculos</label><br>
+											<button type="button" id="adicionarVeiculos" class="btn btn-dark" onclick="showModalVeiculos()">Adicionar</button>
 										</div>
-										<div class="form-group col-md-2">
-											<label for="adicionarArma">Clique para Adicionar a Arma</label><br>
-										<button type="button" id="adicionarArma" class="btn btn-dark" onclick="adicionarArma()">Adicionar</button>
-										</div>
-									</div>
-									<div class="form-group col-md-12">
-									
-										<textarea class="form-control" cols=60 id="materiaisArma" name="materiaisArma" rows="2" maxlength="500" wrap="hard" placeholder="Arma, Calibre, Quantidade, Fabricante">${cidadao.historicoJuridico}</textarea>
-								
-									</div>
-									<h4>Entorpecentes</h4>
-									<div class="form-row">
-										<div class="form-group col-md-2">
-											<label for="tipoEntorpecente">Descrição do Entorpecentes</label>
-											<select id="tipoEntorpecente" name="tipoEntorpecente" class="form-control">
-												<option>Maconha</option>
-												<option>Cocaína</option>
-												<option>Crack</option>
-												<option>Oxi</option>
-												<option>Êxtase</option>
-										</select>
-										</div>
-										<div class="form-group col-md-2">
-											<label for="quantidadeEntorpecente">Quantidade em KG</label>
-											<input type="text" class="form-control" id="quantidadeEntorpecente" name="quantidadeEntorpecente" aria-describedby="quantidadeEntorpecenteHelp" placeholder="Quantidade de Entorpecente" value="${cidadao.tatuPescoco}">
-										</div>
-										<div class="form-group col-md-2">
-											<label for="adicionarEntorpecentes">Clique para Adicionar</label><br>
-										<button type="button" id="adicionarEntorpecentes" class="btn btn-dark" onclick="adicionarEntorpecentes()">Adicionar</button>
-										</div>
-									</div>
-									<div class="form-group col-md-12">
-									
-										<textarea class="form-control" cols=60 id="materiaisEntorpecentes" name="materiaisEntorpecentes" rows="2" maxlength="500" wrap="hard" placeholder="Entorpecentes, Quantidade,">${cidadao.historicoJuridico}</textarea>
-								
 									</div>
 									<h4>Veiculos</h4>
 									<div class="form-row">
@@ -512,7 +478,7 @@
 	
 								</div>
 								<input type="submit" value="Enviar"/>
-								<button type="button" id="btnSalvar" name="btnSalvar" class="btn btn-primary btn-lg" onclick="acaoBotaoCidadao('alterar')">Salvar</button>
+								<button type="button" id="btnSalvar" name="btnSalvar" class="btn btn-primary btn-lg" onclick="acaoBotaoOcorrencia('alterar')">Salvar</button>
 							
 							</div>
 						</li>
@@ -599,8 +565,8 @@
 
 											</div>
 
-											<button type="button" id="btnConsultar" name="btnConsultar" class="btn btn-primary btn-sm" onclick="acaoBotaoCidadao('consultar')">Consultar</button>
-											<button type="button" id="btnLimpar" name="btnLimpar" class="btn btn-secondary btn-sm" onclick="acaoBotaoCidadao('limpar')">Limpar</button>
+											<button type="button" id="btnConsultar" name="btnConsultar" class="btn btn-primary btn-sm" onclick="acaoBotaoOcorrencia('consultar')">Consultar</button>
+											<button type="button" id="btnLimpar" name="btnLimpar" class="btn btn-secondary btn-sm" onclick="acaoBotaoOcorrencia('limpar')">Limpar</button>
 																					
 										</fieldset>
 								
@@ -691,13 +657,86 @@
 		
 	</div>
 </div>
+<!-- MODAL CADASTRO DE ARMAS--> 
+<div id="modal-content-armas">
+	<div id="modal-tela">
+		<div id="modal-title">
+			<label class="titulo-modal">Cadastro de Armas de Fogo</label>
+			<button type="button" onclick="hiddenModalArmas()" class="btn-close-modal">X</button> 
+		</div>
+		<div id="model-body">
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="serieArmaOcorrencia">Nº de Serie:</label>
+					<input type="text" class="form-control" id="serieArmaOcorrencia" name="serieArmaOcorrencia" placeholder="Ex.: KYX0003">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+						<label for="tipoArmaOcorrencia">Tipo:</label> 
+						<select class="form-control" id="tipoArmaOcorrencia" name="tipoArmaOcorrencia">
+
+							<option value="">Selecionar</option>
+							<option>Revolver</option>
+							<option>Pistola</option>
+							<option>Carabina</option>
+							<option>Fuzil</option>
+							<option>Espigarda</option>
+							<option>Metralhadora</option>
+							<option>SubMetralhadora</option>
+							
+
+						</select>
+					</div>
+					<div class="form-group col-md-3">
+						<label for="funcionamentoArmaOcorrencia">Funcionamento:</label> 
+						<select class="form-control" id="funcionamentoArmaOcorrencia" name="funcionamentoArmaOcorrencia">
+
+							<option value="">Selecionar</option>
+							<option>Repetição</option>
+							<option>Semi-Automatica</option>
+							<option>Automatica</option>
+							
+						</select>
+					</div>
+					<div class="form-group col-md-2">
+						<label for="marcaArmaOcorrencia">Marca:</label>
+						<input type="text" class="form-control" id="marcaArmaOcorrencia" name="marcaArmaOcorrencia" placeholder="Ex.: IMBEL">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="calibreArmaOcorrencia">Calibre:</label>
+						<input type="text" class="form-control" id="calibreArmaOcorrencia" name="calibreArmaOcorrencia" placeholder="Ex.:. 40">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="capacidadeArmaOcorrencia">Capacidade:</label>
+						<input type="text" class="form-control" id="capacidadeArmaOcorrencia" name="capacidadeArmaOcorrencia" placeholder="Ex.: 11+1">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<label for="informacoesArmasOcorrencia">Informações Adicionais:</label>
+						<textarea class="form-control" id="informacoesArmasOcorrencia" name="informacoesArmasOcorrencia" cols="60" rows="5" placeholder="Ex.: Arma fruto de roubou. Arma com numeração raspada."></textarea>
+					</div>
+				</div>
+				<div id="modal-btns">
+					<button type="button" id="btnSalvarArmaOcorrencia" name="btnSalvarArmaOcorrencia" class="btn btn-success" onclick="salvarArmasOcorrencia('salvar')">Salvar</button>
+					<button type="button" id="btnSairArmaOcorrencia" name="btnSairArmaOcorrencia" class="btn btn-danger" onclick="hiddenModalArmas()">Fechar</button>
+				</div>
+		</div>
+		
+	</div>
+</div>
 
 </body>
  <!-- Adicionando Javascript -->
 <script type="text/javascript">
 
-
-//VARIAVEIS GLOBAIS
+//TRATAMENTOS INICIAIS
+	jQuery.noConflict();
+	jQuery(function($){
+		$("#telefone").mask("99-99999-9999");
+		$("#cpf").mask("999.999.999-99");
+	});
 
 	function carregaFormulario() {
 		var codigo;
@@ -721,170 +760,17 @@
 		}
 		
 	}
-	function iniciarOcorrencia(){
-		var acao, codigo, mike, inquerito, bo, outros, graduacaoNotic, numeralNotic, matriculaNotic, nomeGuerraNotic;
-		acao = "";
-		codigo = document.getElementById('codigoOcorrencia').value;
-		mike = document.getElementById('mikeOcorrencia').value;
-		inquerito = document.getElementById('inqueritoOcorrencia').value;
-		bo = document.getElementById('boOcorrencia').value;
-		outros = document.getElementById('outrosOcorrencia').value;
-		graduacaoNotic = document.getElementById('graduacaoPostoOcorrencia').value;
-		numeralNotic = document.getElementById('numeralOcorrencia').value;
-		matriculaNotic = document.getElementById('matriculaOcorrencia').value;
-		nomeGuerraNotic = document.getElementById('nomeGuerraOcorrencia').value;
-		$.ajax({
-			method: "POST",
-			url: "Ocorrencia",
-			data: {
-				acao: acao,
-				codigoOcorrencia: codigo,
-				mikeOcorrencia: mike,
-				inqueritoOcorrencia: inquerito,
-				boOcorrencia: bo,
-				outrosOcorrencia: outros,
-				graduacaoPostoOcorrencia: graduacaoNotic,
-				numeralOcorrencia: numeralNotic,
-				matriculaOcorrencia: matriculaNotic,
-				nomeGuerraOcorrencia: nomeGuerraNotic
-			},
-			success: function(codigo){
-				$('#codigoOcorrencia').val(codigo);
-			}
-		})
-		
-		document.getElementById('iniciarCadastro').disabled=true;
-		document.getElementById('addMilitares').disabled=false;
-		
-		document.getElementById('tab2').disabled=false;
-		document.getElementById('tab3').disabled=false;
-		document.getElementById('tab4').disabled=false;
-		document.getElementById('tab5').disabled=false;
-		
-	}
-	function salvarMilitarEnvolvido(acao){
-		var codigoOcorrencia, graduacao, numeral, matricula, nome, informacoes;
-		codigoOcorrencia = document.getElementById('codigoOcorrencia').value;
-		graduacao = document.getElementById('graduacaoPostoGuanicaoEnvOcorrencia').value;
-		numeral = document.getElementById('numeralEnvOcorrencia').value;
-		matricula = document.getElementById('matriculaEnvOcorrencia').value;
-		nome = document.getElementById('nomeEnvOcorrencia').value;
-		informacoes = document.getElementById('informacoesEnvOcorrencia').value;
-		$.ajax({
-			method: "POST",
-			dataType: 'json',
-			url: "EnvolvidosOcorrencia",
-			data: {
-				codigoOcorrencia: codigoOcorrencia,
-				graduacao: graduacao,
-				numeral: numeral,
-				matricula: matricula,
-				nome: nome,
-				informacoes: informacoes,
-				acao:"salvarEnvolvido"
-			},
-			success: function(data){
-				$('#tabela-militares-envolvidos tbody > tr').remove();
-				for(var i in data){
-					$('#tabela-militares-envolvidos').append('<tr><td>'+data[i].codigoEnvolvido+'</td>'+
-								   '<td>'+data[i].codigoOcorrencia+'</td>'+
-								   '<td>'+data[i].graduacaoEnvolvido+'</td>'+
-							       '<td>'+data[i].numeralEnvolvido+'</td>'+
-								   '<td>'+data[i].matriculaEnvolvido+'</td>'+
-								   '<td>'+data[i].nomeGuerraEnvolvido+'</td>'+
-						    	   '<td>'+data[i].informacaoEnvolvido+'</td>'+
-								   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerMilitarEnvolvido('+data[i].codigoEnvolvido+')">Remover</button></td></tr>');
-				}
-			}
-		})
-		hiddenModal(); //OCULTANDO A TELA DE MODAL.
-	}
 	
-	function removerMilitarEnvolvido(codigo){
-		var codigoOcorrencia;
-		codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
-		$.ajax({
-			method: "GET",
-			dataType: 'json',
-			url: "EnvolvidosOcorrencia",
-			data: {
-				codigoEnv: codigo,
-				codigoOco: codigoOcorrencia,
-				acao: "remover",
-			},
-			success: function(data){
-				$('#tabela-militares-envolvidos tbody > tr').remove();
-				for(var i in data){
-					$('#tabela-militares-envolvidos').append('<tr><td>'+data[i].codigoEnvolvido+'</td>'+
-								   '<td>'+data[i].codigoOcorrencia+'</td>'+
-								   '<td>'+data[i].graduacaoEnvolvido+'</td>'+
-							       '<td>'+data[i].numeralEnvolvido+'</td>'+
-								   '<td>'+data[i].matriculaEnvolvido+'</td>'+
-								   '<td>'+data[i].nomeGuerraEnvolvido+'</td>'+
-						    	   '<td>'+data[i].informacaoEnvolvido+'</td>'+
-						    	   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerMilitarEnvolvido('+data[i].codigoEnvolvido+')">Remover</button></td></tr>');
-				}
-			}
-		})
-	}
-	
-	function adicionarArtigo(){
-		var ordenamento, artigo, paragrafo, codigoOcorrencia;
-		ordenamento=document.getElementById('ordenamentoJuridico').value;
-		artigo=document.getElementById('artigoOcorrencia').value;
-		paragrafo=document.getElementById('alineaOcorriencia').value;
-		codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
-		
-		$.ajax({
-			method: "POST",
-			dataType: 'json',
-			url: "OrdenamentoOcorrencia",
-			data: {
-				ordenamento: ordenamento,
-				artigo: artigo,
-				paragrafo: paragrafo,
-				codigoOcorrencia: codigoOcorrencia,
-				acao: "salvar"
-			},
-			success: function(data){
-				$('#tabela-informacoes-criminais tbody > tr').remove();
-				for(var i in data){
-					$('#tabela-informacoes-criminais').append('<tr><td>'+data[i].codigoOrdenamento+'</td>'+
-								   '<td>'+data[i].codigoOcorrencia+'</td>'+
-								   '<td>'+data[i].leiOrdenamento+'</td>'+
-							       '<td>'+data[i].artigoOrdenamento+'</td>'+
-								   '<td>'+data[i].paragrafoOrdenamento+'</td>'+
-						    	   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerOrdenamento('+data[i].codigoOrdenamento+')">Remover</button></td></tr>');
-				}
-			}
-		})
-	}
-	
-	function removerOrdenamento(codigoOrdenamento){
-		var codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
-		$.ajax({
-			method: "GET",
-			dataType: 'json',
-			url: "OrdenamentoOcorrencia",
-			data: {
-				codigoOrd: codigoOrdenamento,
-				codigoOcor: codigoOcorrencia,
-				acao: "remover"
-			},
-			success: function(data){
-				$('#tabela-informacoes-criminais tbody > tr').remove();
-				for(var i in data){
-					$('#tabela-informacoes-criminais').append('<tr><td>'+data[i].codigoOrdenamento+'</td>'+
-								   '<td>'+data[i].codigoOcorrencia+'</td>'+
-								   '<td>'+data[i].leiOrdenamento+'</td>'+
-							       '<td>'+data[i].artigoOrdenamento+'</td>'+
-								   '<td>'+data[i].paragrafoOrdenamento+'</td>'+
-						    	   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerOrdenamento('+data[i].codigoOrdenamento+')">Remover</button></td></tr>');
-				}
-			}
-		})
-	}
+//VARIAVEIS GLOBAIS
 
+
+
+
+// TRATAMENTOS DOS MODAIS
+
+	function showModalArmas() {
+		document.getElementById("modal-content-armas").style.display = "block";
+	}
 	function showModal() {
 		document.getElementById("modal-content").style.display = "block";
 	}
@@ -898,7 +784,19 @@
 		document.getElementById("nomeEnvOcorrencia").value="";
 		document.getElementById('informacoesEnvOcorrencia').value="";
 	}
-	
+	function hiddenModalArmas() {
+		document.getElementById("modal-content-armas").style.display = "none";
+		document.getElementById("serieArmaOcorrencia").value="";
+		document.getElementById("tipoArmaOcorrencia").value="";
+		document.getElementById("funcionamentoArmaOcorrencia").value="";
+		document.getElementById("marcaArmaOcorrencia").value="";
+		document.getElementById("calibreArmaOcorrencia").value="";
+		document.getElementById("capacidadeArmaOcorrencia").value="";
+		document.getElementById('informacoesArmasOcorrencia').value="";
+	}
+
+// TRATAMENTO DOS CAMPOS DE ENDEREÇO
+
 	function limpa_formulário_cep() {
 		document.getElementById('rua').value = ("");
 		document.getElementById('bairro').value = ("");
@@ -939,25 +837,10 @@
 			limpa_formulário_cep();
 		}
 	};
-	
-	function addArtigo() {
-		var lei,artigo,paragrafo,tipificacao;
-		lei = document.getElementById('lei').value;
-		artigo = document.getElementById('artOcorriencia').value;
-		paragrafo = document.getElementById('alineaOcorriencia').value;
-		
-		if(artigo == ""){
-			alert("Por favor informe o Artigo da Lei :" + lei);
-		}else{
-			tipificacao = lei +" Artigo: " + artigo + "º " + " Paragrafo/Inciso/Alínea: " + paragrafo + ";" ;
-			document.getElementById('artigos').value=document.getElementById('artigos').value + tipificacao + "\n";
-		}
-		
-		
-		
-	}
-	
-	function acaoBotaoCidadao(acao){
+
+//SUBMIT´S DO FORMULARIO GERAL
+
+	function acaoBotaoOcorrencia(acao){
 		var codigo;
 		codigo = document.getElementById('codigoOcorrencia').value;
 		if(codigo == "" || codigo == null){
@@ -1056,13 +939,5 @@
 			  
 			}
 		document.getElementById("fotoDiversas05").addEventListener("change", fotoDiversas5);
-</script>
-<script type="text/javascript">
-	jQuery.noConflict();
-	jQuery(function($){
-		$("#telefone").mask("99-99999-9999");
-		$("#cpf").mask("999.999.999-99");
-	});
-	
 </script>
 </html>
