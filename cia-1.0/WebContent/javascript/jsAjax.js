@@ -27,10 +27,65 @@ function salvarArmasOcorrencia(acao){
 			capacidadeArma: capacidadeArma,
 			informacaoArma:informacaoArma,
 			acao:acao
+		},
+		success: function(data){
+			$('#tabela-armas-ocorrencia tbody > tr').remove();
+			document.getElementById('quantidadeArma').innerHTML=data.length;
+			for(var i in data){
+				$('#tabela-armas-ocorrencia').append('<tr><td>'+data[i].codigoArma+'</td>'+
+							   '<td>'+data[i].codigoOcorrencia+'</td>'+
+							   '<td>'+data[i].serie+'</td>'+
+						       '<td>'+data[i].tipo+'</td>'+
+							   '<td>'+data[i].funcionamento+'</td>'+
+							   '<td>'+data[i].marca+'</td>'+
+							   '<td>'+data[i].calibre+'</td>'+
+							   '<td>'+data[i].capacidade+'</td>'+
+					    	   '<td>'+data[i].informacao+'</td>'+
+							   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerArmaOcorrecia('+data[i].codigoArma+')">Remover</button></td></tr>');
+			}
 		}
 	})
 	hiddenModalArmas(); //OCULTANDO A TELA DE MODAL.
 }
+
+function removerArmaOcorrecia(codigo){
+	var codigoArma, codigoOcorrencia,acao;
+	codigoArma=codigo;
+	codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
+	acao="remover";
+	$.ajax({
+		method: "GET",
+		dataType: "json",
+		url: "ArmasOcorrencia",
+		data: {
+			codigoArma: codigoArma,
+			codigoOcorrencia: codigoOcorrencia,
+			acao: acao
+		},
+		success: function(data){
+			console.log(data);
+			$('#tabela-armas-ocorrencia tbody > tr').remove();
+			document.getElementById('quantidadeArma').innerHTML=data.length;
+			for(var i in data){
+				$('#tabela-armas-ocorrencia').append('<tr><td>'+data[i].codigoArma+'</td>'+
+							   '<td>'+data[i].codigoOcorrencia+'</td>'+
+							   '<td>'+data[i].serie+'</td>'+
+						       '<td>'+data[i].tipo+'</td>'+
+							   '<td>'+data[i].funcionamento+'</td>'+
+							   '<td>'+data[i].marca+'</td>'+
+							   '<td>'+data[i].calibre+'</td>'+
+							   '<td>'+data[i].capacidade+'</td>'+
+					    	   '<td>'+data[i].informacao+'</td>'+
+							   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerArmaOcorrecia('+data[i].codigoArma+')">Remover</button></td></tr>');
+			}
+		},
+		 error: function(xhr, status) {
+		        console.log("Algum erro");
+		    }
+	})
+	
+}
+
 function iniciarOcorrencia(){
 	var acao, codigo, mike, inquerito, bo, outros, graduacaoNotic, numeralNotic, matriculaNotic, nomeGuerraNotic;
 	acao = "";

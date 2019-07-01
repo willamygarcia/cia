@@ -350,7 +350,7 @@
 									<div class="form-row">
 										<div class="form-group col-md-1">
 											<label for="quantidadeArma">QUANTIDADE</label><br>
-											<label id="quantidadeArma" onclick="alert('Teste');" style="cursor: pointer; font-weight: bold;">0</label><br>
+											<label id="quantidadeArma" onclick="showModalArmasView();" style="cursor: pointer; font-weight: bold;">0</label><br>
 										</div>
 										<div class="form-group col-md-2">
 											<label for="adicionarArma">Adicionar Armas</label><br>
@@ -726,6 +726,45 @@
 		
 	</div>
 </div>
+<div id="modal-content-armas-view">
+	<div id="modal-tela">
+		<div id="modal-title">
+			<label class="titulo-modal">Cadastro de Armas de Fogo</label>
+			<button type="button" onclick="hiddenModalArmasView()" class="btn-close-modal">X</button> 
+		</div>
+			<div id="model-body">
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<fieldset>
+							<legend>Armas da Ocorrencia</legend>
+							<div class="table-overflow">
+								<table class="table table-striped"
+									id="tabela-armas-ocorrencia">
+									<thead>
+										<tr>
+											<td scope="col"><strong>Codigo Arma</strong></td>
+											<td scope="col"><strong>Codigo Ocorrencia</strong></td>
+											<td scope="col"><strong>Nº Serie</strong></td>
+											<td scope="col"><strong>Tipo</strong></td>
+											<td scope="col"><strong>Funcionamento</strong></td>
+											<td scope="col"><strong>Marca</strong></td>
+											<td scope="col"><strong>Calibre</strong></td>
+											<td scope="col"><strong>Capacidade</strong></td>
+											<td scope="col"><strong>Informações</strong></td>
+											<td scope="col"><strong>Ação</strong></td>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+
+		</div>
+</div>
 
 </body>
  <!-- Adicionando Javascript -->
@@ -742,7 +781,7 @@
 		var codigo;
 		codigo = document.getElementById('codigoOcorrencia').value;
 		if(codigo == ""){
-			document.getElementById('iniciarCadastro').disabled= false;
+			document.getElementById('iniciarCadastro').disabled=false;
 			document.getElementById('addMilitares').disabled=true;
 			
 			document.getElementById('tab2').disabled=true;
@@ -768,6 +807,9 @@
 
 // TRATAMENTOS DOS MODAIS
 
+	function showModalArmasView() {
+		document.getElementById("modal-content-armas-view").style.display = "block";
+	}
 	function showModalArmas() {
 		document.getElementById("modal-content-armas").style.display = "block";
 	}
@@ -793,6 +835,10 @@
 		document.getElementById("calibreArmaOcorrencia").value="";
 		document.getElementById("capacidadeArmaOcorrencia").value="";
 		document.getElementById('informacoesArmasOcorrencia').value="";
+	}
+	function hiddenModalArmasView() {
+		document.getElementById("modal-content-armas-view").style.display = "none";
+		
 	}
 
 // TRATAMENTO DOS CAMPOS DE ENDEREÇO

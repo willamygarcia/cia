@@ -59,7 +59,7 @@ public class EnvolvidosOcorrenciaServlet extends HttpServlet {
 				response.setContentType("text/plain");
 				response.setCharacterEncoding("UTF-8");	
 				response.setStatus(200);
-				response.getWriter().write(dados);;
+				response.getWriter().write(dados);
 				}
 				
 			} catch (Exception e) {
