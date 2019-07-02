@@ -63,7 +63,7 @@ public class ArmaOcorrenciaDao {
 				armasOcorrencia.setMarcaArma(rs.getString("marcaArma"));
 				armasOcorrencia.setCalibreArma(rs.getString("calibreArma"));
 				armasOcorrencia.setCapacidadeArma(rs.getString("capacidadeArma"));
-				armasOcorrencia.setInformacoesArama(rs.getString("informacoesArma"));
+				armasOcorrencia.setInformacoesArama(rs.getString("informacoesArma").replaceAll("\n", "<br>"));
 				lista.add(armasOcorrencia);
 			}
 			

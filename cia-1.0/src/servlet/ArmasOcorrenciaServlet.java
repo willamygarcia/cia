@@ -79,7 +79,7 @@ public class ArmasOcorrenciaServlet extends HttpServlet {
 			armasOcorrenciaBean.setMarcaArma(request.getParameter("marcaArma"));
 			armasOcorrenciaBean.setCalibreArma(request.getParameter("calibreArma"));
 			armasOcorrenciaBean.setCapacidadeArma(request.getParameter("capacidadeArma"));
-			armasOcorrenciaBean.setInformacoesArama(request.getParameter("informacaoArma").replaceAll("\r","\\r"));
+			armasOcorrenciaBean.setInformacoesArama(request.getParameter("informacaoArma"));
 			System.out.println(armasOcorrenciaBean.getInformacoesArama());
 			armaOcorrenciaDao.salvarArmaOcorrencia(armasOcorrenciaBean);
 			
