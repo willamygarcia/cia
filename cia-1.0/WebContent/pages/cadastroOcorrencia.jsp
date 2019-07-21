@@ -46,12 +46,10 @@
 			
 			</ul>
 		</nav>
-		
 	</header>
 	<aside id="box-left">
 		<nav id="menu-nav-left">
 			<ul>
-	
 				<li class="active"><a href="/cia-1.0/pages/cadastroCidadao.jsp">Cadastro do	Cidadão</a></li>
 				<li><a href="/cia-1.0/pages/cadastroUsuarios.jsp">Cadastro de Usuarios</a></li>
 				<li><a href="/cia-1.0/pages/cadastroOcorrencia.jsp">Cadastro de Ocorrência</a></li>
@@ -80,7 +78,7 @@
 									<div class="form-row">
 										<div class="form-group col-md-2">
 											<label for="codigoOcorrencia">Codigo</label>
-											<input type="text" class="form-control" id="codigoOcorrencia" name="codigoOcorrencia" placeholder="Automatico" readonly="readonly" value="${ocorrencia.codigo}">
+											<input type="text" class="form-control" id="codigoOcorrencia" name="codigoOcorrencia" placeholder="Automatico" readonly="readonly" value="76">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="mikeOcorrencia">Mike da Ocorrência</label>
@@ -358,7 +356,7 @@
 										</div>
 										<div class="form-group col-md-1">
 											<label for="quantidadeEntorpecentes">QUANTIDADE</label><br>
-											<label id="quantidadeEntorpecentes" onclick="alert('Teste');" style="cursor: pointer; font-weight: bold;">0</label><br>
+											<label id="quantidadeEntorpecentes" onclick="showModalEntorpecentesView()" style="cursor: pointer; font-weight: bold;">0</label><br>
 										</div>
 										<div class="form-group col-md-2">
 											<label for="adicionarEntorpecentes">Adicionar Entorpecentes</label><br>
@@ -477,104 +475,102 @@
 									</fieldset>
 	
 								</div>
-								<input type="submit" value="Enviar"/>
 								<button type="button" id="btnSalvar" name="btnSalvar" class="btn btn-primary btn-lg" onclick="acaoBotaoOcorrencia('alterar')">Salvar</button>
 							
 							</div>
 						</li>
-			
 						
-					<li>
-						<input type="radio" id="tab7" class="rd_tab" name="tabs" ${checado}>
-						<label for="tab7" class="tab_label">Consulta</label>
-						<div class="tab-content">
-							<br>
-							<section class="tela-consulta">
-								<article class="lado-esquerdo">
-									<fieldset>
-										<legend>Resultados da Consulta:</legend>
-										<div class="table-overflow">
-											<table class="table table-striped">
-												<thead>
-													<tr>
-														<td scope="col"><strong>Codigo</strong></td>
-														<td scope="col"><strong>Nome</strong></td>
-														<td scope="col"><strong>Mãe</strong></td>
-														<td scope="col"><strong>Nascimento</strong></td>
-														<td scope="col"><strong>Bairro</strong></td>
-														<td scope="col"><strong>Ação</strong></td>
-													</tr>
-												</thead>
-												<tbody>
-													<c:forEach items="${consultaTotal}" var="lista">
-														<tr>
-															<td scope="row"><c:out value="${lista.codigo}"></c:out></td>
-															<td><c:out value="${lista.nome}"></c:out></td>
-															<td><c:out value="${lista.mae}"></c:out></td>
-															<td><c:out value="${lista.nascimento}"></c:out></td>
-															<td><c:out value="${lista.bairro}"></c:out></td>
-															<td><a href="Cidadao?acao=editar&codigo=${lista.codigo}" class="btn btn-secondary btn-sm">Editar</a>
-																<a href="Cidadao?acao=excluir&codigo=${lista.codigo}" class="btn btn-danger btn-sm">Excluir</a>
-																<a href="Cidadao?acao=visualizar&codigo=${lista.codigo}"  target="_blank" class="btn btn-info btn-sm">Visualizar</a>
-															</td>
-	
-														</tr>
-	
-													</c:forEach>
-												</tbody>
-											</table>
-										</div>
-									</fieldset>
-
-								</article>
-								<article class="lado-direito">
+						<li>
+							<input type="radio" id="tab7" class="rd_tab" name="tabs" ${checado}>
+							<label for="tab7" class="tab_label">Consulta</label>
+							<div class="tab-content">
+								<br>
+								<section class="tela-consulta">
+									<article class="lado-esquerdo">
 										<fieldset>
-											<legend>Entradas para Consulta:</legend>
-											${salvo}
-											${editado}
-											${alterado}
-											${excluido}
-											<div class="form-row">
-
-												<div class="form-group col-md-12">
-													<label for="nomeConsulta">Nome:</label>
-													<input type="text" class="form-control" id="nomeConsulta" aria-describedby="nomeConsultaHelp" placeholder="Nome" name="nomeConsulta">
-												</div>
+											<legend>Resultados da Consulta:</legend>
+											<div class="table-overflow">
+												<table class="table table-striped">
+													<thead>
+														<tr>
+															<td scope="col"><strong>Codigo</strong></td>
+															<td scope="col"><strong>Nome</strong></td>
+															<td scope="col"><strong>Mãe</strong></td>
+															<td scope="col"><strong>Nascimento</strong></td>
+															<td scope="col"><strong>Bairro</strong></td>
+															<td scope="col"><strong>Ação</strong></td>
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach items="${consultaTotal}" var="lista">
+															<tr>
+																<td scope="row"><c:out value="${lista.codigo}"></c:out></td>
+																<td><c:out value="${lista.nome}"></c:out></td>
+																<td><c:out value="${lista.mae}"></c:out></td>
+																<td><c:out value="${lista.nascimento}"></c:out></td>
+																<td><c:out value="${lista.bairro}"></c:out></td>
+																<td><a href="Cidadao?acao=editar&codigo=${lista.codigo}" class="btn btn-secondary btn-sm">Editar</a>
+																	<a href="Cidadao?acao=excluir&codigo=${lista.codigo}" class="btn btn-danger btn-sm">Excluir</a>
+																	<a href="Cidadao?acao=visualizar&codigo=${lista.codigo}"  target="_blank" class="btn btn-info btn-sm">Visualizar</a>
+																</td>
+		
+															</tr>
+		
+														</c:forEach>
+													</tbody>
+												</table>
 											</div>
-											<div class="form-row">
-												<div class="form-group col-md-12">
-													<label for="maeCidadaoConsulta">Mãe:</label>
-													<input type="text" class="form-control" id="maeCidadaoConsulta" aria-describedby="maeCidadaoConsultaHelp" placeholder="Nome da Mãe do Cidadão" name="maeCidadaoConsulta">
-												</div>
-											</div>	
-											<div class="form-row">
-												<div class="form-group col-md-12">
-													<label for="bairroConsulta">Bairro:</label> 
-													<input type="text" class="form-control" id="bairroConsulta" aria-describedby="bairroConsultaHelp"
-														placeholder="Rua,Logradouro,Travessa,Numero"
-														name="bairroConsulta">
-												</div>
-												<div class="form-group col-md-12">
-													<label for="atuacaoConsulta">Area de Atuação:</label> <input
-														type="text" class="form-control" id="atuacaoConsulta"
-														aria-describedby="atuacaoConsultaHelp"
-														placeholder="Bairro da Area de Atuação do tan:"
-														name="atuacaoConsulta">
-												</div>
-
-
-											</div>
-
-											<button type="button" id="btnConsultar" name="btnConsultar" class="btn btn-primary btn-sm" onclick="acaoBotaoOcorrencia('consultar')">Consultar</button>
-											<button type="button" id="btnLimpar" name="btnLimpar" class="btn btn-secondary btn-sm" onclick="acaoBotaoOcorrencia('limpar')">Limpar</button>
-																					
 										</fieldset>
-								
-								</article>
-
-							</section>
-						</div>
-					</li>
+	
+									</article>
+									<article class="lado-direito">
+											<fieldset>
+												<legend>Entradas para Consulta:</legend>
+												${salvo}
+												${editado}
+												${alterado}
+												${excluido}
+												<div class="form-row">
+	
+													<div class="form-group col-md-12">
+														<label for="nomeConsulta">Nome:</label>
+														<input type="text" class="form-control" id="nomeConsulta" aria-describedby="nomeConsultaHelp" placeholder="Nome" name="nomeConsulta">
+													</div>
+												</div>
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label for="maeCidadaoConsulta">Mãe:</label>
+														<input type="text" class="form-control" id="maeCidadaoConsulta" aria-describedby="maeCidadaoConsultaHelp" placeholder="Nome da Mãe do Cidadão" name="maeCidadaoConsulta">
+													</div>
+												</div>	
+												<div class="form-row">
+													<div class="form-group col-md-12">
+														<label for="bairroConsulta">Bairro:</label> 
+														<input type="text" class="form-control" id="bairroConsulta" aria-describedby="bairroConsultaHelp"
+															placeholder="Rua,Logradouro,Travessa,Numero"
+															name="bairroConsulta">
+													</div>
+													<div class="form-group col-md-12">
+														<label for="atuacaoConsulta">Area de Atuação:</label> <input
+															type="text" class="form-control" id="atuacaoConsulta"
+															aria-describedby="atuacaoConsultaHelp"
+															placeholder="Bairro da Area de Atuação do tan:"
+															name="atuacaoConsulta">
+													</div>
+	
+	
+												</div>
+	
+												<button type="button" id="btnConsultar" name="btnConsultar" class="btn btn-primary btn-sm" onclick="acaoBotaoOcorrencia('consultar')">Consultar</button>
+												<button type="button" id="btnLimpar" name="btnLimpar" class="btn btn-secondary btn-sm" onclick="acaoBotaoOcorrencia('limpar')">Limpar</button>
+																						
+											</fieldset>
+									
+									</article>
+	
+								</section>
+							</div>
+						</li>
 				</ul>
 			</form>	
 		</nav>
@@ -594,7 +590,7 @@
 		</nav>
 	</footer>
 	
-<!-- TELA MODAL -->	
+<!-- TELA MODAL CADASTRO DE ENVOLVIDO-->	
 <!-- Modal -->
 <div id="modal-content">
 	<div id="modal-tela">
@@ -658,6 +654,7 @@
 	</div>
 </div>
 <!-- MODAL CADASTRO DE ARMAS--> 
+<!-- Modal -->
 <div id="modal-content-armas">
 	<div id="modal-tela">
 		<div id="modal-title">
@@ -726,6 +723,9 @@
 		
 	</div>
 </div>
+
+<!-- MODAL CADASTRO DE ARMAS VIEW--> 
+<!-- Modal -->
 <div id="modal-content-armas-view">
 	<div id="modal-tela">
 		<div id="modal-title">
@@ -765,7 +765,98 @@
 
 		</div>
 </div>
+<!-- MODAL CADASTRO DE ENTORPECENTES--> 
+<!-- Modal -->
+<div id="modal-content-entorpecentes">
+	<div id="modal-tela">
+		<div id="modal-title">
+			<label class="titulo-modal">Cadastro de Entorpecentes</label>
+			<button type="button" onclick="hiddenModalEntorpecentes()" class="btn-close-modal">X</button> 
+		</div>
+		<div id="model-body">
+			<div class="form-row">
+				<div class="form-group col-md-4">
+						<label for="nomeEntorpecente">Nome:</label> 
+						<select class="form-control" id="nomeEntorpecente" name="nomeEntorpecente">
 
+							<option value="">Selecionar</option>
+							<option>Maconha</option>
+							<option>Skank</option>
+							<option>Cocaina</option>
+							<option>Crack</option>
+							<option>Ecstasy</option>
+							<option>LSD</option>
+							<option>Inalantes</option>
+							<option>Heroina</option>
+							<option>Barbituricos</option>
+							<option>Cloroformio</option>
+							<option>Morfina</option>
+							<option>Cha de Cogumelo</option>
+							<option>Anfetaminas</option>
+							
+						</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="quantidadeUnEntorpecente">Quantidade UN:</label>
+					<input type="text" class="form-control" id="quantidadeUnEntorpecente" name="quantidadeUnEntorpecente" placeholder="Ex.:30 -> (30 UN)">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="quantidadeKgEntorpecente">Quantidade Kg:</label>
+					<input type="text" class="form-control" id="quantidadeKgEntorpecente" name="quantidadeKgEntorpecente" placeholder="Ex.: 1,000 ->(1 Kilo)">
+				</div>
+			</div>
+			<div class="form-row">
+					<div class="form-group col-md-12">
+						<label for="informacoesEntorpecentes">Informações Adicionais:</label>
+						<textarea class="form-control" id="informacoesEntorpecentes" name="informacoesEntorpecentes" cols="60" rows="5" placeholder="Ex.: Mais informações que o Agente Julga importante."></textarea>
+					</div>
+			</div>
+			<div id="modal-btns">
+					<button type="button" id="btnSalvarEntorpecemtesOcorrencia" name="btnSalvarEntorpecemtesOcorrencia" class="btn btn-success" onclick="salvarEntorpecentesOcorrencia('salvar')">Salvar</button>
+					<button type="button" id="btnSairEntorpecemtesOcorrencia" name="btnSairEntorpecemtesOcorrencia" class="btn btn-danger" onclick="hiddenModalEntorpecentes()">Fechar</button>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<!-- MODAL CADASTRO DE ENTORPECENTES VIEW--> 
+<!-- Modal -->
+<div id="modal-content-entorpecentes-view">
+	<div id="modal-tela">
+		<div id="modal-title">
+			<label class="titulo-modal">Cadastro de Entorpecentes</label>
+			<button type="button" onclick="hiddenModalEntorpecentesView()" class="btn-close-modal">X</button> 
+		</div>
+			<div id="model-body">
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<fieldset>
+							<legend>Entorpecentes Ocorrencia</legend>
+							<div class="table-overflow">
+								<table class="table table-striped"
+									id="tabela-entorpecentes-ocorrencia">
+									<thead>
+										<tr>
+											<td scope="col"><strong>Codigo Entorpecentes</strong></td>
+											<td scope="col"><strong>Codigo Ocorrencia</strong></td>
+											<td scope="col"><strong>Nome</strong></td>
+											<td scope="col"><strong>QTD Unitária</strong></td>
+											<td scope="col"><strong>QTD em Kg</strong></td>
+											<td scope="col"><strong>Informações</strong></td>
+											<td scope="col"><strong>Ação</strong></td>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+
+		</div>
+</div>
 </body>
  <!-- Adicionando Javascript -->
 <script type="text/javascript">
@@ -806,17 +897,24 @@
 
 
 // TRATAMENTOS DOS MODAIS
-
-	function showModalArmasView() {
-		document.getElementById("modal-content-armas-view").style.display = "block";
+// ----------------MOSTRAR TELA MODAL	
+	function showModal() {
+		document.getElementById("modal-content").style.display = "block";
 	}
 	function showModalArmas() {
 		document.getElementById("modal-content-armas").style.display = "block";
 	}
-	function showModal() {
-		document.getElementById("modal-content").style.display = "block";
+	function showModalArmasView() {
+		document.getElementById("modal-content-armas-view").style.display = "block";
+	}
+	function showModalEntorpecentes() {
+		document.getElementById("modal-content-entorpecentes").style.display = "block";
+	}
+	function showModalEntorpecentesView() {
+		document.getElementById("modal-content-entorpecentes-view").style.display = "block";
 	}
 	
+// ------------------OCULTAR TELA MODAL		
 	function hiddenModal() {
 		document.getElementById("modal-content").style.display = "none";
 		document.getElementById("codigoEnvOcorrencia").value="";
@@ -838,6 +936,17 @@
 	}
 	function hiddenModalArmasView() {
 		document.getElementById("modal-content-armas-view").style.display = "none";
+		
+	}
+	function hiddenModalEntorpecentes() {
+		document.getElementById("modal-content-entorpecentes").style.display = "none";
+		document.getElementById("nomeEntorpecente").value="";
+		document.getElementById("quantidadeUnEntorpecente").value="";
+		document.getElementById("quantidadeKgEntorpecente").value="";
+		document.getElementById("informacoesEntorpecentes").value="";
+	}
+	function hiddenModalEntorpecentesView() {
+		document.getElementById("modal-content-entorpecentes-view").style.display = "none";
 		
 	}
 

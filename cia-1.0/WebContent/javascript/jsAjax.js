@@ -1,6 +1,6 @@
 /**
  *  TODAS AS REQUISIÇÕES EM AJAX SERÃO FEITA AQUI.
- *  GERALMENTO REQUISIÇÕES DAS TELAS MODAIS
+ *  GERALMENTE REQUISIÇÕES DAS TELAS MODAIS
  */
 
 function salvarArmasOcorrencia(acao){
@@ -47,7 +47,6 @@ function salvarArmasOcorrencia(acao){
 	})
 	hiddenModalArmas(); //OCULTANDO A TELA DE MODAL.
 }
-
 function removerArmaOcorrecia(codigo){
 	var codigoArma, codigoOcorrencia,acao;
 	codigoArma=codigo;
@@ -85,7 +84,6 @@ function removerArmaOcorrecia(codigo){
 	})
 	
 }
-
 function iniciarOcorrencia(){
 	var acao, codigo, mike, inquerito, bo, outros, graduacaoNotic, numeralNotic, matriculaNotic, nomeGuerraNotic;
 	acao = "";
@@ -164,7 +162,6 @@ function salvarMilitarEnvolvido(acao){
 	})
 	hiddenModal(); //OCULTANDO A TELA DE MODAL.
 }
-
 function removerMilitarEnvolvido(codigo){
 	var codigoOcorrencia;
 	codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
@@ -192,7 +189,6 @@ function removerMilitarEnvolvido(codigo){
 		}
 	})
 }
-
 function adicionarArtigo(){
 	var ordenamento, artigo, paragrafo, codigoOcorrencia;
 	ordenamento=document.getElementById('ordenamentoJuridico').value;
@@ -229,7 +225,6 @@ function adicionarArtigo(){
 	
 	
 }
-
 function removerOrdenamento(codigoOrdenamento){
 	var codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
 	$.ajax({
@@ -253,4 +248,41 @@ function removerOrdenamento(codigoOrdenamento){
 			}
 		}
 	})
+}
+
+function salvarEntorpecentesOcorrencia(acao){
+	var EntorpCodigoOcorrencia, nomeEntorpecente, qtdUn, qtdKg, informacoesAdicionais;
+	
+	EntorpCodigoOcorrencia=document.getElementById('codigoOcorrencia').value;
+	nomeEntorpecente=document.getElementById('nomeEntorpecente').value;
+	qtdUn=document.getElementById('quantidadeUnEntorpecente').value;
+	qtdKg=document.getElementById('quantidadeKgEntorpecente').value;
+	informacoesAdicionais=document.getElementById('informacoesEntorpecentes').value;
+	$.ajax({
+		method: "POST",
+		dataType: "json",
+		url: "EntorpecentesOcorrencia",
+		data:{
+			EntorpCodigoOcorrencia: EntorpCodigoOcorrencia,
+			nomeEntorpecente: nomeEntorpecente,
+			qtdUn: qtdUn,
+			qtdKg: qtdKg,
+			informacoesAdicionais: informacoesAdicionais,
+			acao:acao
+		},
+		success: function(data){
+			$('#tabela-entorpecentes-ocorrencia tbody > tr').remove();
+			document.getElementById('quantidadeEntorpecentes').innerHTML=data.length;
+			for(var i in data){
+				$('#tabela-entorpecentes-ocorrencia').append('<tr><td>'+data[i].codigoEntorpecente+'</td>'+
+							   '<td>'+data[i].codigoOcorrencia+'</td>'+
+							   '<td>'+data[i].nome+'</td>'+
+						       '<td>'+data[i].qtdUn+'</td>'+
+							   '<td>'+data[i].qtdKg+'</td>'+
+							   '<td>'+data[i].informacoes+'</td>'+
+							   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerArmaOcorrecia('+data[i].codigoEntorpecente+')">Remover</button></td></tr>');
+			}
+		}
+	})
+	hiddenModalEntorpecentes(); //OCULTANDO A TELA DE MODAL.
 }

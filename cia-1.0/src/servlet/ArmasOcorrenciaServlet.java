@@ -80,7 +80,6 @@ public class ArmasOcorrenciaServlet extends HttpServlet {
 			armasOcorrenciaBean.setCalibreArma(request.getParameter("calibreArma"));
 			armasOcorrenciaBean.setCapacidadeArma(request.getParameter("capacidadeArma"));
 			armasOcorrenciaBean.setInformacoesArama(request.getParameter("informacaoArma"));
-			System.out.println(armasOcorrenciaBean.getInformacoesArama());
 			armaOcorrenciaDao.salvarArmaOcorrencia(armasOcorrenciaBean);
 			
 			try {

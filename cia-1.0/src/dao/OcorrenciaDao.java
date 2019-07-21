@@ -123,7 +123,7 @@ public class OcorrenciaDao {
 	}
 	
 	public String utimoCodigo() {
-		String sql ="SELECT (MAX(codigoOcorrencia)+1) AS codigo FROM tblocorrencia";
+		String sql ="SELECT (MAX(codigoOcorrencia)) AS codigo FROM tblocorrencia";
 		String rsCodigo = null;
 		try {
 			PreparedStatement pst = conect.prepareStatement(sql);
@@ -132,7 +132,12 @@ public class OcorrenciaDao {
 				rsCodigo = rs.getString("codigo");
 			}
 			
-			return rsCodigo;
+			if(rsCodigo.equals(null) || rsCodigo.equals("")) {
+				return "1";
+			}else {
+				return rsCodigo;
+			}
+			
 			
 		} catch (Exception e) {
 			System.out.println("Erro ao iniciar a Ocorrencia! :" + e);

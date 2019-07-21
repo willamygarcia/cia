@@ -47,10 +47,11 @@ public class OcorrenciaServlet extends HttpServlet {
 			ocorrenciaBean.setNumeralOcorrencia(request.getParameter("numeralOcorrencia"));
 			ocorrenciaBean.setMatriculaOcorrencia(request.getParameter("matriculaOcorrencia"));
 			ocorrenciaBean.setNomeGuerraOcorrencia(request.getParameter("nomeGuerraOcorrencia"));
+			ocorrenciaDao.iniciarOcorrencia(ocorrenciaBean);
 			response.setContentType("text/plain");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(ocorrenciaDao.utimoCodigo());
-			ocorrenciaDao.iniciarOcorrencia(ocorrenciaBean);
+			
 		}else if(acao.equals("salvar")) {
 			ocorrenciaBean.setMikeOcorrencia(request.getParameter("mikeOcorrencia"));
 			ocorrenciaBean.setInqueritoOcorrencia(request.getParameter("inqueritoOcorrencia"));

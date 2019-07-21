@@ -1085,4 +1085,33 @@ img{
 	#modal-btns{
 		float: right;
 	}
+	#modal-content-entorpecentes{
+		display: none;
+		position: absolute;
+		padding-top: 100px;
+		top:0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0,0,0,0.7);
+		z-index: 1;
+	}
+	#modal-content-entorpecentes-view{
+		display:none;
+		position: absolute;
+		padding-top: 100px;
+		top:0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0,0,0,0.7);
+		z-index: 1;
+	}
+	#modal-content-entorpecentes-view #modal-tela{
+		margin: 0 auto;
+		width: 1200px;
+		height: 800px;
+		border-radius: 10px;
+		background: #fff;
+	}
 }
