@@ -67,5 +67,25 @@ public class EntorpecenteOcorrenciaDao {
 		}
 	}
 	
+	public void removerEntorpecentes(EntorpecentesOcorrenciaBean entorpecentes) {
+		
+		String sql = "DELETE FROM  tblentorpecentesocorrencia WHERE codigoEntorpecenteOcorrencia = ?";
+		try {
+			PreparedStatement pst = connection.prepareStatement(sql);
+			pst.setInt(1, entorpecentes.getCodigoEntorpecenteOcorrencia());
+			pst.execute();
+			connection.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+	}
+	
 
 }

@@ -280,9 +280,42 @@ function salvarEntorpecentesOcorrencia(acao){
 						       '<td>'+data[i].qtdUn+'</td>'+
 							   '<td>'+data[i].qtdKg+'</td>'+
 							   '<td>'+data[i].informacoes+'</td>'+
-							   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerArmaOcorrecia('+data[i].codigoEntorpecente+')">Remover</button></td></tr>');
+							   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerEntorpecenteOcorrencia('+data[i].codigoEntorpecente+')">Remover</button></td></tr>');
 			}
 		}
 	})
 	hiddenModalEntorpecentes(); //OCULTANDO A TELA DE MODAL.
 }
+
+function removerEntorpecenteOcorrencia(codigoEntorpecente){
+	var codOcorrencia, codEntorpecente, acao;
+	codOcorrencia=document.getElementById('codigoOcorrencia').value;
+	codEntorpecente=codigoEntorpecente;
+	acao="remover";
+	$.ajax({
+		method: "GET",
+		dataType: "json",
+		url: "EntorpecentesOcorrencia",
+		data:{
+			ocorrencia: codOcorrencia,
+			entorpecente: codEntorpecente,
+			acao: acao
+		},
+		success: function(data){
+			$('#tabela-entorpecentes-ocorrencia tbody > tr').remove();
+			document.getElementById('quantidadeEntorpecentes').innerHTML=data.length;
+			for(var i in data){
+				$('#tabela-entorpecentes-ocorrencia').append('<tr><td>'+data[i].codigoEntorpecente+'</td>'+
+							   '<td>'+data[i].codigoOcorrencia+'</td>'+
+							   '<td>'+data[i].nome+'</td>'+
+						       '<td>'+data[i].qtdUn+'</td>'+
+							   '<td>'+data[i].qtdKg+'</td>'+
+							   '<td>'+data[i].informacoes+'</td>'+
+							   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerEntorpecenteOcorrencia('+data[i].codigoEntorpecente+')">Remover</button></td></tr>');
+			}
+		}
+	})
+} 
+
+
+

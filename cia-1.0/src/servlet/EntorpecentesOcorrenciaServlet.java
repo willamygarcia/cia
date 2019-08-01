@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 import beans.EntorpecentesOcorrenciaBean;
 import dao.EntorpecenteOcorrenciaDao;
 
@@ -21,6 +23,49 @@ public class EntorpecentesOcorrenciaServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String acao = request.getParameter("acao");
+		EntorpecentesOcorrenciaBean entorpecenteBean = new EntorpecentesOcorrenciaBean();
+		EntorpecenteOcorrenciaDao entorpecenteDao = new EntorpecenteOcorrenciaDao();
+		if(acao.equals("remover")) {
+			entorpecenteBean.setCodigoEntorpecenteOcorrencia(request.getParameter("entorpecente"));
+			entorpecenteBean.setEntorpCodigoOcorrencia(request.getParameter("ocorrencia"));
+			entorpecenteDao.removerEntorpecentes(entorpecenteBean);
+			try {
+				List<EntorpecentesOcorrenciaBean> listaEntorpecentes = entorpecenteDao.consultaEntorpecentes(entorpecenteBean);
+				if(!listaEntorpecentes.isEmpty()) {
+					String data = "";
+					int totalLista = listaEntorpecentes.size();
+					int index = 1;
+					JSONObject obj_Json = new JSONObject();
+					for (EntorpecentesOcorrenciaBean entorpecente : listaEntorpecentes) {
+						
+						obj_Json.put("codigoEntorpecente", entorpecente.getCodigoEntorpecenteOcorrencia());
+						obj_Json.put("codigoOcorrencia", entorpecente.getEntorpCodigoOcorrencia());
+						obj_Json.put("nome", entorpecente.getNomeEntorpecenteOcorrencia());
+						obj_Json.put("qtdUn", entorpecente.getQtdUnEntorpecenteOcorrencia());
+						obj_Json.put("qtdKg", entorpecente.getQtdKgEntorpecenteOcorrencia());
+						obj_Json.put("informacoes", entorpecente.getInformacoesEntorpecenteOcorrencia());
+						
+						data+= obj_Json.toString();
+						if(index < totalLista) {
+							data += ",";
+						}
+						index++;
+					}
+					String dados =  "["+	
+							data +
+				
+							"]";
+				
+				response.setContentType("text/plain");
+				response.setCharacterEncoding("UTF-8");	
+				response.setStatus(200);
+				response.getWriter().write(dados);
+				}
+			}catch(Exception e) {
+				
+			}
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -61,10 +106,10 @@ public class EntorpecentesOcorrenciaServlet extends HttpServlet {
 					
 								"]";
 					
-				response.setContentType("text/plain");
-				response.setCharacterEncoding("UTF-8");	
-				response.setStatus(200);
-				response.getWriter().write(dados);;
+					response.setContentType("text/plain");
+					response.setCharacterEncoding("UTF-8");	
+					response.setStatus(200);
+					response.getWriter().write(dados);
 						
 						
 					
