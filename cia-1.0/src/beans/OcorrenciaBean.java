@@ -88,19 +88,32 @@ public class OcorrenciaBean {
 		return dataHoraOcorrencia;
 	}
 	public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
-		this.dataHoraOcorrencia = dataHoraOcorrencia;
+		if(dataHoraOcorrencia.equalsIgnoreCase("")) {
+			this.dataHoraOcorrencia = null;
+		}else {
+			this.dataHoraOcorrencia = dataHoraOcorrencia;
+		}
 	}
 	public String getDataHoraInicioComunicacao() {
 		return dataHoraInicioComunicacao;
 	}
 	public void setDataHoraInicioComunicacao(String dataHoraInicioComunicacao) {
-		this.dataHoraInicioComunicacao = dataHoraInicioComunicacao;
+		if(dataHoraInicioComunicacao.equalsIgnoreCase("")) {
+		
+			this.dataHoraInicioComunicacao = null;
+		}else {
+			this.dataHoraInicioComunicacao = dataHoraInicioComunicacao;
+		}	
 	}
 	public String getDataHoraFimComunicacao() {
 		return dataHoraFimComunicacao;
 	}
 	public void setDataHoraFimComunicacao(String dataHoraFimComunicacao) {
-		this.dataHoraFimComunicacao = dataHoraFimComunicacao;
+		if(dataHoraFimComunicacao.equalsIgnoreCase("")) {
+			this.dataHoraFimComunicacao = null;
+		}else {
+			this.dataHoraFimComunicacao = dataHoraFimComunicacao;
+		}
 	}
 	public String getDelegaciaOcorrencia() {
 		return delegaciaOcorrencia;

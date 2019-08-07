@@ -55,7 +55,7 @@ public class EntorpecenteOcorrenciaDao {
 				entorpecentes.setNomeEntorpecenteOcorrencia(rs.getString("nomeEntorpecenteOcorrencia"));
 				entorpecentes.setQtdUnEntorpecenteOcorrencia(rs.getString("qtdUnEntorpecenteOcorrencia"));
 				entorpecentes.setQtdKgEntorpecenteOcorrencia(rs.getString("qtdKgEntorpecenteOcorrencia"));
-				entorpecentes.setInformacoesEntorpecenteOcorrencia(rs.getString("informacoesEntorpecenteOcorrencia"));
+				entorpecentes.setInformacoesEntorpecenteOcorrencia(rs.getString("informacoesEntorpecenteOcorrencia").replaceAll("\n", "<br>"));
 				entorpecentes.setEntorpCodigoOcorrencia(rs.getString("entorpCodigoOcorrencia"));
 				lista.add(entorpecentes);
 			}

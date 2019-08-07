@@ -67,7 +67,7 @@
 	</aside>
 	<div id="conteiner">
 		<nav class="nav_tabs">
-			<h3 class="titulo-cadastro">Cadastro de Ocorrêcia</h3>
+			<h3 class="titulo-cadastro">Cadastro de Ocorrência</h3>
 				<form action="Ocorrencia" method="post" id="frm-cadOcorrencia" name="frm-cadOcorrencia" enctype="multipart/form-data">
 					<ul>
 						<li>
@@ -364,7 +364,7 @@
 										</div>
 										<div class="form-group col-md-1">
 											<label for="quantidadeVeiculos">QUANTIDADE</label><br>
-											<label id="quantidadeVeiculos" onclick="alert('Teste');" style="cursor: pointer; font-weight: bold;">0</label><br>
+											<label id="quantidadeVeiculos" onclick="showModalVeiculosView();" style="cursor: pointer; font-weight: bold;">0</label><br>
 										</div>
 										<div class="form-group col-md-2">
 											<label for="adicionarVeiculos">Adicionar Veiculos</label><br>
@@ -857,6 +857,114 @@
 
 		</div>
 </div>
+<!-- ################################################################# -->
+<!-- MODAL CADASTRO DE VEICULOS--> 
+<!-- Modal -->
+<div id="modal-content-veiculos">
+	<div id="modal-tela">
+		<div id="modal-title">
+			<label class="titulo-modal">Cadastro de Veiculos</label>
+			<button type="button" onclick="hiddenModalVeiculos()" class="btn-close-modal">X</button> 
+		</div>
+		<div id="model-body">
+			<div class="form-row">
+				<div class="form-group col-md-4">
+					<label for="placaVeiculo">Placa:</label>
+					<input type="text" class="form-control" id="placaVeiculo" name="placaVeiculo" placeholder="Ex.: XYZ1234" >
+				</div>
+				<div class="form-group col-md-4">
+					<label for="narcaVeiculo">Marca:</label>
+					<input type="text" class="form-control" id="marcaVeiculo" name="marcaVeiculo" placeholder="Ex.: TOYOTA">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="modeloVeiculo">Modelo:</label>
+					<input type="text" class="form-control" id="modeloVeiculo" name="modeloVeiculo" placeholder="Ex.: COROLLA XEI">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-4">
+							<label for="tipoVeiculo">Tipo:</label> 
+							<select class="form-control" id="tipoVeiculo" name="tipoVeiculo">
+	
+								<option value="">Selecionar</option>
+								<option>Automóvel</option>
+								<option>Motocicleta</option>
+								<option>Microônibus</option>
+								<option>Ônibus</option>
+								<option>Reboque </option>
+								<option>Triciclo</option>
+								<option>Quadriciclo</option>
+								<option>Caminhonete</option>
+								<option>Caminhão</option>
+								<option>Carroça</option>
+								<option>Trator </option>
+								<option>Utilitário</option>
+								<option>Bicicleta</option>
+								
+							</select>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="corVeiculo">Cor:</label>
+						<input type="text" class="form-control" id="corVeiculo" name="corVeiculo" placeholder="Ex.: Branco">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="anoFab">Ano Fabricação:</label>
+						<input type="text" class="form-control" id="anoFab" name="anoFab" placeholder="Ex.: 2019">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="anoMod">Ano Modelo:</label>
+						<input type="text" class="form-control" id="anoMod" name="anoMod" placeholder="Ex.: 2020">
+					</div>
+			</div>
+			<div id="modal-btns">
+					<button type="button" id="btnSalvarVeiculosOcorrencia" name="btnSalvarVeiculosOcorrencia" class="btn btn-success" onclick="salvarVeiculoOcorrencia()">Salvar</button>
+					<button type="button" id="btnSairVeiculosOcorrencia" name="btnSairVeiculosOcorrencia" class="btn btn-danger" onclick="hiddenModalVeiculos()">Fechar</button>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<!-- MODAL CADASTRO DE ENTORPECENTES VIEW--> 
+<!-- Modal -->
+<div id="modal-content-veiculos-view">
+	<div id="modal-tela">
+		<div id="modal-title">
+			<label class="titulo-modal">Cadastro de Veiculos</label>
+			<button type="button" onclick="hiddenModalVeiculosView()" class="btn-close-modal">X</button> 
+		</div>
+			<div id="model-body">
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<fieldset>
+							<legend>Veiculos Ocorrencia</legend>
+							<div class="table-overflow">
+								<table class="table table-striped"
+									id="tabela-veiculos-ocorrencia">
+									<thead>
+										<tr>
+											<td scope="col"><strong>Codigo Veiculo</strong></td>
+											<td scope="col"><strong>Codigo Ocorrencia</strong></td>
+											<td scope="col"><strong>Placa</strong></td>
+											<td scope="col"><strong>Marca</strong></td>
+											<td scope="col"><strong>Modelo</strong></td>
+											<td scope="col"><strong>Tipo</strong></td>
+											<td scope="col"><strong>Cor</strong></td>
+											<td scope="col"><strong>Ano Fabricação</strong></td>
+											<td scope="col"><strong>Ano Modelo</strong></td>
+											<td scope="col"><strong>Ação</strong></td>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+
+		</div>
+</div>
 </body>
  <!-- Adicionando Javascript -->
 <script type="text/javascript">
@@ -913,6 +1021,12 @@
 	function showModalEntorpecentesView() {
 		document.getElementById("modal-content-entorpecentes-view").style.display = "block";
 	}
+	function showModalVeiculos() {
+		document.getElementById("modal-content-veiculos").style.display = "block";
+	}
+	function showModalVeiculosView() {
+		document.getElementById("modal-content-veiculos-view").style.display = "block";
+	}
 	
 // ------------------OCULTAR TELA MODAL		
 	function hiddenModal() {
@@ -947,6 +1061,21 @@
 	}
 	function hiddenModalEntorpecentesView() {
 		document.getElementById("modal-content-entorpecentes-view").style.display = "none";
+		
+	}
+	function hiddenModalVeiculos() {
+		document.getElementById("modal-content-veiculos").style.display = "none";
+		document.getElementById("placaVeiculo").value="";
+		document.getElementById("marcaVeiculo").value="";
+		document.getElementById("modeloVeiculo").value="";
+		document.getElementById("tipoVeiculo").value="";
+		document.getElementById("tipoVeiculo").value="";
+		document.getElementById("corVeiculo").value="";
+		document.getElementById("anoFab").value="";
+		document.getElementById("anoMod").value="";
+	}
+	function hiddenModalVeiculosView() {
+		document.getElementById("modal-content-veiculos-view").style.display = "none";
 		
 	}
 

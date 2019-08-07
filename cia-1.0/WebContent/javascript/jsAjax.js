@@ -317,5 +317,50 @@ function removerEntorpecenteOcorrencia(codigoEntorpecente){
 	})
 } 
 
+function salvarVeiculoOcorrencia(){
+	var placaVeiculo,marcaVeiculo,modeloVeiculo,tipoVeiculo,corVeiculo,anoFabVeiculo,anoModVeiculo,codigoOcorrencia,acao;
+		placaVeiculo=document.getElementById('placaVeiculo').value;
+		marcaVeiculo=document.getElementById('marcaVeiculo').value;
+		modeloVeiculo=document.getElementById('modeloVeiculo').value;
+		tipoVeiculo=document.getElementById('tipoVeiculo').value;
+		corVeiculo=document.getElementById('corVeiculo').value;
+		anoFabVeiculo=document.getElementById('anoFab').value;
+		anoModVeiculo=document.getElementById('anoMod').value;
+		codigoOcorrencia=document.getElementById('codigoOcorrencia').value;
+		acao="salvar";
+		$.ajax({
+			method: "POST",
+			dataType: "json",
+			url: "VeiculoOcorrencia",
+			data:{
+				placa: placaVeiculo,
+				marca: marcaVeiculo,
+				modelo: modeloVeiculo,
+				tipo: tipoVeiculo,
+				cor: corVeiculo,
+				anoFab: anoFabVeiculo,
+				anoMod: anoModVeiculo,
+				codigoOcorrencia: codigoOcorrencia,
+				acao: acao
+			},
+			success: function(data){
+				$('#tabela-veiculos-ocorrencia tbody > tr').remove();
+				document.getElementById('quantidadeVeiculos').innerHTML=data.length;
+				for(var i in data){
+					$('#tabela-veiculos-ocorrencia').append('<tr><td>'+data[i].codigoVeiculo+'</td>'+
+								   '<td>'+data[i].codigoOcorrencia+'</td>'+
+								   '<td>'+data[i].placa+'</td>'+
+							       '<td>'+data[i].marca+'</td>'+
+								   '<td>'+data[i].modelo+'</td>'+
+								   '<td>'+data[i].tipo+'</td>'+
+								   '<td>'+data[i].anoFab+'</td>'+
+								   '<td>'+data[i].anoMod+'</td>'+
+								   '<td><button type="button" class="btn btn btn-danger btn-sm" onclick="removerEntorpecenteOcorrencia('+data[i].codigoVeiculo+')">Remover</button></td></tr>');
+				}
+			}
+		})
+		hiddenModalVeiculos();
+}
+
 
 

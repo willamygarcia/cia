@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -53,6 +54,7 @@ public class OcorrenciaServlet extends HttpServlet {
 			response.getWriter().write(ocorrenciaDao.utimoCodigo());
 			
 		}else if(acao.equals("salvar")) {
+			
 			ocorrenciaBean.setMikeOcorrencia(request.getParameter("mikeOcorrencia"));
 			ocorrenciaBean.setInqueritoOcorrencia(request.getParameter("inqueritoOcorrencia"));
 			ocorrenciaBean.setBoOcorrencia(request.getParameter("boOcorrencia"));
@@ -81,26 +83,58 @@ public class OcorrenciaServlet extends HttpServlet {
 			ocorrenciaBean.setFotosDiversasOcorrencia05(listaFotos.get(4));
 			ocorrenciaBean.setHistoricoOcorrencia(request.getParameter("historicoOcorrencia"));
 			ocorrenciaDao.salvarOcorrencia(ocorrenciaBean);
-			System.out.println("sALVANDO Cadastro");
+			System.out.println("SALVANDO Cadastro");
+			
 		}else if(acao.equals("alterar")) {
-			System.out.println("Alterando");
+			ocorrenciaBean.setCodigoOcorrencia(Integer.parseInt(request.getParameter("codigoOcorrencia")));
+			ocorrenciaBean.setMikeOcorrencia(request.getParameter("mikeOcorrencia"));
+			ocorrenciaBean.setInqueritoOcorrencia(request.getParameter("inqueritoOcorrencia"));
+			ocorrenciaBean.setBoOcorrencia(request.getParameter("boOcorrencia"));
+			ocorrenciaBean.setOutrosOcorrencia(request.getParameter("outrosOcorrencia"));
+			ocorrenciaBean.setGraduacaoOcorrencia(request.getParameter("graduacaoPostoOcorrencia"));
+			ocorrenciaBean.setNumeralOcorrencia(request.getParameter("numeralOcorrencia"));
+			ocorrenciaBean.setMatriculaOcorrencia(request.getParameter("matriculaOcorrencia"));
+			ocorrenciaBean.setNomeGuerraOcorrencia(request.getParameter("nomeGuerraOcorrencia"));
+			ocorrenciaBean.setDataHoraOcorrencia(request.getParameter("dataHoraOcorrencia"));
+			ocorrenciaBean.setDataHoraInicioComunicacao(request.getParameter("dataHoraInicioComunicacao"));
+			ocorrenciaBean.setDataHoraFimComunicacao(request.getParameter("dataHoraFimComunicacao"));
+			ocorrenciaBean.setDelegaciaOcorrencia(request.getParameter("delegaciaOcorrencia"));
+			ocorrenciaBean.setTipoOcorrencia(request.getParameter("tipoOcorrencia"));
+			ocorrenciaBean.setEnderecoOcorrencia(request.getParameter("enderecoOcorrencia"));
+			ocorrenciaBean.setBairroOcorrencia(request.getParameter("bairroOcorrencia"));
+			ocorrenciaBean.setCidadeOcorrencia(request.getParameter("cidadeOcorrencia"));
+			ocorrenciaBean.setReferenciaOcorrencia(request.getParameter("referenciaOcorrencia"));
+			ocorrenciaBean.setDelegadoOcorrencia(request.getParameter("delegadoOcorrencia"));
+			ocorrenciaBean.setEscrivaoOcorrencia(request.getParameter("escrivaoOcorrencia"));
+			ocorrenciaBean.setAutoridadeMilitarOcorrencia(request.getParameter("autoridadeMilitar"));
+			ArrayList<String> listaFotos = encodeFoto("fotoDiversas01", "fotoDiversas02", "fotoDiversas03", "fotoDiversas04", "fotoDiversas05", request);
+			ocorrenciaBean.setFotosDiversasOcorrencia01(listaFotos.get(0));
+			ocorrenciaBean.setFotosDiversasOcorrencia02(listaFotos.get(1));
+			ocorrenciaBean.setFotosDiversasOcorrencia03(listaFotos.get(2));
+			ocorrenciaBean.setFotosDiversasOcorrencia04(listaFotos.get(3));
+			ocorrenciaBean.setFotosDiversasOcorrencia05(listaFotos.get(4));
+			ocorrenciaBean.setHistoricoOcorrencia(request.getParameter("historicoOcorrencia"));
+			ocorrenciaDao.AlterarOcorrencia(ocorrenciaBean);
+			request.setAttribute("alterado", "<script type=\"text/javascript\">alert(\"Ocorrência Salva com Sucesso!!!\");</script>");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroOcorrencia.jsp");
+			dispatcher.forward(request, response);
+			System.out.println("Alterando Cadastro");
 		}
 	}
 	
 	
-	//Codificar fotos em Base64
-		private ArrayList<String> encodeFoto(String fotoDiversa01, String fotoDiversa02, String fotoDiversa03 ,String fotoDiversa04 ,String fotoDiversa05, HttpServletRequest request) {
-		
+//CODIFICAR FOTOS EM BASE64
+		private ArrayList<String> encodeFoto(String fotoDiversas01, String fotoDiversas02, String fotoDiversas03 ,String fotoDiversas04 ,String fotoDiversas05, HttpServletRequest request) {
 			
 			try {
 				ArrayList<String> lista = new ArrayList<String>();
 				if(ServletFileUpload.isMultipartContent(request)) {
 					
-					Part fotoDiversa1Part = request.getPart(fotoDiversa01);
-					Part fotoDiversa2Part = request.getPart(fotoDiversa02);
-					Part fotoDiversa3Part = request.getPart(fotoDiversa03);
-					Part fotoDiversa4Part = request.getPart(fotoDiversa04);
-					Part fotoDiversa5Part = request.getPart(fotoDiversa05);
+					Part fotoDiversa1Part = request.getPart(fotoDiversas01);
+					Part fotoDiversa2Part = request.getPart(fotoDiversas02);
+					Part fotoDiversa3Part = request.getPart(fotoDiversas03);
+					Part fotoDiversa4Part = request.getPart(fotoDiversas04);
+					Part fotoDiversa5Part = request.getPart(fotoDiversas05);
 					
 					new Base64();
 					String foto1 = Base64.encodeBase64String(converterStreamToByte(fotoDiversa1Part.getInputStream()));
@@ -134,7 +168,7 @@ public class OcorrenciaServlet extends HttpServlet {
 			}
 			
 		}
-	//Converte ImputStream em Array de Bytes	
+//CONVERTE ImputStream EM Array DE Bytes
 		private byte[] converterStreamToByte(InputStream inputStream) {
 			try {
 				ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
