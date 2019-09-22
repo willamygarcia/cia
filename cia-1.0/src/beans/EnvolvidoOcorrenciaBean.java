@@ -3,7 +3,7 @@ package beans;
 public class EnvolvidoOcorrenciaBean {
 	
 	private int codigoEnvolvidoOcorrencia;
-	private int codigoOcorrenia;
+	private int codigoOcorrencia;
 	private String graduacaoEnvolvidoOcorrencia;
 	private String numeralEnvolvidoOcorrencia;
 	private String nomeGuerraEnvolvidoOcorrencia;
@@ -15,11 +15,11 @@ public class EnvolvidoOcorrenciaBean {
 	public void setCodigoEnvolvidoOcorrencia(int codigoEnvolvidoOcorrencia) {
 		this.codigoEnvolvidoOcorrencia = codigoEnvolvidoOcorrencia;
 	}
-	public int getCodigoOcorrenia() {
-		return codigoOcorrenia;
+	public int getCodigoOcorrencia() {
+		return codigoOcorrencia;
 	}
-	public void setCodigoOcorrenia(int codigoOcorrenia) {
-		this.codigoOcorrenia = codigoOcorrenia;
+	public void setCodigoOcorrenia(int codigoOcorrencia) {
+		this.codigoOcorrencia = codigoOcorrencia;
 	}
 	public String getGraduacaoEnvolvidoOcorrencia() {
 		return graduacaoEnvolvidoOcorrencia;

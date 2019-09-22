@@ -16,7 +16,7 @@ public class OcorrenciaBean {
 	private String dataHoraFimComunicacao;
 	private String delegaciaOcorrencia;
 	private String tipoOcorrencia;
-	private String EnderecoOcorrencia;
+	private String enderecoOcorrencia;
 	private String bairroOcorrencia;
 	private String cidadeOcorrencia;
 	private String referenciaOcorrencia;
@@ -87,6 +87,14 @@ public class OcorrenciaBean {
 	public String getDataHoraOcorrencia() {
 		return dataHoraOcorrencia;
 	}
+	public String getDataHoraOcorrenciaFormato(String data) {
+		if(data == "" || data == null) {
+			return "0000-00-00T00:00:00";			
+		}
+		String dataFormato = data.replaceAll(" ", "T");
+		return dataFormato;
+				
+	}
 	public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
 		if(dataHoraOcorrencia.equalsIgnoreCase("")) {
 			this.dataHoraOcorrencia = null;
@@ -128,10 +136,10 @@ public class OcorrenciaBean {
 		this.tipoOcorrencia = tipoOcorrencia;
 	}
 	public String getEnderecoOcorrencia() {
-		return EnderecoOcorrencia;
+		return enderecoOcorrencia;
 	}
 	public void setEnderecoOcorrencia(String enderecoOcorrencia) {
-		EnderecoOcorrencia = enderecoOcorrencia;
+		this.enderecoOcorrencia = enderecoOcorrencia;
 	}
 	public String getBairroOcorrencia() {
 		return bairroOcorrencia;

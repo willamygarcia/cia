@@ -27,7 +27,7 @@ public class EnvolvioOcorrenciaDao {
 		
 		try {
 			PreparedStatement pst = connection.prepareStatement(sql);
-			pst.setInt(1, envolvido.getCodigoOcorrenia());
+			pst.setInt(1, envolvido.getCodigoOcorrencia());
 			pst.setString(2, envolvido.getGraduacaoEnvolvidoOcorrencia());
 			pst.setString(3, envolvido.getNumeralEnvolvidoOcorrencia());
 			pst.setString(4, envolvido.getNomeGuerraEnvolvidoOcorrencia());
@@ -52,7 +52,7 @@ public class EnvolvioOcorrenciaDao {
 		String sql ="SELECT * FROM tblenvolvidoocorrencia WHERE codigoOcorrencia = ?";
 		try {
 			PreparedStatement pst = connection.prepareStatement(sql);
-			pst.setInt(1, envolvido.getCodigoOcorrenia());
+			pst.setInt(1, envolvido.getCodigoOcorrencia());
 			ResultSet rs = pst.executeQuery();
 		
 			while(rs.next()) {

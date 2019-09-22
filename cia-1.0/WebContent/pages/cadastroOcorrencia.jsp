@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -78,23 +79,23 @@
 									<div class="form-row">
 										<div class="form-group col-md-2">
 											<label for="codigoOcorrencia">Codigo</label>
-											<input type="text" class="form-control" id="codigoOcorrencia" name="codigoOcorrencia" placeholder="Automatico" readonly="readonly" value="76">
+											<input type="text" class="form-control" id="codigoOcorrencia" name="codigoOcorrencia" placeholder="Automatico" readonly="readonly" value="${ocorrencia.codigoOcorrencia}">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="mikeOcorrencia">Mike da Ocorrência</label>
-											<input type="text" class="form-control" id="mikeOcorrencia" name="mikeOcorrencia" placeholder="Mike" value="${ocorrencia.codigo}">
+											<input type="text" class="form-control" id="mikeOcorrencia" name="mikeOcorrencia" placeholder="Mike" value="${ocorrencia.mikeOcorrencia}">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="inqueritoOcorrencia">Inquerio</label>
-											<input type="text" class="form-control" id="inqueritoOcorrencia" name="inqueritoOcorrencia" placeholder="Inquerito" value="${ocorrencia.codigo}">
+											<input type="text" class="form-control" id="inqueritoOcorrencia" name="inqueritoOcorrencia" placeholder="Inquerito" value="${ocorrencia.inqueritoOcorrencia}">
 										</div>
 										<div class="form-group col-md-2">
-											<label for="boOcorrencia">Boletem de Ocorrência</label>
-											<input type="text" class="form-control" id="boOcorrencia" name="boOcorrencia" placeholder="Boletim de Ocorrência" value="${ocorrencia.codigo}">
+											<label for="boOcorrencia">Boletim de Ocorrência</label>
+											<input type="text" class="form-control" id="boOcorrencia" name="boOcorrencia" placeholder="Boletim de Ocorrência" value="${ocorrencia.boOcorrencia}">
 										</div>
 										<div class="form-group col-md-4">
 											<label for="outrosOcorrencia">Outros</label>
-											<input type="text" class="form-control" id="outrosOcorrencia" name="outrosOcorrencia" placeholder="Outros" value="${ocorrencia.codigo}">
+											<input type="text" class="form-control" id="outrosOcorrencia" name="outrosOcorrencia" placeholder="Outros" value="${ocorrencia.outrosOcorrencia}">
 										</div>
 									</div>	
 									<div class="form-row">	
@@ -105,8 +106,9 @@
 										<div class="form-group col-md-2">
 											<label for="graduacaoPostoOcorrencia">Graduação/Posto</label>
 											<select id="graduacaoPostoOcorrencia" name="graduacaoPostoOcorrencia" class="form-control">
-																						
-												<option value="">Selecionar</option>
+												
+												<c:if test="${ocorrencia.graduacaoOcorrencia == ''}"><option value="">Selecionar</option></c:if>
+												<c:if test="${ocorrencia.graduacaoOcorrencia != ''}">${ocorrencia.graduacaoOcorrencia}</c:if>										
 												<option>Soldado</option>
 												<option>Cabo</option>
 												<option>3º Sargento</option>
@@ -124,15 +126,15 @@
 										</div>
 										<div class="form-group col-md-1">
 											<label for="numeralOcorrencia">Numeral</label>
-											<input type="text" class="form-control" id="numeralOcorrencia" name="numeralOcorrencia" placeholder="Numeral" value="${ocorrencia.alcunha}">
+											<input type="text" class="form-control" id="numeralOcorrencia" name="numeralOcorrencia" placeholder="Numeral" value="${ocorrencia.numeralOcorrencia}">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="matriculaOcorrencia">Matricula</label>
-											<input type="text" class="form-control" id="matriculaOcorrencia" name="matriculaOcorrencia" value="${ocrrencia.nascimento}">
+											<input type="text" class="form-control" id="matriculaOcorrencia" name="matriculaOcorrencia" value="${ocorrencia.matriculaOcorrencia}">
 										</div>
 										<div class="form-group col-md-4">
 											<label for="nomeGuerraOcorrencia">Nome de Guerra</label>
-											<input type="text" class="form-control" id="nomeGuerraOcorrencia" name="nomeGuerraOcorrencia" placeholder="Nome de Guerra" value="${ocorrencia.nascimento}" >
+											<input type="text" class="form-control" id="nomeGuerraOcorrencia" name="nomeGuerraOcorrencia" placeholder="Nome de Guerra" value="${ocorrencia.nomeGuerraOcorrencia}" >
 										</div>
 										<div class="form-group col-md-2">
 											<label for="iniciarCadastro"> Clique para Iniciar o Cadastro</label>
@@ -168,6 +170,21 @@
 															</tr>
 														</thead>
 														<tbody>
+															<c:forEach items="${envolvidos}" var="listaEnvolvidos">
+																<tr>
+																	<td scope="row"><c:out value="${listaEnvolvidos.codigoEnvolvidoOcorrencia}"></c:out></td>
+																	<td><c:out value="${listaEnvolvidos.codigoOcorrencia}"></c:out></td>
+																	<td><c:out value="${listaEnvolvidos.graduacaoEnvolvidoOcorrencia}"></c:out></td>
+																	<td><c:out value="${listaEnvolvidos.numeralEnvolvidoOcorrencia}"></c:out></td>
+																	<td><c:out value="${listaEnvolvidos.nomeGuerraEnvolvidoOcorrencia}"></c:out></td>
+																	<td><c:out value="${listaEnvolvidos.matriculaEnvolvidoOcorrencia}"></c:out></td>
+																	<td><c:out value="${listaEnvolvidos.informacoesEnvolvidoOcorrencia}"></c:out></td>
+																	<td><a href="Ocorrencia?acao=excluir&codigo=${listaEnvolvidos.codigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Remover</a>
+																	</td>
+					
+																</tr>
+					
+															</c:forEach>
 														</tbody>
 													</table>
 												</div>
@@ -183,23 +200,23 @@
 								<br>
 								<div class="form-row">
 									<div class="form-group col-md-2">
-										<label for="dataHoraOcorrencia">Data/Hora da Ocorrêcia</label>
-										<input type="datetime-local" class="form-control" id="dataHoraOcorrencia" name="dataHoraOcorrencia" value="${cidadao.dataUtimaInfracao}">
-									</div>
+										<label for="dataHoraOcorrencia">Data/Hora da Ocorrêcia</label><!-- ${ocorrencia.dataHoraOcorrencia} -->
+										<input type="datetime-local" class="form-control" id="dataHoraOcorrencia" name="dataHoraOcorrencia" value="${dataHoraFormato}">
+									</div>--
 									<div class="form-group col-md-2">
 										<label for="dataHoraInicioComunicacao">Data/Hora Inicio da Comunicação</label>
-										<input type="datetime-local" class="form-control" id="dataHoraInicioComunicacao" name="dataHoraInicioComunicacao" value="${cidadao.dataUtimaInfracao}">
+										<input type="datetime-local" class="form-control" id="dataHoraInicioComunicacao" name="dataHoraInicioComunicacao" value="${ocorrencia.dataHoraInicioComunicacao}">
 									</div>
 									<div class="form-group col-md-2">
 										<label for="dataHoraFimComunicacao">Data/Hora Fim da Comunicação</label>
-										<input type="datetime-local" class="form-control" id="dataHoraFimComunicacao" name="dataHoraFimComunicacao" value="${cidadao.dataUtimaInfracao}">
+										<input type="datetime-local" class="form-control" id="dataHoraFimComunicacao" name="dataHoraFimComunicacao" value="${ocorrencia.dataHoraFimComunicacao}">
 									</div>
 									<div class="form-group col-md-2">
 										<label for="delegaciaOcorrencia">Delegacia</label>
 										<select id="delegaciaOcorrencia" name="delegaciaOcorrencia" class="form-control">
 											
-											${opcao1}${cidadao.delegacia}${opcao2}
-											<option value="">Selecionar Delegacia</option>
+											<c:if test="${ocorrencia.delegaciaOcorrencia == ''}"><option value="">Selecionar Delegacia</option></c:if>
+											<c:if test="${ocorrencia.delegaciaOcorrencia != ''}">${ocorrencia.delegaciaOcorrencia}</c:if>
 											<option>1º Distrito Policial</option>
 											<option>2º Distrito Policial</option>
 											<option>3º Distrito Policial</option>
@@ -240,8 +257,8 @@
 									<div class="form-group col-md-4">
 										<label for="tipoOcorrencia">Tipo de Ocorrência</label>
 										<select id="tipoOcorrencia" name="tipoOcorrencia" class="form-control">
-											${opcaoF1}${cidadao.faccao}${opcaoF2}
-											<option value="">Selecionar</option>
+											<c:if test="${ocorrencia.tipoOcorrencia == ''}"><option value="">Selecionar</option></c:if>
+											<c:if test="${ocorrencia.tipoOcorrencia != ''}">${ocorrencia.tipoOcorrencia}</c:if>
 											<option>Flagrante</option>
 											<option>Auto de Apresentação</option>
 											<option>TCO</option>
@@ -253,15 +270,15 @@
 								<div class="form-row">
 									<div class="form-group col-md-4">
 										<label for="enderecoOcorrencia">Endereço da Ocorrência</label>
-										<input type="text" class="form-control" id="enderecoOcorrencia" name="enderecoOcorrencia" placeholder="Endereço da Ocorrência" value="${cidadao.endOcorrencia}">
+										<input type="text" class="form-control" id="enderecoOcorrencia" name="enderecoOcorrencia" placeholder="Endereço da Ocorrência" value="${ocorrencia.enderecoOcorrencia}">
 									</div>
 									<div class="form-group col-md-2">
 										<label for="bairroOcorrencia">Bairro</label>
-										<input type="text"	class="form-control" id="bairroOcorrencia" name="bairroOcorrencia" placeholder="Bairro da Ocorrencia" value="${cidadao.bairroOcorrencia}">
+										<input type="text"	class="form-control" id="bairroOcorrencia" name="bairroOcorrencia" placeholder="Bairro da Ocorrencia" value="${ocorrencia.bairroOcorrencia}">
 									</div>
 									<div class="form-group col-md-2">
 										<label for="cidadeOcorrencia ">Cidade</label>
-										<input type="text" class="form-control" id="cidadeOcorrencia" name="cidadeOcorrencia" placeholder="Cidade da Ocorrencia" value="${cidadao.cidadeOcorrencia}">
+										<input type="text" class="form-control" id="cidadeOcorrencia" name="cidadeOcorrencia" placeholder="Cidade da Ocorrencia" value="${ocorrencia.cidadeOcorrencia}">
 									</div>
 									<div class="form-group col-md-4">
 										<label for="referenciaOcorrencia">Ponto de Referencia</label>
@@ -271,15 +288,15 @@
 								<div class="form-row">
 									<div class="form-group col-md-4">
 										<label for="delegadoOcorrencia">Delegado</label>
-										<input type="text" class="form-control" id="delegadoOcorrencia" name="delegadoOcorrencia" maxlength="10" placeholder="Informe Nome do(a) Delegado(a)">
+										<input type="text" class="form-control" id="delegadoOcorrencia" name="delegadoOcorrencia" maxlength="10" placeholder="Informe Nome do(a) Delegado(a)" value="${ocorrencia.delegadoOcorrencia}">
 									</div>
 									<div class="form-group col-md-4">
 										<label for="escrivaoOcorrencia">Escrivão</label>
-										<input type="text" class="form-control" id="escrivaoOcorrencia" name="escrivaoOcorrencia" maxlength="10" placeholder="Informe Nome do(a) Escrivã(o)">
+										<input type="text" class="form-control" id="escrivaoOcorrencia" name="escrivaoOcorrencia" maxlength="10" placeholder="Informe Nome do(a) Escrivã(o)" value="${ocorrencia.escrivaoOcorrencia}">
 									</div>
 									<div class="form-group col-md-4">
 										<label for="autoridadeMilitar">Autoridade Militar</label>
-										<input type="text" class="form-control" id="autoridadeMilitar" name="autoridadeMilitar" maxlength="10" placeholder="Informe a Autoridade Militar">
+										<input type="text" class="form-control" id="autoridadeMilitar" name="autoridadeMilitar" maxlength="10" placeholder="Informe a Autoridade Militar" value="${ocorrencia.autoridadeMilitarOcorrencia}">
 									</div>
 								
 								</div>
@@ -331,6 +348,19 @@
 															</tr>
 														</thead>
 														<tbody>
+															<c:forEach items="${processos}" var="listaProcessos">
+																<tr>
+																	<td scope="row"><c:out value="${listaProcessos.codigoOrdenamentoOcorrencia}"></c:out></td>
+																	<td><c:out value="${listaProcessos.codigoOcorrencia}"></c:out></td>
+																	<td><c:out value="${listaProcessos.leiOrdenamentoOcorrencia}"></c:out></td>
+																	<td><c:out value="${listaProcessos.artigoOrdenamentoOcorrencia}"></c:out></td>
+																	<td><c:out value="${listaProcessos.paragrafoOrdenamentoOcorrencia}"></c:out></td>
+																	<td><a href="Ocorrencia?acao=excluir&codigo=${listaEnvolvidos.codigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Remover</a>
+																	</td>
+					
+																</tr>
+					
+															</c:forEach>
 														</tbody>
 													</table>
 												</div>
@@ -344,11 +374,12 @@
 							<label for="tab3" class="tab_label">Materiais</label>
 	
 							<div class="tab-content">
+									<br>
 									<h4>Armas / Entorpecentes / Veiculos</h4>
 									<div class="form-row">
 										<div class="form-group col-md-1">
 											<label for="quantidadeArma">QUANTIDADE</label><br>
-											<label id="quantidadeArma" onclick="showModalArmasView();" style="cursor: pointer; font-weight: bold;">0</label><br>
+											<label id="quantidadeArma" onclick="showModalArmasView();" style="cursor: pointer; font-weight: bold;">${quantidadeArmas}</label><br>
 										</div>
 										<div class="form-group col-md-2">
 											<label for="adicionarArma">Adicionar Armas</label><br>
@@ -356,7 +387,7 @@
 										</div>
 										<div class="form-group col-md-1">
 											<label for="quantidadeEntorpecentes">QUANTIDADE</label><br>
-											<label id="quantidadeEntorpecentes" onclick="showModalEntorpecentesView()" style="cursor: pointer; font-weight: bold;">0</label><br>
+											<label id="quantidadeEntorpecentes" onclick="showModalEntorpecentesView()" style="cursor: pointer; font-weight: bold;">${quantidadeEntorpecentes}</label><br>
 										</div>
 										<div class="form-group col-md-2">
 											<label for="adicionarEntorpecentes">Adicionar Entorpecentes</label><br>
@@ -364,44 +395,18 @@
 										</div>
 										<div class="form-group col-md-1">
 											<label for="quantidadeVeiculos">QUANTIDADE</label><br>
-											<label id="quantidadeVeiculos" onclick="showModalVeiculosView();" style="cursor: pointer; font-weight: bold;">0</label><br>
+											<label id="quantidadeVeiculos" onclick="showModalVeiculosView();" style="cursor: pointer; font-weight: bold;">${quantidadeVeiculos}</label><br>
 										</div>
 										<div class="form-group col-md-2">
 											<label for="adicionarVeiculos">Adicionar Veiculos</label><br>
 											<button type="button" id="adicionarVeiculos" class="btn btn-dark" onclick="showModalVeiculos()">Adicionar</button>
 										</div>
 									</div>
-									<h4>Veiculos</h4>
-									<div class="form-row">
-										<div class="form-group col-md-1">
-											<label for="placa">Placa</label>
-											<input type="text" class="form-control" id="placa" name="placa" aria-describedby="placaHelp" placeholder="AAA9999" value="${cidadao.tatuPescoco}">
-										</div>
-										<div class="form-group col-md-2">
-											<label for="chassi">Chassi</label>
-											<input type="text" class="form-control" id="chassi" name="chassi" aria-describedby="chassiHelp" placeholder="Chassi" value="${cidadao.tatuPescoco}">
-										</div>
-										<div class="form-group col-md-2">
-											<label for="marca">Marca/Modelo</label>
-											<input type="text" class="form-control" id="marca" name="marca" aria-describedby="marcaHelp" placeholder="Informe Marca e Modelo" value="${cidadao.tatuPescoco}">
-										</div>
-										<div class="form-group col-md-2">
-											<label for="cor">Cor</label>
-											<input type="text" class="form-control" id="cor" name="cor" aria-describedby="corHelp" placeholder="Informe a Cor" value="${cidadao.tatuPescoco}">
-										</div>
-										<div class="form-group col-md-1">
-											<label for="ano">Ano/Ano</label>
-											<input type="text" class="form-control" id="ano" name="ano" aria-describedby="anoHelp" placeholder="Ex:2009/2010" value="${cidadao.tatuPescoco}">
-										</div>
-										<div class="form-group col-md-2">
-											<label for="adicionarVeiculo">Clique para Adicionar a Veiculo</label><br>
-										<button type="button" id="adicionarVeiculo" class="btn btn-dark" onclick="adicionarVeiculo()">Adicionar</button>
-										</div>
-									</div>
+									<br>
+									<h4>Informações/Observações Complementares</h4>
+									<br>
 									<div class="form-group col-md-12">
-									
-										<textarea class="form-control" cols=60 id="veiculos" name="veiculos" rows="3" maxlength="500" wrap="hard" placeholder="Placa, Chassi, Marca/Modelo,Cor, Ano/Ano">${cidadao.historicoJuridico}</textarea>
-								
+										<textarea class="form-control" cols=60 id="informcoesMateriais" name="informcoesMateriais" rows="5" maxlength="500" wrap="hard" placeholder="Informações Complementares"></textarea>
 									</div>
 						
 						
@@ -415,47 +420,47 @@
 								<figure class="fotos-cidadao">
 									<div class="container-foto">
 										<label for="fotoDiversas01">Adicionar Fotos Diversas</label> 
-										<input type="file" id="fotoDiversas01" name="fotoDiversas01" accept="image/jpeg, image/jpg">
+										<input type="file" id="fotoDiversas01" name="fotoDiversas01" accept="image/jpeg, image/jpg" value="${ocorrencia.fotosDiversasOcorrencia01}">
 	
 										<div class="fotos">
-											<img alt="fotoDiversas1" id="fotoDiversas1" src="<c:if test='${cidadao.fotoFrente == null}'> ../img/camera-p.png  </c:if>
-																						 <c:if test='${cidadao.fotoFrente != null}'> ${cidadao.fotoFrente} </c:if>">
+											<img alt="fotoDiversas1" id="fotoDiversas1" src="<c:if test='${ocorrencia.fotosDiversasOcorrencia01 == null}'> ../img/camera-p.png  </c:if>
+																						     <c:if test='${ocorrencia.fotosDiversasOcorrencia01 != null}'> ${ocorrencia.fotosDiversasOcorrencia01} </c:if>">
 										</div>
 									</div>
 									<div class="container-foto">
 										<label for="fotoDiversas02">Adicionar Fotos Diversas</label>
-										<input type="file" id="fotoDiversas02" name="fotoDiversas02" accept="image/jpeg,image/jpg" value="${cidadao.fotoLado}">
+										<input type="file" id="fotoDiversas02" name="fotoDiversas02" accept="image/jpeg,image/jpg" value="${ocorrencia.fotosDiversasOcorrencia02}">
 	
 										<div class="fotos">
-											<img alt="fotoDiversas2" id="fotoDiversas2" name="fotoDiversas2" src="<c:if test='${cidadao.fotoLado == null}'> ../img/camera-p.png  </c:if>
-																						 			   <c:if test='${cidadao.fotoLado != null}'> ${cidadao.fotoLado} </c:if>">
+											<img alt="fotoDiversas2" id="fotoDiversas2" name="fotoDiversas2" src="<c:if test='${ocorrencia.fotosDiversasOcorrencia02 == null}'> ../img/camera-p.png  </c:if>
+																						 			   <c:if test='${ocorrencia.fotosDiversasOcorrencia02 != null}'> ${ocorrencia.fotosDiversasOcorrencia02} </c:if>">
 										</div>
 									</div>
 									<div class="container-foto">
 										<label for="fotoDiversas03">Adicionar Foto Diversas</label>
-										<input type="file" id="fotoDiversas03" name="fotoDiversas03" accept="image/jpeg,image/jpg" value="${cidadao.fotoCostas}">
+										<input type="file" id="fotoDiversas03" name="fotoDiversas03" accept="image/jpeg,image/jpg" value="${ocorrencia.fotosDiversasOcorrencia03}">
 		
 										<div class="fotos">
-											<img alt="fotoDiversas3" id="fotoDiversas3" name="fotoDiversas3" src="<c:if test='${cidadao.fotoCostas == null}'> ../img/camera-p.png  </c:if>
-																						 			  	     <c:if test='${cidadao.fotoCostas != null}'> ${cidadao.fotoCostas} </c:if>">
+											<img alt="fotoDiversas3" id="fotoDiversas3" name="fotoDiversas3" src="<c:if test='${ocorrencia.fotosDiversasOcorrencia03 == null}'> ../img/camera-p.png  </c:if>
+																						 			  	     <c:if test='${ocorrencia.fotosDiversasOcorrencia03 != null}'> ${ocorrencia.fotosDiversasOcorrencia03} </c:if>">
 										</div>
 									</div>
 									<div class="container-foto">
 										<label for="fotoDiversas04">Adicionar Fotos Diversas</label>
-										<input type="file" id="fotoDiversas04" name="fotoDiversas04" accept="image/jpeg,image/jpg" value="${cidadao.fotoDiversas01}">
+										<input type="file" id="fotoDiversas04" name="fotoDiversas04" accept="image/jpeg,image/jpg" value="${ocorrencia.fotosDiversasOcorrencia04}">
 	
 										<div class="fotos">
-											<img alt="fotoDiversas4" id="fotoDiversas4" name="fotoDiversas4" src="<c:if test='${cidadao.fotoDiversas01 == null}'> ../img/camera-p.png </c:if>
-																						 			  	   				 <c:if test='${cidadao.fotoDiversas01 != null}'> ${cidadao.fotoDiversas01} </c:if>">
+											<img alt="fotoDiversas4" id="fotoDiversas4" name="fotoDiversas4" src="<c:if test='${ocorrencia.fotosDiversasOcorrencia04 == null}'> ../img/camera-p.png </c:if>
+																						 			  	   				 <c:if test='${ocorrencia.fotosDiversasOcorrencia04 != null}'> ${ocorrencia.fotosDiversasOcorrencia04} </c:if>">
 										</div>
 									</div>
 									<div class="container-foto">
 										<label for="fotoDiversas05">Adicionar Fotos Diversas</label>
-										<input type="file" id="fotoDiversas05" name="fotoDiversas05" accept="image/jpeg,.jpg" value="${cidadao.fotoDiversas02}">
+										<input type="file" id="fotoDiversas05" name="fotoDiversas05" accept="image/jpeg,.jpg" value="${ocorrencia.fotosDiversasOcorrencia05}">
 	
 										<div class="fotos">
-											<img alt="fotoDiversas5" id="fotoDiversas5" name="fotoDiversas5" src="<c:if test='${cidadao.fotoDiversas02 == null}'> ../img/camera-p.png </c:if>
-																						 			  	   				 <c:if test='${cidadao.fotoDiversas02 != null}'> ${cidadao.fotoDiversas02} </c:if>">
+											<img alt="fotoDiversas5" id="fotoDiversas5" name="fotoDiversas5" src="<c:if test='${ocorrencia.fotosDiversasOcorrencia05 == null}'> ../img/camera-p.png </c:if>
+																						 			  	   				 <c:if test='${ocorrencia.fotosDiversasOcorrencia05 != null}'> ${ocorrencia.fotosDiversasOcorrencia05} </c:if>">
 										</div>
 									</div>
 								</figure>
@@ -471,7 +476,7 @@
 										<legend>Historico</legend>
 										<label for="historicoOcorrencia"></label> Informe com detalhes um breve historico sobre a ocorrência: 
 										<br>
-										<textarea class="form-control" cols=60 id="historicoOcorrencia" name="historicoOcorrencia" rows="15" maxlength="500" wrap="hard" placeholder="envolvidos, data, hora, endereço, mike da ocorrência, artigos...">${cidadao.historico}</textarea>
+										<textarea class="form-control" cols=60 id="historicoOcorrencia" name="historicoOcorrencia" rows="15" maxlength="500" wrap="hard" placeholder="envolvidos, data, hora, endereço, mike da ocorrência, artigos...">${ocorrencia.historicoOcorrencia}</textarea>
 									</fieldset>
 	
 								</div>
@@ -494,24 +499,26 @@
 													<thead>
 														<tr>
 															<td scope="col"><strong>Codigo</strong></td>
-															<td scope="col"><strong>Nome</strong></td>
-															<td scope="col"><strong>Mãe</strong></td>
-															<td scope="col"><strong>Nascimento</strong></td>
+															<td scope="col"><strong>Mike</strong></td>
+															<td scope="col"><strong>Noticiante</strong></td>
 															<td scope="col"><strong>Bairro</strong></td>
+															<td scope="col"><strong>Data</strong></td>
 															<td scope="col"><strong>Ação</strong></td>
 														</tr>
 													</thead>
 													<tbody>
 														<c:forEach items="${consultaTotal}" var="lista">
 															<tr>
-																<td scope="row"><c:out value="${lista.codigo}"></c:out></td>
-																<td><c:out value="${lista.nome}"></c:out></td>
-																<td><c:out value="${lista.mae}"></c:out></td>
-																<td><c:out value="${lista.nascimento}"></c:out></td>
-																<td><c:out value="${lista.bairro}"></c:out></td>
-																<td><a href="Cidadao?acao=editar&codigo=${lista.codigo}" class="btn btn-secondary btn-sm">Editar</a>
-																	<a href="Cidadao?acao=excluir&codigo=${lista.codigo}" class="btn btn-danger btn-sm">Excluir</a>
-																	<a href="Cidadao?acao=visualizar&codigo=${lista.codigo}"  target="_blank" class="btn btn-info btn-sm">Visualizar</a>
+																<td scope="row"><c:out value="${lista.codigoOcorrencia}"></c:out></td>
+																<td><c:out value="${lista.mikeOcorrencia}"></c:out></td>
+																<td><c:out value="${lista.nomeGuerraOcorrencia}"></c:out></td>
+																<td><c:out value="${lista.bairroOcorrencia}"></c:out></td>
+																<fmt:parseDate value="${lista.dataHoraOcorrencia}" pattern="yyyy-MM-dd HH:mm:ss" var="myDate"/>
+																<td><fmt:formatDate pattern="dd-MM-yyyy HH:mm:ss" value="${myDate}"/></td>
+																<!--<td><c:out value="${lista.dataHoraOcorrencia}"></c:out></td>-->
+																<td><a href="Ocorrencia?acao=editar&codigo=${lista.codigoOcorrencia}" class="btn btn-secondary btn-sm">Editar</a>
+																	<a href="Ocorrencia?acao=excluir&codigo=${lista.codigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Excluir</a>
+																	<a href="Ocorrencia?acao=visualizar&codigo=${lista.codigoOcorrencia}"  target="_blank" class="btn btn-info btn-sm">Visualizar</a>
 																</td>
 		
 															</tr>
@@ -526,21 +533,16 @@
 									<article class="lado-direito">
 											<fieldset>
 												<legend>Entradas para Consulta:</legend>
-												${salvo}
-												${editado}
-												${alterado}
-												${excluido}
 												<div class="form-row">
-	
 													<div class="form-group col-md-12">
-														<label for="nomeConsulta">Nome:</label>
-														<input type="text" class="form-control" id="nomeConsulta" aria-describedby="nomeConsultaHelp" placeholder="Nome" name="nomeConsulta">
+														<label for="mikeConsulta">Mike:</label>
+														<input type="text" class="form-control" id="mikeConsulta" aria-describedby="mikeConsultaHelp" placeholder="Ex.:M20201231232" name="mikeConsulta">
 													</div>
 												</div>
 												<div class="form-row">
 													<div class="form-group col-md-12">
-														<label for="maeCidadaoConsulta">Mãe:</label>
-														<input type="text" class="form-control" id="maeCidadaoConsulta" aria-describedby="maeCidadaoConsultaHelp" placeholder="Nome da Mãe do Cidadão" name="maeCidadaoConsulta">
+														<label for="noticianteOcorrenciaConsulta">Noticiante:</label>
+														<input type="text" class="form-control" id="noticianteOcorrenciaConsulta" aria-describedby="noticianteOcorrenciaConsultaHelp" placeholder="Informe Noticiante" name="noticianteOcorrenciaConsulta">
 													</div>
 												</div>	
 												<div class="form-row">
@@ -551,11 +553,8 @@
 															name="bairroConsulta">
 													</div>
 													<div class="form-group col-md-12">
-														<label for="atuacaoConsulta">Area de Atuação:</label> <input
-															type="text" class="form-control" id="atuacaoConsulta"
-															aria-describedby="atuacaoConsultaHelp"
-															placeholder="Bairro da Area de Atuação do tan:"
-															name="atuacaoConsulta">
+														<label for="dataOcorrenciaConsulta">Data da Ocorrencia:</label> <input
+															type="date" class="form-control" id="dataOcorrenciaConsulta" aria-describedby="dataOcorrenciaConsultaHelp" placeholder="Informe a data da Ocorrencia" name="dataOcorrenciaConsulta">
 													</div>
 	
 	
@@ -755,6 +754,21 @@
 										</tr>
 									</thead>
 									<tbody>
+										<c:forEach items="${armas}" var="listaArmas">
+											<tr>
+												<td scope="row"><c:out value="${listaArmas.codigoArma}"></c:out></td>
+												<td><c:out value="${listaArmas.codigoOcorrencia}"></c:out></td>
+												<td><c:out value="${listaArmas.serieArma}"></c:out></td>
+												<td><c:out value="${listaArmas.tipoArma}"></c:out></td>
+												<td><c:out value="${listaArmas.funcionamentoArma}"></c:out></td>
+												<td><c:out value="${listaArmas.marcaArma}"></c:out></td>
+												<td><c:out value="${listaArmas.calibreArma}"></c:out></td>
+												<td><c:out value="${listaArmas.capacidadeArma}"></c:out></td>
+												<td><c:out value="${listaArmas.informacoesArama}"></c:out></td>
+												<td><a href="Ocorrencia?acao=excluir&codigo=${listaArmas.codigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Remover</a>
+												</td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
@@ -847,6 +861,19 @@
 										</tr>
 									</thead>
 									<tbody>
+										<c:forEach items="${entorpecentes}" var="listaEntorpecentes">
+											<tr>
+												<td scope="row"><c:out value="${listaEntorpecentes.codigoEntorpecenteOcorrencia}"></c:out></td>
+												<td><c:out value="${listaEntorpecentes.entorpCodigoOcorrencia}"></c:out></td>
+												<td><c:out value="${listaEntorpecentes.nomeEntorpecenteOcorrencia}"></c:out></td>
+												<td><c:out value="${listaEntorpecentes.qtdUnEntorpecenteOcorrencia}"></c:out></td>
+												<td><c:out value="${listaEntorpecentes.qtdKgEntorpecenteOcorrencia}"></c:out></td>
+												<td><c:out value="${listaEntorpecentes.informacoesEntorpecenteOcorrencia}"></c:out></td>
+												<td><a href="Ocorrencia?acao=excluir&codigo=${listaEntorpecentes.entorpCodigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Remover</a></td>
+
+											</tr>
+
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
@@ -955,6 +982,21 @@
 										</tr>
 									</thead>
 									<tbody>
+										<c:forEach items="${veiculos}" var="listaVeiculos">
+											<tr>
+												<td scope="row"><c:out value="${listaVeiculos.codigoVeiculoOco}"></c:out></td>
+												<td><c:out value="${listaVeiculos.codigoOcorrencia}"></c:out></td>
+												<td><c:out value="${listaVeiculos.placaVeiculoOco}"></c:out></td>
+												<td><c:out value="${listaVeiculos.maracaVeiculoOco}"></c:out></td>
+												<td><c:out value="${listaVeiculos.modeloVeiculoOco}"></c:out></td>
+												<td><c:out value="${listaVeiculos.tipoVeiculoOco}"></c:out></td>
+												<td><c:out value="${listaVeiculos.corVeiculoOco}"></c:out></td>
+												<td><c:out value="${listaVeiculos.anoFabVeiculoOco}"></c:out></td>
+												<td><c:out value="${listaVeiculos.anoModVeiculoOco}"></c:out></td>
+												<td><a href="Ocorrencia?acao=excluir&codigo=${listaVeiculos.codigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Remover</a>
+												</td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
@@ -965,6 +1007,10 @@
 
 		</div>
 </div>
+${salvo}
+${editado}
+${alterado}
+${excluido}
 </body>
  <!-- Adicionando Javascript -->
 <script type="text/javascript">
@@ -995,6 +1041,7 @@
 			document.getElementById('tab3').disabled=false;
 			document.getElementById('tab4').disabled=false;
 			document.getElementById('tab5').disabled=false;
+			
 		}
 		
 	}
@@ -1127,7 +1174,7 @@
 	function acaoBotaoOcorrencia(acao){
 		var codigo;
 		codigo = document.getElementById('codigoOcorrencia').value;
-		if(codigo == "" || codigo == null){
+		if((codigo == "" || codigo == null) && (acao == "")){
 			document.getElementById('frm-cadOcorrencia').action = "Ocorrencia?acao=" + 'salvar';
 			document.getElementById('frm-cadOcorrencia').submit();
 		}else{

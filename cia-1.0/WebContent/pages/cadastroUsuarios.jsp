@@ -147,7 +147,7 @@
 													<td><c:out value="${lista.nivelUsuarios}"></c:out></td>
 													<td>
 														<a href="CadastrarUsuario?acao=editar&acaoConsulta=editar&codigoUsuarios=${lista.codigoUsuarios}" class="btn btn-secondary btn-sm">Editar</a>
-														<a href="CadastrarUsuario?acao=del&acaoConsulta&codigoUsuarios=${lista.codigoUsuarios}" class="btn btn-danger btn-sm">Excluir</a>
+														<a href="CadastrarUsuario?acao=del&acaoConsulta&codigoUsuarios=${lista.codigoUsuarios}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Excluir</a>
 														<a href="#" class="btn btn-info btn-sm">Visualizar</a>
 													</td>
 												</tr>

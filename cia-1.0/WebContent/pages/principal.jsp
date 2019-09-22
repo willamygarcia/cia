@@ -48,7 +48,7 @@
 	
 				<li class="active"><a href="/cia-1.0/pages/cadastroCidadao.jsp">Cadastro do Cidadão</a></li>
 				<li><a href="/cia-1.0/pages/cadastroUsuarios.jsp">Cadastro de Usuarios</a></li>
-				<li><a href="/cia-1.0/pages/cadastroOcorrencia.jsp">Cadastro de Ocorência</a></li>
+				<li><a href="/cia-1.0/pages/cadastroOcorrencia.jsp">Cadastro de Ocorrência</a></li>
 				<li><a href="#">Escalas de Serviços</a></li>
 				<li><a href="#">Controle de Viaturas</a></li>
 				<li><a href="#">Facções</a></li>

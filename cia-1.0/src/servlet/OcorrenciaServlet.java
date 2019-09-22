@@ -17,8 +17,18 @@ import javax.servlet.http.Part;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.codec.binary.Base64;
 
+import beans.ArmasOcorrenciaBean;
+import beans.EntorpecentesOcorrenciaBean;
+import beans.EnvolvidoOcorrenciaBean;
 import beans.OcorrenciaBean;
+import beans.OrdenamentoOcorrenciaBean;
+import beans.VeiculosOcorrenciaBean;
+import dao.ArmaOcorrenciaDao;
+import dao.EntorpecenteOcorrenciaDao;
+import dao.EnvolvioOcorrenciaDao;
 import dao.OcorrenciaDao;
+import dao.OrdenamentoOcorrenciaDao;
+import dao.VeiculoOcorrenciaDao;
 
 @WebServlet(name = "Ocorrencia", urlPatterns = {"/pages/Ocorrencia"})
 @MultipartConfig
@@ -30,8 +40,51 @@ public class OcorrenciaServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String acao = request.getParameter("acao");
+		String codigo = request.getParameter("codigo");
+		OcorrenciaBean ocorrenciaBean = new OcorrenciaBean();
+		OcorrenciaDao ocorrenciaDao = new OcorrenciaDao();
 		
+		
+		if(acao.equals("editar")) {
+			ArmasOcorrenciaBean armasBean = new ArmasOcorrenciaBean();
+			ArmaOcorrenciaDao armasDao = new ArmaOcorrenciaDao();
+			EnvolvidoOcorrenciaBean envolvidosBean = new EnvolvidoOcorrenciaBean();
+			EnvolvioOcorrenciaDao envolvidosDao = new EnvolvioOcorrenciaDao();
+			OrdenamentoOcorrenciaBean ordenamentoBean = new OrdenamentoOcorrenciaBean();
+			OrdenamentoOcorrenciaDao ordenamentoDao = new OrdenamentoOcorrenciaDao();
+			EntorpecentesOcorrenciaBean entorpecenteBean = new EntorpecentesOcorrenciaBean();
+			EntorpecenteOcorrenciaDao entorpecenteDao = new EntorpecenteOcorrenciaDao();
+			VeiculosOcorrenciaBean veiculoBean = new VeiculosOcorrenciaBean();
+			VeiculoOcorrenciaDao veiculoDao = new VeiculoOcorrenciaDao();
+			
+			ocorrenciaBean.setCodigoOcorrencia(Integer.parseInt(codigo));
+			armasBean.setCodigoOcorrencia(Integer.parseInt(codigo));
+			envolvidosBean.setCodigoOcorrenia(Integer.parseInt(codigo));
+			ordenamentoBean.setCodigoOcorrencia(Integer.parseInt(codigo));
+			entorpecenteBean.setEntorpCodigoOcorrencia(codigo);
+			veiculoBean.setCodigoOcorrencia(codigo);
+						
+			request.setAttribute("ocorrencia", ocorrenciaDao.consultaEditar(ocorrenciaBean));
+			OcorrenciaBean  ocorrenciaHoras = new OcorrenciaBean();
+			ocorrenciaHoras = ocorrenciaDao.consultaEditar(ocorrenciaBean);
+			request.setAttribute("dataHoraFormato", ocorrenciaBean.getDataHoraOcorrenciaFormato(ocorrenciaHoras.getDataHoraOcorrencia()));
+			request.setAttribute("armas", armasDao.consultaTotalArmas(armasBean));
+			request.setAttribute("quantidadeArmas",armasDao.consultaTotalArmas(armasBean).size());
+			request.setAttribute("envolvidos", envolvidosDao.consultaEnvolvidosTotal(envolvidosBean));
+			request.setAttribute("processos", ordenamentoDao.consultaTotalOrdenamento(ordenamentoBean));
+			request.setAttribute("entorpecentes", entorpecenteDao.consultaEntorpecentes(entorpecenteBean));
+			request.setAttribute("quantidadeEntorpecentes", entorpecenteDao.consultaEntorpecentes(entorpecenteBean).size());
+			request.setAttribute("veiculos", veiculoDao.consultaTotalVeiculos(veiculoBean));
+			request.setAttribute("quantidadeVeiculos", veiculoDao.consultaTotalVeiculos(veiculoBean).size());
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroOcorrencia.jsp");
+			dispatcher.forward(request, response);
+			
+		}else if(acao.equals("consultarDetalhes")) {
+			
+		}
 	}
+		
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acao = request.getParameter("acao");
@@ -108,17 +161,65 @@ public class OcorrenciaServlet extends HttpServlet {
 			ocorrenciaBean.setEscrivaoOcorrencia(request.getParameter("escrivaoOcorrencia"));
 			ocorrenciaBean.setAutoridadeMilitarOcorrencia(request.getParameter("autoridadeMilitar"));
 			ArrayList<String> listaFotos = encodeFoto("fotoDiversas01", "fotoDiversas02", "fotoDiversas03", "fotoDiversas04", "fotoDiversas05", request);
-			ocorrenciaBean.setFotosDiversasOcorrencia01(listaFotos.get(0));
-			ocorrenciaBean.setFotosDiversasOcorrencia02(listaFotos.get(1));
+			
+			OcorrenciaBean ocorrenciaFotos = new OcorrenciaBean();
+			ocorrenciaFotos = ocorrenciaDao.consultaEditar(ocorrenciaBean);
+			
+			
+			if(!listaFotos.get(0).equalsIgnoreCase("data:application/octet-stream;base64,")) {
+				ocorrenciaBean.setFotosDiversasOcorrencia01(listaFotos.get(0));
+			}else {
+				ocorrenciaBean.setFotosDiversasOcorrencia01(ocorrenciaFotos.getFotosDiversasOcorrencia01());
+			}
+			if(!listaFotos.get(1).equalsIgnoreCase("data:application/octet-stream;base64,")) {
+				ocorrenciaBean.setFotosDiversasOcorrencia02(listaFotos.get(1));
+			}else {
+				ocorrenciaBean.setFotosDiversasOcorrencia02(ocorrenciaFotos.getFotosDiversasOcorrencia02());
+			}
+			if(!listaFotos.get(2).equalsIgnoreCase("data:application/octet-stream;base64,")) {
+				ocorrenciaBean.setFotosDiversasOcorrencia03(listaFotos.get(2));
+			}else {
+				ocorrenciaBean.setFotosDiversasOcorrencia03(ocorrenciaFotos.getFotosDiversasOcorrencia03());
+			}
+			if(!listaFotos.get(3).equalsIgnoreCase("data:application/octet-stream;base64,")) {
+				ocorrenciaBean.setFotosDiversasOcorrencia04(listaFotos.get(3));
+			}else {
+				ocorrenciaBean.setFotosDiversasOcorrencia04(ocorrenciaFotos.getFotosDiversasOcorrencia04());
+			}
+			if(!listaFotos.get(4).equalsIgnoreCase("data:application/octet-stream;base64,")) {
+				ocorrenciaBean.setFotosDiversasOcorrencia05(listaFotos.get(4));
+			}else {
+				ocorrenciaBean.setFotosDiversasOcorrencia05(ocorrenciaFotos.getFotosDiversasOcorrencia05());
+			}
+			/*ocorrenciaBean.setFotosDiversasOcorrencia02(listaFotos.get(1));
 			ocorrenciaBean.setFotosDiversasOcorrencia03(listaFotos.get(2));
 			ocorrenciaBean.setFotosDiversasOcorrencia04(listaFotos.get(3));
-			ocorrenciaBean.setFotosDiversasOcorrencia05(listaFotos.get(4));
+			ocorrenciaBean.setFotosDiversasOcorrencia05(listaFotos.get(4));*/
 			ocorrenciaBean.setHistoricoOcorrencia(request.getParameter("historicoOcorrencia"));
-			ocorrenciaDao.AlterarOcorrencia(ocorrenciaBean);
+			ocorrenciaDao.alterarOcorrencia(ocorrenciaBean);
+			
 			request.setAttribute("alterado", "<script type=\"text/javascript\">alert(\"Ocorrência Salva com Sucesso!!!\");</script>");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroOcorrencia.jsp");
 			dispatcher.forward(request, response);
 			System.out.println("Alterando Cadastro");
+		}else if(acao.equals("editar")) {
+			ocorrenciaBean.setCodigoOcorrencia(Integer.parseInt(request.getParameter("codigoOcorrencia")));
+			request.setAttribute("ocorrecia", ocorrenciaDao.consultaEditar(ocorrenciaBean));
+			request.setAttribute("", "");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroOcorrencia.jsp");
+			dispatcher.forward(request, response);
+			
+		}else if(acao.equals("consultar")) {
+			ocorrenciaBean.setMikeOcorrencia(request.getParameter("mikeConsulta"));
+			ocorrenciaBean.setNomeGuerraOcorrencia(request.getParameter("noticianteOcorrenciaConsulta"));
+			ocorrenciaBean.setBairroOcorrencia(request.getParameter("bairroConsulta"));
+			ocorrenciaBean.setDataHoraOcorrencia(request.getParameter("dataOcorrenciaConsulta"));
+			
+			System.out.println("Consultar"+request.getParameter("mikeConsulta"));
+			request.setAttribute("consultaTotal", ocorrenciaDao.consultaTotalOcorrencia(ocorrenciaBean));
+			request.setAttribute("checado", "checked");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroOcorrencia.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 	

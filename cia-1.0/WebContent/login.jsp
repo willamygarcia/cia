@@ -28,12 +28,12 @@ ${negado}
 		<form class="frm-login" action="Login" method="post">
 			<div class="form-group">
 				<label for="usuario">Usuario</label> <input type="text"
-					class="form-control" id="usuario" aria-describedby="usuarioHelp" placeholder="Informe seu Usuario" name="usuario" autofocus="autofocus"> 
-					<small id="usuarioHelp"	class="form-text text-muted">Caso você possua as credenciais. Por favor entrar em contato com o administrador.</small>
+					class="form-control" id="usuario" aria-describedby="usuarioHelp" maxlength="20" placeholder="Informe seu Usuario" name="usuario" autofocus="autofocus"> 
+					<small id="usuarioHelp"	class="form-text text-muted">Caso você não possua as credenciais. Por favor entrar em contato com o administrador.</small>
 			</div>
 			<div class="form-group">
 				<label for="senha">Senha</label> <input type="password"
-					class="form-control" id="usuario" placeholder="Senha" name="senha">
+					class="form-control" id="usuario" maxlength="20" placeholder="Senha" name="senha">
 			</div>
 
 			<button type="submit" class="btn btn-primary">Entrar</button>

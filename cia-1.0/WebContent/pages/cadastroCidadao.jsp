@@ -78,15 +78,15 @@
 									<div class="form-row">
 										<div class="form-group col-md-2">
 											<label for="codigo">Codigo</label>
-											<input type="text" class="form-control" id="codigo" name="codigo" aria-describedby="codigoHelp" placeholder="Automatico" readonly="readonly" value="${cidadao.codigo}">
+											<input type="text" class="form-control" id="codigo" name="codigo" maxlength="10" aria-describedby="codigoHelp" placeholder="Automatico" readonly="readonly" value="${cidadao.codigo}">
 										</div>
 										<div class="form-group col-md-4">
 											<label for="nome">Nome</label>
-											<input type="text" class="form-control" id="nome" name="nome" aria-describedby="nomeHelp" placeholder="Nome Completo" required="required" autofocus="autofocus" value="${cidadao.nome}">
+											<input type="text" class="form-control" id="nome" name="nome" maxlength="30" aria-describedby="nomeHelp" placeholder="Nome Completo" required="required" autofocus="autofocus" value="${cidadao.nome}">
 										</div>
 										<div class="form-group col-md-4">
 											<label for="alcunha">Alcunha</label>
-											<input type="text" class="form-control" id="alcunha" name="alcunha" aria-describedby="alcunhaHelp" placeholder="Apelido" value="${cidadao.alcunha}">
+											<input type="text" class="form-control" id="alcunha" name="alcunha" maxlength="20" aria-describedby="alcunhaHelp" placeholder="Apelido" value="${cidadao.alcunha}">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="nascimento">Nascimento</label>
@@ -118,11 +118,11 @@
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											<label for="mae">Mãe</label>
-											<input type="text" class="form-control" id="mae" name="mae" maxlength="255"aria-describedby="maeHelp" placeholder="Nome da Mãe" value="${cidadao.mae}">
+											<input type="text" class="form-control" id="mae" name="mae" maxlength="30"aria-describedby="maeHelp" placeholder="Nome da Mãe" value="${cidadao.mae}">
 										</div>
 										<div class="form-group col-md-6">
 											<label for="pai">Pai</label>
-											<input type="text" class="form-control" id="pai" name="pai" maxlength="255" aria-describedby="paiHelp" placeholder="Nome do Pai" value="${cidadao.pai}">
+											<input type="text" class="form-control" id="pai" name="pai" maxlength="30" aria-describedby="paiHelp" placeholder="Nome do Pai" value="${cidadao.pai}">
 										</div>
 									</div>
 									<div class="form-row">
@@ -133,17 +133,17 @@
 										</div>
 										<div class="form-group col-md-8">
 											<label for="rua">Endereço</label>
-											<input type="text" class="form-control" id="rua" name="rua" maxlength="255" aria-describedby="enderecoHelp" placeholder="Rua,TV,AV..." value="${cidadao.endereco}">
+											<input type="text" class="form-control" id="rua" name="rua" maxlength="30" aria-describedby="enderecoHelp" placeholder="Rua,TV,AV..." value="${cidadao.endereco}">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="numero">Numero:</label>
-											<input type="text" class="form-control" id="numero" name="numero" maxlength="5" aria-describedby="numerocoHelp" placeholder="Numero" value="${cidadao.numero}">
+											<input type="number" class="form-control" id="numero" name="numero" maxlength="5" aria-describedby="numerocoHelp" placeholder="Numero" value="${cidadao.numero}">
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-4">
 											<label for="complemento">Complemento</label>
-											<input type="text" class="form-control" id="complemento" name="complemento" maxlength="255" aria-describedby="complementoHelp" placeholder="Complemento"  value="${cidadao.complemento}">
+											<input type="text" class="form-control" id="complemento" name="complemento" maxlength="30" aria-describedby="complementoHelp" placeholder="Complemento"  value="${cidadao.complemento}">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="bairro">Bairro</label>
@@ -151,7 +151,7 @@
 										</div>
 										<div class="form-group col-md-2">
 											<label for="cidade">Cidade</label>
-											<input type="text" class="form-control" id="cidade" name="cidade" maxlength="50" aria-describedby="cidadeHelp" placeholder="Cidade"  value="${cidadao.cidade}">
+											<input type="text" class="form-control" id="cidade" name="cidade" maxlength="30" aria-describedby="cidadeHelp" placeholder="Cidade"  value="${cidadao.cidade}">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="uf">UF</label>
@@ -454,7 +454,7 @@
 															<td><c:out value="${lista.nascimento}"></c:out></td>
 															<td><c:out value="${lista.bairro}"></c:out></td>
 															<td><a href="Cidadao?acao=editar&codigo=${lista.codigo}" class="btn btn-secondary btn-sm">Editar</a>
-																<a href="Cidadao?acao=excluir&codigo=${lista.codigo}" class="btn btn-danger btn-sm">Excluir</a>
+																<a href="Cidadao?acao=excluir&codigo=${lista.codigo}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Excluir</a>
 																<a href="Cidadao?acao=visualizar&codigo=${lista.codigo}"  target="_blank" class="btn btn-info btn-sm">Visualizar</a>
 															</td>
 	

@@ -362,5 +362,3 @@ function salvarVeiculoOcorrencia(){
 		hiddenModalVeiculos();
 }
 
-
-

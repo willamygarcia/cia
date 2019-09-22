@@ -38,7 +38,7 @@ public class EnvolvidosOcorrenciaServlet extends HttpServlet {
 					for (EnvolvidoOcorrenciaBean envolvido2 : envolvidos) {
 						data += "{"+
 									"\"codigoEnvolvido\":\""+envolvido2.getCodigoEnvolvidoOcorrencia()+"\","+
-									"\"codigoOcorrencia\":\""+envolvido2.getCodigoOcorrenia()+"\","+
+									"\"codigoOcorrencia\":\""+envolvido2.getCodigoOcorrencia()+"\","+
 									"\"graduacaoEnvolvido\":\""+envolvido2.getGraduacaoEnvolvidoOcorrencia()+"\","+
 									"\"numeralEnvolvido\":\""+envolvido2.getNumeralEnvolvidoOcorrencia()+"\","+
 									"\"matriculaEnvolvido\":\""+envolvido2.getMatriculaEnvolvidoOcorrencia()+"\","+
@@ -91,7 +91,7 @@ public class EnvolvidosOcorrenciaServlet extends HttpServlet {
 					for (EnvolvidoOcorrenciaBean envolvido2 : envolvidos) {
 						data += "{"+
 									"\"codigoEnvolvido\":\""+envolvido2.getCodigoEnvolvidoOcorrencia()+"\","+
-									"\"codigoOcorrencia\":\""+envolvido2.getCodigoOcorrenia()+"\","+
+									"\"codigoOcorrencia\":\""+envolvido2.getCodigoOcorrencia()+"\","+
 									"\"graduacaoEnvolvido\":\""+envolvido2.getGraduacaoEnvolvidoOcorrencia()+"\","+
 									"\"numeralEnvolvido\":\""+envolvido2.getNumeralEnvolvidoOcorrencia()+"\","+
 									"\"matriculaEnvolvido\":\""+envolvido2.getMatriculaEnvolvidoOcorrencia()+"\","+
