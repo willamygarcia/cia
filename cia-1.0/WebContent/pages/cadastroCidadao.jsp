@@ -51,7 +51,7 @@
 				<li class="active"><a href="/cia-1.0/pages/cadastroCidadao.jsp">Cadastro do
 						Cidadão</a></li>
 				<li><a href="/cia-1.0/pages/cadastroUsuarios.jsp">Cadastro de Usuarios</a></li>
-				<li><a href="/cia-1.0/pages/cadastroOcorrencia.jsp">Cadastro de Ocorência</a></li>
+				<li><a href="/cia-1.0/pages/cadastroOcorrencia.jsp">Cadastro de Ocorrência</a></li>
 				<li><a href="#">Escalas de Serviços</a></li>
 				<li><a href="#">Controle de Viaturas</a></li>
 				<li><a href="#">Facções</a></li>
@@ -182,8 +182,8 @@
 										<label for="delegacia">Delegacia</label>
 										<select id="delegacia" name="delegacia" class="form-control" aria-describedby="delegaciaHelp" >
 											
-											${opcao1}${cidadao.delegacia}${opcao2}
-											<option>Selecionar Delegacia</option>
+											<c:if test="${cidadao.delegacia == ''}"><option value="">Selecionar Delegacia</option></c:if>
+											<c:if test="${cidadao.delegacia != ''}">${cidadao.delegacia}</c:if>
 											<option>1º Distrito Policial</option>
 											<option>2º Distrito Policial</option>
 											<option>3º Distrito Policial</option>
@@ -224,8 +224,9 @@
 									<div class="form-group col-md-4">
 										<label for="faccao">Facção Criminosa</label>
 										<select id="faccao" name="faccao" class="form-control">
-											${opcaoF1}${cidadao.faccao}${opcaoF2}
-											<option>Selecionar Facção</option>
+										
+											<c:if test="${cidadao.faccao == ''}"><option value="">Selecionar Facção</option></c:if>
+											<c:if test="${cidadao.faccao != ''}">${cidadao.faccao}</c:if>
 											<option>Comando Vermelho (CV)</option>
 											<option>Guardiões do Estado (GDE)</option>
 											<option>Primeiro Comando da Capital (PCC)</option>
