@@ -1,4 +1,5 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -452,7 +453,8 @@
 															<td scope="row"><c:out value="${lista.codigo}"></c:out></td>
 															<td><c:out value="${lista.nome}"></c:out></td>
 															<td><c:out value="${lista.mae}"></c:out></td>
-															<td><c:out value="${lista.nascimento}"></c:out></td>
+															<fmt:parseDate value="${lista.nascimento}" pattern="yyyy-MM-dd" var="myDate"/>
+															<td><fmt:formatDate pattern="dd-MM-yyyy" value="${myDate}"/></td>
 															<td><c:out value="${lista.bairro}"></c:out></td>
 															<td><a href="Cidadao?acao=editar&codigo=${lista.codigo}" class="btn btn-secondary btn-sm">Editar</a>
 																<a href="Cidadao?acao=excluir&codigo=${lista.codigo}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Excluir</a>

@@ -7,13 +7,13 @@
 
 #conteiner-view{
 	margin: 0 auto;
-	width: 95%;
+	width:1200px;
 	background-color: #fff;
 	
 }
 #cabecalho-view{
 	float : left;
-	width: 100%;
+	width: 1200px;
 	height: 150px;
 	margin-top:20px;
 	padding-top: 20px;
@@ -48,7 +48,7 @@
 }
 #foto-ficha{
 	float : left;
-	width:18%;
+	width:200px;
 	height: 350px;
 	border: 2px solid #000;
 	border-radius: 15px;
@@ -61,7 +61,7 @@
 }
 #dados-pessoais-view{
 	float : left;
-	width:80%;
+	width:1000px;
 	height:350px;
 	margin-top:2%;
 	margin-left: 2%;

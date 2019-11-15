@@ -117,8 +117,10 @@
 							<button type="submit" class="btn btn-primary" name="btnSalvar">Salvar</button>
 							<button type="reset" class="btn btn-primary">Cancelar</button>
 						</form>
-					</div></li>
-				<li><input type="radio" name="tabs" class="rd_tab" id="tab2" ${checagem}>
+					 </div>
+					</li>
+					<li>
+					<input type="radio" name="tabs" class="rd_tab" id="tab2" ${checagem}>
 					<label for="tab2" class="tab_label">Consulta</label>
 					<div class="tab-content">
 						<br>
@@ -147,7 +149,7 @@
 													<td><c:out value="${lista.nivelUsuarios}"></c:out></td>
 													<td>
 														<a href="CadastrarUsuario?acao=editar&acaoConsulta=editar&codigoUsuarios=${lista.codigoUsuarios}" class="btn btn-secondary btn-sm">Editar</a>
-														<a href="CadastrarUsuario?acao=del&acaoConsulta&codigoUsuarios=${lista.codigoUsuarios}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Excluir</a>
+														<a href="CadastrarUsuario?acao=del&acaoConsulta=del&codigoUsuarios=${lista.codigoUsuarios}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Excluir</a>
 														<a href="#" class="btn btn-info btn-sm">Visualizar</a>
 													</td>
 												</tr>

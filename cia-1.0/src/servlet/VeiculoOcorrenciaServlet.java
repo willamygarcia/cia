@@ -25,12 +25,55 @@ public class VeiculoOcorrenciaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acao = request.getParameter("acao");
 		VeiculosOcorrenciaBean veiculoBean = new VeiculosOcorrenciaBean();
+		VeiculoOcorrenciaDao veiculoDao = new VeiculoOcorrenciaDao();
 		if(acao.equalsIgnoreCase("consulta")) {
 			veiculoBean.setCodigoOcorrencia(request.getParameter("codigoOcorrencia"));
+					
+		}else if(acao.equalsIgnoreCase("remover")) {
 			
+			veiculoBean.setCodigoVeiculoOco(Integer.parseInt(request.getParameter("codigoVeiculo")));
+			veiculoBean.setCodigoOcorrencia(request.getParameter("ocorrencia"));
+			veiculoDao.removerVeiculoOcorrencia(veiculoBean);
 			
-			
-			
+			try {
+				List<VeiculosOcorrenciaBean> listVeiculos = veiculoDao.consultaTotalVeiculos(veiculoBean);
+				if(!listVeiculos.isEmpty()) {
+					int total = listVeiculos.size();
+					String data = "";
+					int index = 1;
+					JSONObject obj_json = new JSONObject();
+					for(VeiculosOcorrenciaBean veiculos : listVeiculos) {
+						obj_json.put("codigoVeiculo", veiculos.getCodigoVeiculoOco());
+						obj_json.put("codigoOcorrencia", veiculos.getCodigoOcorrencia());
+						obj_json.put("placa", veiculos.getPlacaVeiculoOco());
+						obj_json.put("marca", veiculos.getMaracaVeiculoOco());
+						obj_json.put("modelo", veiculos.getModeloVeiculoOco());
+						obj_json.put("tipo", veiculos.getTipoVeiculoOco());
+						obj_json.put("cor", veiculos.getCorVeiculoOco());
+						obj_json.put("anoFab", veiculos.getAnoFabVeiculoOco());
+						obj_json.put("anoMod", veiculos.getAnoModVeiculoOco());
+						
+						data+= obj_json.toString();
+						if(index < total) {
+							data+=",";
+						}
+						
+						index++;
+						
+					}
+					String dados = "["+
+										data + 
+									"]";
+					
+					response.setContentType("text/plain");
+					response.setCharacterEncoding("UTF-8");	
+					response.setStatus(200);
+					response.getWriter().write(dados);
+						
+				}
+			}catch(Exception e){
+				
+			}
 		}
 	}
 

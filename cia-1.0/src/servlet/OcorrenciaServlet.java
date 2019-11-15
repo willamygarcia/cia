@@ -18,12 +18,14 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import beans.ArmasOcorrenciaBean;
+import beans.DocumentosOcorrenciaBean;
 import beans.EntorpecentesOcorrenciaBean;
 import beans.EnvolvidoOcorrenciaBean;
 import beans.OcorrenciaBean;
 import beans.OrdenamentoOcorrenciaBean;
 import beans.VeiculosOcorrenciaBean;
 import dao.ArmaOcorrenciaDao;
+import dao.DocumentoOcorrenciaDao;
 import dao.EntorpecenteOcorrenciaDao;
 import dao.EnvolvioOcorrenciaDao;
 import dao.OcorrenciaDao;
@@ -58,12 +60,17 @@ public class OcorrenciaServlet extends HttpServlet {
 			VeiculosOcorrenciaBean veiculoBean = new VeiculosOcorrenciaBean();
 			VeiculoOcorrenciaDao veiculoDao = new VeiculoOcorrenciaDao();
 			
+			DocumentosOcorrenciaBean documentosBean = new DocumentosOcorrenciaBean();
+			DocumentoOcorrenciaDao documentoDao = new DocumentoOcorrenciaDao(); 
+			
 			ocorrenciaBean.setCodigoOcorrencia(Integer.parseInt(codigo));
 			armasBean.setCodigoOcorrencia(Integer.parseInt(codigo));
 			envolvidosBean.setCodigoOcorrenia(Integer.parseInt(codigo));
 			ordenamentoBean.setCodigoOcorrencia(Integer.parseInt(codigo));
 			entorpecenteBean.setEntorpCodigoOcorrencia(codigo);
 			veiculoBean.setCodigoOcorrencia(codigo);
+			
+			documentosBean.setCodigoDocumentoOcorrencia(Integer.parseInt(codigo));
 						
 			request.setAttribute("ocorrencia", ocorrenciaDao.consultaEditar(ocorrenciaBean));
 			OcorrenciaBean  ocorrenciaHoras = new OcorrenciaBean();
@@ -77,10 +84,19 @@ public class OcorrenciaServlet extends HttpServlet {
 			request.setAttribute("quantidadeEntorpecentes", entorpecenteDao.consultaEntorpecentes(entorpecenteBean).size());
 			request.setAttribute("veiculos", veiculoDao.consultaTotalVeiculos(veiculoBean));
 			request.setAttribute("quantidadeVeiculos", veiculoDao.consultaTotalVeiculos(veiculoBean).size());
+			request.setAttribute("documentos", documentoDao.consultaDocumentoTotal(documentosBean));
+			request.setAttribute("quantidadeDocumentos", documentoDao.consultaDocumentoTotal(documentosBean).size());
 			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroOcorrencia.jsp");
 			dispatcher.forward(request, response);
 			
 		}else if(acao.equals("consultarDetalhes")) {
+			
+		}else if(acao.equals("excluir")) {
+			
+			ocorrenciaBean.setCodigoOcorrencia(Integer.parseInt(request.getParameter("codigo")));
+			ocorrenciaDao.excluirOcorrencia(ocorrenciaBean);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroOcorrencia.jsp");
+			dispatcher.forward(request, response);
 			
 		}
 	}

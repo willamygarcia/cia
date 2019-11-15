@@ -328,5 +328,22 @@ public class OcorrenciaDao {
 			
 		}
 	}
+	
+	public void excluirOcorrencia(OcorrenciaBean ocorrencia) {
+		String sql = "DELETE FROM tblOcorrencia WHERE codigoOcorrencia = ?";
+		
+		try {
+			PreparedStatement pst = conect.prepareStatement(sql);
+			pst.setInt(1, ocorrencia.getCodigoOcorrencia());
+			pst.execute();
+			conect.commit();
+		} catch (Exception e) {
+			try {
+				conect.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
 
 }

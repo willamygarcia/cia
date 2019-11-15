@@ -24,7 +24,14 @@ public class Login extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+			
+		if(Boolean.parseBoolean(request.getParameter("logoff"))) {
+			
+			HttpServletRequest req = (HttpServletRequest) request;
+			HttpSession sessao = req.getSession();
+			sessao.invalidate();
+			response.sendRedirect("login.jsp");
+		}
 
 	}
 
@@ -33,7 +40,7 @@ public class Login extends HttpServlet {
 		doGet(request, response);
 		
 		UsuariosBean usuariosBean = new UsuariosBean();
-		dao.LoginDao loginDao = new LoginDao();
+		LoginDao loginDao = new LoginDao();
 		
 		usuariosBean.setNomeUsuarios(request.getParameter("usuario"));
 		usuariosBean.setSenha(request.getParameter("senha"));

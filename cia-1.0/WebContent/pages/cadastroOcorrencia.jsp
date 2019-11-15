@@ -179,7 +179,7 @@
 																	<td><c:out value="${listaEnvolvidos.nomeGuerraEnvolvidoOcorrencia}"></c:out></td>
 																	<td><c:out value="${listaEnvolvidos.matriculaEnvolvidoOcorrencia}"></c:out></td>
 																	<td><c:out value="${listaEnvolvidos.informacoesEnvolvidoOcorrencia}"></c:out></td>
-																	<td><a href="Ocorrencia?acao=excluir&codigo=${listaEnvolvidos.codigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Remover</a>
+																	<td><a onclick="removerMilitarEnvolvido(${listaEnvolvidos.codigoEnvolvidoOcorrencia});" class="btn btn-danger btn-sm">Remover</a>
 																	</td>
 					
 																</tr>
@@ -355,7 +355,7 @@
 																	<td><c:out value="${listaProcessos.leiOrdenamentoOcorrencia}"></c:out></td>
 																	<td><c:out value="${listaProcessos.artigoOrdenamentoOcorrencia}"></c:out></td>
 																	<td><c:out value="${listaProcessos.paragrafoOrdenamentoOcorrencia}"></c:out></td>
-																	<td><a href="Ocorrencia?acao=excluir&codigo=${listaEnvolvidos.codigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Remover</a>
+																	<td><a onclick="removerOrdenamento(${listaProcessos.codigoOrdenamentoOcorrencia});" class="btn btn-danger btn-sm">Remover</a>
 																	</td>
 					
 																</tr>
@@ -375,11 +375,11 @@
 	
 							<div class="tab-content">
 									<br>
-									<h4>Armas / Entorpecentes / Veiculos</h4>
+									<h4>Armas / Entorpecentes / Veiculos / Documentos</h4>
 									<div class="form-row">
 										<div class="form-group col-md-1">
 											<label for="quantidadeArma">QUANTIDADE</label><br>
-											<label id="quantidadeArma" onclick="showModalArmasView();" style="cursor: pointer; font-weight: bold;">${quantidadeArmas}</label><br>
+											<label id="quantidadeArma" onclick="showModalArmasView();" style="cursor: pointer; font-weight: bold; width: 100px; height: 38px;"  class="btn btn-info btn-sm">${quantidadeArmas}</label><br>
 										</div>
 										<div class="form-group col-md-2">
 											<label for="adicionarArma">Adicionar Armas</label><br>
@@ -387,7 +387,7 @@
 										</div>
 										<div class="form-group col-md-1">
 											<label for="quantidadeEntorpecentes">QUANTIDADE</label><br>
-											<label id="quantidadeEntorpecentes" onclick="showModalEntorpecentesView()" style="cursor: pointer; font-weight: bold;">${quantidadeEntorpecentes}</label><br>
+											<label id="quantidadeEntorpecentes" onclick="showModalEntorpecentesView()" style="cursor: pointer; font-weight: bold; width: 100px; height: 38px;"  class="btn btn-info btn-sm">${quantidadeEntorpecentes}</label><br>
 										</div>
 										<div class="form-group col-md-2">
 											<label for="adicionarEntorpecentes">Adicionar Entorpecentes</label><br>
@@ -395,11 +395,19 @@
 										</div>
 										<div class="form-group col-md-1">
 											<label for="quantidadeVeiculos">QUANTIDADE</label><br>
-											<label id="quantidadeVeiculos" onclick="showModalVeiculosView();" style="cursor: pointer; font-weight: bold;">${quantidadeVeiculos}</label><br>
+											<label id="quantidadeVeiculos" onclick="showModalVeiculosView();" style="cursor: pointer; font-weight: bold; width: 100px; height: 38px;"  class="btn btn-info btn-sm">${quantidadeVeiculos}</label><br>
 										</div>
 										<div class="form-group col-md-2">
 											<label for="adicionarVeiculos">Adicionar Veiculos</label><br>
 											<button type="button" id="adicionarVeiculos" class="btn btn-dark" onclick="showModalVeiculos()">Adicionar</button>
+										</div>
+										<div class="form-group col-md-1">
+											<label for="quantidadeDocumentos">QUANTIDADE</label><br>
+											<label id="quantidadeDocumentos" onclick="showModalDocumentosView();" style="cursor: pointer; font-weight: bold; width: 100px; height: 38px;"  class="btn btn-info btn-sm">${quantidadeDocumentos}</label><br>
+										</div>
+										<div class="form-group col-md-2">
+											<label for="adicionarDocumentos">Adicionar Documentos</label><br>
+											<button type="button" id="adicionarDocumentos" class="btn btn-dark" onclick="showModalDocumentos()">Adicionar</button>
 										</div>
 									</div>
 									<br>
@@ -515,7 +523,6 @@
 																<td><c:out value="${lista.bairroOcorrencia}"></c:out></td>
 																<fmt:parseDate value="${lista.dataHoraOcorrencia}" pattern="yyyy-MM-dd HH:mm:ss" var="myDate"/>
 																<td><fmt:formatDate pattern="dd-MM-yyyy HH:mm:ss" value="${myDate}"/></td>
-																<!--<td><c:out value="${lista.dataHoraOcorrencia}"></c:out></td>-->
 																<td><a href="Ocorrencia?acao=editar&codigo=${lista.codigoOcorrencia}" class="btn btn-secondary btn-sm">Editar</a>
 																	<a href="Ocorrencia?acao=excluir&codigo=${lista.codigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Excluir</a>
 																	<a href="Ocorrencia?acao=visualizar&codigo=${lista.codigoOcorrencia}"  target="_blank" class="btn btn-info btn-sm">Visualizar</a>
@@ -765,7 +772,7 @@
 												<td><c:out value="${listaArmas.calibreArma}"></c:out></td>
 												<td><c:out value="${listaArmas.capacidadeArma}"></c:out></td>
 												<td><c:out value="${listaArmas.informacoesArama}"></c:out></td>
-												<td><a href="Ocorrencia?acao=excluir&codigo=${listaArmas.codigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Remover</a>
+												<td><a onclick="removerArmaOcorrecia(${listaArmas.codigoArma});" class="btn btn-danger btn-sm">Remover</a>
 												</td>
 											</tr>
 										</c:forEach>
@@ -951,7 +958,7 @@
 		
 	</div>
 </div>
-<!-- MODAL CADASTRO DE ENTORPECENTES VIEW--> 
+<!-- MODAL CADASTRO DE VEICULOS VIEW--> 
 <!-- Modal -->
 <div id="modal-content-veiculos-view">
 	<div id="modal-tela">
@@ -993,7 +1000,85 @@
 												<td><c:out value="${listaVeiculos.corVeiculoOco}"></c:out></td>
 												<td><c:out value="${listaVeiculos.anoFabVeiculoOco}"></c:out></td>
 												<td><c:out value="${listaVeiculos.anoModVeiculoOco}"></c:out></td>
-												<td><a href="Ocorrencia?acao=excluir&codigo=${listaVeiculos.codigoOcorrencia}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Remover</a>
+												<td><a onclick="removerVeiculosOcorrencia(${listaVeiculos.codigoVeiculoOco});" class="btn btn-danger btn-sm">Remover</a>
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>	
+<!-- ################################################################# -->
+<!-- MODAL CADASTRO DE DOCUMENTOS--> 
+<!-- Modal -->
+<div id="modal-content-documentos">
+	<div id="modal-tela">
+		<div id="modal-title">
+			<label class="titulo-modal">Cadastro de Documentos</label>
+			<button type="button" onclick="hiddenModalDocumentos()" class="btn-close-modal">X</button> 
+		</div>
+		<div id="model-body">
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label for="descricaoDocumento">Descrição do Documento:</label>
+					<input type="text" class="form-control" id="descricaoDocumento" name="descricaoDocumento" placeholder="Ex.: Boletim de Ocorrência" >
+				</div>
+			</div>	
+			<div class="form-row">	
+				<div class="form-group col-md-12">
+					<label for="fileDocumento">Anexar Documento:</label>
+					<input type="file" class="form-control" id="fileDocumento" name="fileDocumento" accept="application/pdf,application/vnd.ms-excel" onchange="base(this)">
+					<input type="text" hidden="hidden" id="documentoLido" name="documentoLido">
+				</div>
+			</div>
+			<div id="modal-btns">
+					<button type="button" id="btnSalvarDocumentosOcorrencia" name="btnSalvarDocumentosOcorrencia" class="btn btn-success" onclick="salvarDocumentoOcorrencia()">Salvar</button>
+					<button type="button" id="btnSairDocumentosOcorrencia" name="btnSairDocumentosOcorrencia" class="btn btn-danger" onclick="hiddenModalDocumentos()">Fechar</button>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<!-- MODAL CADASTRO DE DOCUMENTOS VIEW--> 
+<!-- Modal -->
+<div id="modal-content-documentos-view">
+	<div id="modal-tela">
+		<div id="modal-title">
+			<label class="titulo-modal">Cadastro de Documentos</label>
+			<button type="button" onclick="hiddenModalDocumentosView()" class="btn-close-modal">X</button> 
+		</div>
+			<div id="model-body">
+				<div class="form-row">
+					<div class="form-group col-md-12">
+						<fieldset>
+							<legend>Documentos Ocorrencia</legend>
+							<div class="table-overflow">
+								<table class="table table-striped" id="tabela-documentos-ocorrencia">
+									<thead>
+										<tr>
+											<td scope="col"><strong>Codigo Documento</strong></td>
+											<td scope="col"><strong>Codigo Ocorrencia</strong></td>
+											<td scope="col"><strong>Descrição</strong></td>
+											<td scope="col"><strong>Ação</strong></td>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${documentos}" var="listaDocumentos">
+											<tr>
+												<td scope="row"><c:out value="${listaDocumentos.codigoDocumento}"></c:out></td>
+												<td><c:out value="${listaDocumentos.codigoDocumentoOcorrencia}"></c:out></td>
+												<td><c:out value="${listaDocumentos.descricaoDocumento}"></c:out></td>
+												<td><a href="DocumentosOcorrencia?codigoDocumento=${listaDocumentos.codigoDocumento}&acao=visualizar" target="_blank" class="btn btn-info btn-sm">Vizualizar</a>
+												    <a href="DocumentosOcorrencia?codigoDocumento=${listaDocumentos.codigoDocumento}&acao=download" target="_blank" class="btn btn-success btn-sm">Baixar</a>
+												    <button type="button" class="btn btn btn-danger btn-sm" onclick="removerDocumentoOcorrencia(${listaDocumentos.codigoDocumento})">Remover</button>
+												      
+												     
 												</td>
 											</tr>
 										</c:forEach>
@@ -1074,6 +1159,12 @@ ${excluido}
 	function showModalVeiculosView() {
 		document.getElementById("modal-content-veiculos-view").style.display = "block";
 	}
+	function showModalDocumentos() {
+		document.getElementById("modal-content-documentos").style.display = "block";
+	}
+	function showModalDocumentosView() {
+		document.getElementById("modal-content-documentos-view").style.display = "block";
+	}
 	
 // ------------------OCULTAR TELA MODAL		
 	function hiddenModal() {
@@ -1123,6 +1214,21 @@ ${excluido}
 	}
 	function hiddenModalVeiculosView() {
 		document.getElementById("modal-content-veiculos-view").style.display = "none";
+		
+	}
+	function hiddenModalDocumentos() {
+		document.getElementById("modal-content-documentos").style.display = "none";
+		document.getElementById("placaVeiculo").value="";
+		document.getElementById("marcaVeiculo").value="";
+		document.getElementById("modeloVeiculo").value="";
+		document.getElementById("tipoVeiculo").value="";
+		document.getElementById("tipoVeiculo").value="";
+		document.getElementById("corVeiculo").value="";
+		document.getElementById("anoFab").value="";
+		document.getElementById("anoMod").value="";
+	}
+	function hiddenModalDocumentosView() {
+		document.getElementById("modal-content-documentos-view").style.display = "none";
 		
 	}
 

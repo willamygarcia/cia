@@ -77,4 +77,25 @@ public class VeiculoOcorrenciaDao {
 		
 	}
 	
+	public void removerVeiculoOcorrencia(VeiculosOcorrenciaBean veiculo) {
+		String sql = " DELETE FROM tblveiculosocorrencia WHERE codigoVeiculoOco = ?";
+		try {
+			PreparedStatement pst = connection.prepareStatement(sql);
+			pst.setInt(1, veiculo.getCodigoVeiculoOco());
+			pst.execute();
+			connection.commit();
+			
+		} catch (Exception e) {
+			
+			try {
+				connection.rollback();
+				e.printStackTrace();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+		}
+		
+	}
+	
 }

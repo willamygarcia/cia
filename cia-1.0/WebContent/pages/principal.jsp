@@ -1,4 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -36,7 +36,7 @@
 				<li><a href="#">Relatorios</a></li>
 				<li><a href="#">Controle</a></li>
 				<li><a href="#">Configurações</a></li>
-				<li><a href="/cia-1.0/login.jsp">Sair</a></li>
+				<li><a href="/cia-1.0/Login?logoff=true">Sair</a></li>
 			
 			</ul>
 		</nav>
