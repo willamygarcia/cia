@@ -27,38 +27,57 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="70" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="79" uuid="97ce9ce3-ae95-4d12-b367-fd92dababa07"/>
+				<reportElement x="0" y="40" width="555" height="30" uuid="92306756-f650-47f5-81af-9ddf929c2035"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="20"/>
+					<font size="20" isBold="true" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[RELATÓRIO DE USUÁRIOS]]></text>
+				<text><![CDATA[COLETA DE INFORMAÇÃOES PARA ANÁLISE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="40" uuid="67400935-406f-41f9-adab-471e32061f86"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="25" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.I.A ]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="30" uuid="2b15fa27-3d32-48cc-b2f5-89f47ad08e3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.I.A - RELATORIO DE USUÁRIOS: ]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="31" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="31" uuid="8e2bac02-dd42-40b4-8b13-57a6956e47d4"/>
+				<reportElement x="0" y="0" width="555" height="31" backcolor="#E3E3E3" uuid="8e2bac02-dd42-40b4-8b13-57a6956e47d4"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="2" y="0" width="60" height="30" uuid="95a04f2c-07e5-4ac9-a41d-acde428702ad">
+				<reportElement x="10" y="0" width="60" height="30" uuid="95a04f2c-07e5-4ac9-a41d-acde428702ad">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a9b8b09f-7115-4b2e-84ae-df4f06ddcc39"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[CODIGO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="62" y="0" width="111" height="30" uuid="d737af60-6a5c-4c34-a053-8ad076e1d27e">
+				<reportElement x="70" y="0" width="103" height="30" uuid="d737af60-6a5c-4c34-a053-8ad076e1d27e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="04b31fdd-0277-45d9-a3b8-f2747957dcd7"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[USUÁRIO]]></text>
 			</staticText>
 			<staticText>
@@ -66,7 +85,9 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78afca50-c675-4917-9961-47226a3a278d"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[NOME]]></text>
 			</staticText>
 			<staticText>
@@ -74,7 +95,9 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="90628c88-19c3-4ca5-b98a-68e5703a8156"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[NÍVEL]]></text>
 			</staticText>
 			<staticText>
@@ -84,6 +107,7 @@
 					<property name="com.jaspersoft.studio.unit.spacingBefore" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
 					<paragraph lineSpacingSize="1.0" spacingBefore="0"/>
 				</textElement>
 				<text><![CDATA[E-MAIL]]></text>
@@ -96,14 +120,14 @@
 				<reportElement x="0" y="0" width="555" height="30" uuid="a424c6eb-e11b-4712-8a7e-12ded28751b3"/>
 			</rectangle>
 			<textField>
-				<reportElement x="0" y="0" width="60" height="30" uuid="2be3e2aa-415c-488d-97ef-d491a41ceb0e">
+				<reportElement x="10" y="-1" width="60" height="30" uuid="2be3e2aa-415c-488d-97ef-d491a41ceb0e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a9b8b09f-7115-4b2e-84ae-df4f06ddcc39"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{codigoUsuarios}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="60" y="0" width="111" height="30" uuid="a1172965-0b75-41cb-97d4-bdeddbe9f737">
+				<reportElement x="70" y="0" width="101" height="30" uuid="a1172965-0b75-41cb-97d4-bdeddbe9f737">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="04b31fdd-0277-45d9-a3b8-f2747957dcd7"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
@@ -132,13 +156,20 @@
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="227" y="9" width="100" height="21" uuid="340dacbd-a207-4108-8843-74022796495b"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORTALEZA]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM, yyyy">
+				<reportElement x="227" y="30" width="100" height="30" uuid="f49337e9-6adf-4029-9144-a830483147ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
