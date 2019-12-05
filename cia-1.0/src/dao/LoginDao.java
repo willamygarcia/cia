@@ -78,16 +78,16 @@ public class LoginDao {
 				 "%' AND nivel_usuarios LIKE '%" + usuarios.getNivelUsuarios() +
 				 "%'";
 		
-		String sql2 = "SELECT codigo_usuarios, matricula_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +  
+		String sql2 = "SELECT codigo_usuarios, matricula_usuarios, nome_completo_usuarios, nivel_usuarios, email_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +  
 				 "%' AND matricula_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
 				 "%' AND nivel_usuarios LIKE '%" + usuarios.getNivelUsuarios() +
 				 "%'";
 		
-		String sql3 = "SELECT codigo_usuarios, matricula_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +  usuarios.getCodigoUsuarios() +
+		String sql3 = "SELECT codigo_usuarios, matricula_usuarios, nome_completo_usuarios, nivel_usuarios, email_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +  usuarios.getCodigoUsuarios() +
 				 "%' AND matricula_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
 				 "%' AND nivel_usuarios LIKE '%" + "%'";
 		
-		String sql4 = "SELECT codigo_usuarios, matricula_usuarios, nome_completo_usuarios, nivel_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +
+		String sql4 = "SELECT codigo_usuarios, matricula_usuarios, nome_completo_usuarios, nivel_usuarios, email_usuarios FROM tblusuarios WHERE codigo_usuarios LIKE '%" +
 				 "%' AND matricula_usuarios LIKE '%" + usuarios.getNomeUsuarios() +
 				 "%' AND nivel_usuarios LIKE '%" + "%'";
 		try {
@@ -109,6 +109,7 @@ public class LoginDao {
 				usuariosBean.setCodigoUsuarios(rs.getInt("codigo_usuarios"));
 				usuariosBean.setNomeUsuarios(rs.getString("matricula_usuarios"));
 				usuariosBean.setNomeCompletoUsuarios(rs.getString("nome_completo_usuarios"));
+				usuariosBean.setEmailUsuario(rs.getString("email_usuarios"));
 				usuariosBean.setNivelUsuarios(rs.getInt("nivel_usuarios"));
 				
 
@@ -172,7 +173,7 @@ public class LoginDao {
 //	ATUALIZAR USUARIOS	
 	public void atualizarUsuarios(UsuariosBean usuariosBean) {
 		
-		String sql = "UPDATE tblusuarios SET matricula_usuarios = ?, nome_completo_usuarios = ?, email_usuarios, senha_usuarios = ?, nivel_usuarios = ? WHERE codigo_usuarios ="+usuariosBean.getCodigoUsuarios();
+		String sql = "UPDATE tblusuarios SET matricula_usuarios = ?, nome_completo_usuarios = ?, email_usuarios = ?, senha_usuarios = ?, nivel_usuarios = ? WHERE codigo_usuarios ="+usuariosBean.getCodigoUsuarios();
 		
 		try {
 			PreparedStatement pst = connection.prepareStatement(sql);

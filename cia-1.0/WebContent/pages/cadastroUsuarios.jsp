@@ -150,7 +150,7 @@
 													<td>
 														<a href="CadastrarUsuario?acao=editar&acaoConsulta=editar&codigoUsuarios=${lista.codigoUsuarios}" class="btn btn-secondary btn-sm">Editar</a>
 														<a href="CadastrarUsuario?acao=del&acaoConsulta=del&codigoUsuarios=${lista.codigoUsuarios}" onclick="return confirm('Confirmar Exclusão');" class="btn btn-danger btn-sm">Excluir</a>
-														<a href="#" class="btn btn-info btn-sm">Visualizar</a>
+														<a href="CadastrarUsuario?acao=viualizarUsuario&acaoConsulta=viualizarUsuario&codigoUsuarios=${lista.codigoUsuarios}" class="btn btn-info btn-sm" target="_blank">Visualizar</a>
 													</td>
 												</tr>
 
@@ -186,8 +186,8 @@
 										</div>
 
 										<button type="submit" class="btn btn-primary">Consultar</button>
-										<!-- <a href="CadastrarUsuario" class="btn btn-secondary btn-sm">Consultar</a>-->
 										<button type="reset" class="btn btn-secondary">Limpar</button>
+										${relatorioUsuarios}
 									</fieldset>
 								</form>
 							</article>
