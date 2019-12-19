@@ -26,14 +26,24 @@
 				<li><a href="#">Cadastros</a>
 						<ul>
 							<li><a class="link-item" href="/cia-1.0/pages/cadastroUsuarios.jsp">Usuários</a></li>
+							<li><a class="link-item" href="/cia-1.0/pages/cadastroMilitar.jsp">Militares</a></li>
 							<li><a class="link-item" href="/cia-1.0/pages/cadastroCidadao.jsp">Cidadão</a></li>
 							<li><a class="link-item" href="/cia-1.0/pages/cadastroOcorrencia.jsp">Ocorrência</a></li>
-							<li><a class="link-item" href="/cia-1.0/pages/cadastroViaturas.jsp">Viatura</a></li>
 							<li><a class="link-item" href="#">Facções</a></li>
 						</ul>
 				</li>
-				<li><a href="#">Consultas</a></li>
-				<li><a href="#">Relatorios</a></li>
+				<li><a href="#">Consultas</a>
+					<ul>
+						<li><a class="link-item" href="/cia-1.0/pages/cadastroUsuarios.jsp">Usuários</a></li>
+						<li><a class="link-item" href="/cia-1.0/pages/cadastroCidadao.jsp">Cidadão</a></li>
+						<li><a class="link-item" href="/cia-1.0/pages/cadastroOcorrencia.jsp">Ocorrência</a></li>
+						<li><a class="link-item" href="/cia-1.0/pages/cadastroViaturas.jsp">Viatura</a></li>
+						<li><a class="link-item" href="#">Facções</a></li>
+					</ul>
+				
+				
+				</li>
+				<li><a href="#">Relatórios</a></li>
 				<li><a href="#">Controle</a></li>
 				<li><a href="#">Configurações</a></li>
 				<li><a href="/cia-1.0/Login?logoff=true">Sair</a></li>
@@ -50,7 +60,7 @@
 				<li><a href="/cia-1.0/pages/cadastroUsuarios.jsp">Cadastro de Usuarios</a></li>
 				<li><a href="/cia-1.0/pages/cadastroOcorrencia.jsp">Cadastro de Ocorrência</a></li>
 				<li><a href="#">Escalas de Serviços</a></li>
-				<li><a href="#">Controle de Viaturas</a></li>
+				<li><a href="/cia-1.0/pages/controleViaturas.jsp">Controle de Viaturas</a></li>
 				<li><a href="#">Facções</a></li>
 				<li><a href="#">Relatórios</a></li>
 				<li><img alt="Link´s Úteis" src="${context}/img/linksuteis.png"></li>

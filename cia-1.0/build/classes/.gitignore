@@ -1,2 +1,7 @@
-/servlet/
+/beans/
+/connection/
 /dao/
+/filter/
+/org/
+/relatorios/
+/servlet/

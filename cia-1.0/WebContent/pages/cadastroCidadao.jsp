@@ -35,10 +35,19 @@
 							<li><a class="link-item" href="#">Facções</a></li>
 						</ul>
 				</li>
-				<li><a href="#">Consultas</a></li>
-				<li><a href="#">Consultas</a></li>
+				<li><a href="#">Consultas</a>
+					<ul>
+						<li><a class="link-item" href="/cia-1.0/pages/cadastroUsuarios.jsp">Usuários</a></li>
+						<li><a class="link-item" href="/cia-1.0/pages/cadastroCidadao.jsp">Cidadão</a></li>
+						<li><a class="link-item" href="/cia-1.0/pages/cadastroOcorrencia.jsp">Ocorrência</a></li>
+						<li><a class="link-item" href="/cia-1.0/pages/cadastroViaturas.jsp">Viatura</a></li>
+						<li><a class="link-item" href="#">Facções</a></li>
+					</ul>
+				
+				</li>
+				<li><a href="#">Relatórios</a></li>
 				<li><a href="#">Controle</a></li>
-				<li><a href="#">Relatorios</a></li>
+				<li><a href="#">Configurações</a></li>
 				<li><a href="/cia-1.0/login.jsp">Sair</a></li>
 			
 			</ul>
@@ -54,7 +63,7 @@
 				<li><a href="/cia-1.0/pages/cadastroUsuarios.jsp">Cadastro de Usuarios</a></li>
 				<li><a href="/cia-1.0/pages/cadastroOcorrencia.jsp">Cadastro de Ocorrência</a></li>
 				<li><a href="#">Escalas de Serviços</a></li>
-				<li><a href="#">Controle de Viaturas</a></li>
+				<li><a href="/cia-1.0/pages/controleViaturas.jsp">Controle de Viaturas</a></li>
 				<li><a href="#">Facções</a></li>
 				<li><a href="#">Relatórios</a></li>
 				<li><img alt="Link´s Úteis" src="${context}/img/linksuteis.png"></li>
@@ -101,7 +110,7 @@
 										</div>
 										<div class="form-group col-md-4">
 											<label for="rg">RG</label>
-											<input type="number" class="form-control" id="rg" name="rg" maxlength="20" aria-describedby="rgHelp" placeholder="Registro de Identificação"  value="${cidadao.rg}">
+											<input type="number" class="form-control" id="rg" name="rg" aria-describedby="rgHelp" placeholder="Registro de Identificação"  value="${cidadao.rg}">
 										</div>
 										<div class="form-group col-md-2">
 											<label for="orgaoEmissor">Orgão Emissor</label>

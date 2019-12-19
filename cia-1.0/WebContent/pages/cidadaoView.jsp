@@ -137,7 +137,7 @@ ${cidadao.historicoJuridico}
 				
 				<figure id="foto-ficha-view">
 		
-					<img alt="foto-Frente-view" src="${cidadao.fotoFrente}">
+					<!--<img alt="foto-Frente-view" src="${cidadao.fotoFrente}">-->
 					<img alt="foto-lado-view" src="${cidadao.fotoLado}">
 					<img alt="foto-costas-view" src="${cidadao.fotoCostas}">
 					<img alt="foto-diversos01-view" src="${cidadao.fotoDiversas01}">
@@ -159,6 +159,9 @@ ${cidadao.historicoJuridico}
 				</p>
 			</fieldset>
 		
+		</article>
+		<article id="btn-imprimir">
+			<button type="button" class="btn btn-info">IMPRIMIR FICHA</button>		
 		</article>
 	</div>
 </body>

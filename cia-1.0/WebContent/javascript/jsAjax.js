@@ -497,5 +497,15 @@ function base(input){
 	};
 	reader.readAsDataURL(file);
 };
+function fotoBase(input){
+	
+	var file = input.files[0];
+	var reader = new FileReader();
+	reader.onloadend = function() {
+	 var dataUrl = reader.result;
+	 document.getElementById('documentoLido').value = dataUrl;
+	};
+	reader.readAsDataURL(file);
+};
 
 

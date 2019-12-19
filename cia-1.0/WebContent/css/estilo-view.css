@@ -4,11 +4,20 @@
 	margin: 0;
 	padding: 0;
 }
+body{
+	background-color: #0A2A0A;
+}
 
 #conteiner-view{
-	margin: 0 auto;
+	position:absolute;
+	left: 50%;
+	right: 50%;
+	margin-left: -600px;
+	margin-top: 10px;
 	width:1200px;
-	background-color: #fff;
+	background-color: #F2F2F2;
+	border: 2px solid #000;
+	
 	
 }
 #cabecalho-view{
@@ -48,23 +57,26 @@
 }
 #foto-ficha{
 	float : left;
-	width:200px;
-	height: 350px;
+	width:250px;
+	height: 300px;
 	border: 2px solid #000;
 	border-radius: 15px;
-	margin-top:2%;
+	margin-top:5%;
+	margin-left:15px;
 }
 #foto-ficha img{
+	
 	width: 100%;
 	height: 100%;
 	border-radius: 15px;
 }
 #dados-pessoais-view{
 	float : left;
-	width:1000px;
+	width:900px;
 	height:350px;
 	margin-top:2%;
-	margin-left: 2%;
+	margin-left: 1%;
+	/*border: 2px solid #000;*/
 
 }
 .legenda{
@@ -74,24 +86,45 @@ fieldset{
 	padding:1%;
 	display:block;
 	height:100%;
- 	border: 1px groove #556B2F;
+ 	border: 2px groove #000;
 }
 #dados-juridicos-view{
 	float : left;
-	width:100%;
-	margin-top:2%;
+	width:97%;
+	margin: 2% 0 0 15px;
 }
-#foto-ficha-view{
+#dados-tatuagens-view{
 	float : left;
-	width:100%;
-	
+	width:97%;
+	margin: 2% 0 0 15px;
+}
+#dados-fotos-view{
+	float : left;
+	width:97%;
+	margin: 2% 0 0 15px;
+}
+
+#foto-ficha-view{
+	width:90%;
+	margin: 0 auto;
 }
 #foto-ficha-view img{
 	float : left;
 	margin-right:1px;
-	width:293px;
-	height: 350px;
+	
+	width:252px;
+	height: 300px;
 	border: 2px solid #c0c0c0;
 	border-radius: 15px;
+}
+#dados-historico-view{
+	float: left;
+	width:97%;
+	margin: 2% 0 20px 15px;
 	
+}
+#btn-imprimir{
+
+	width:150px;
+	margin: 2% auto;
 }
